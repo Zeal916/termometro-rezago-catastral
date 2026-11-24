@@ -1,0 +1,40 @@
+CONTRASTE CON ÍNDICES OFICIALES (2015 = 100)
+Pares urbanos para el índice: Bucaramanga 6,171; AMB 12,399
+IPVN 2022 encadenado: año corrido III trim 5.37% y IV trim 1.63% -> 7.09% (control total nacional: 6.84% y 1.81% -> 8.77%; publicado 8,78%)
+
+VARIACIÓN ANUAL (%)
+      Ventas repetidas, Bucaramanga urbano  IVP Bucaramanga (avalúos comerciales)  Ventas repetidas, AMB urbano  IPVN Bucaramanga AM (vivienda nueva)  Reajuste por decreto
+2016                                  2.07                                   5.87                          2.91                                  2.94                  3.00
+2017                                  0.42                                   5.70                          1.68                                  4.89                  3.00
+2018                                  2.39                                   3.11                          2.92                                  1.74                  3.00
+2019                                 15.06                                   4.52                         13.96                                  1.40                  3.00
+2020                                 -0.14                                   3.75                          1.34                                  1.67                  3.00
+2021                                  1.03                                   4.80                          2.10                                  3.81                  3.00
+2022                                  9.18                                   2.65                          6.97                                  7.09                  3.00
+2023                                  3.31                                   4.37                          3.74                                 10.81                  4.31
+
+NIVEL (2015 = 100)
+      Ventas repetidas, Bucaramanga urbano  IVP Bucaramanga (avalúos comerciales)  Ventas repetidas, AMB urbano  IPVN Bucaramanga AM (vivienda nueva)  Reajuste por decreto
+2015                                 100.0                                  100.0                         100.0                                 100.0                 100.0
+2016                                 102.1                                  105.9                         102.9                                 102.9                 103.0
+2017                                 102.5                                  111.9                         104.6                                 108.0                 106.1
+2018                                 104.9                                  115.4                         107.7                                 109.9                 109.3
+2019                                 120.7                                  120.6                         122.7                                 111.4                 112.6
+2020                                 120.6                                  125.1                         124.4                                 113.3                 115.9
+2021                                 121.8                                  131.1                         127.0                                 117.6                 119.4
+2022                                 133.0                                  134.6                         135.8                                 125.9                 123.0
+2023                                 137.4                                  140.5                         140.9                                 139.5                 128.3
+
+CRECIMIENTO ANUAL PROMEDIO POR TRAMO (%)
+  2015-2018: Ventas repetidas, Bucaramanga urbano 1.6 | IVP Bucaramanga (avalúos comerciales) 4.9 | Ventas repetidas, AMB urbano 2.5 | IPVN Bucaramanga AM (vivienda nueva) 3.2 | Reajuste por decreto 3.0
+  2018-2019: Ventas repetidas, Bucaramanga urbano 15.1 | IVP Bucaramanga (avalúos comerciales) 4.5 | Ventas repetidas, AMB urbano 14.0 | IPVN Bucaramanga AM (vivienda nueva) 1.4 | Reajuste por decreto 3.0
+  2019-2023: Ventas repetidas, Bucaramanga urbano 3.3 | IVP Bucaramanga (avalúos comerciales) 3.9 | Ventas repetidas, AMB urbano 3.5 | IPVN Bucaramanga AM (vivienda nueva) 5.8 | Reajuste por decreto 3.3
+  2015-2023: Ventas repetidas, Bucaramanga urbano 4.1 | IVP Bucaramanga (avalúos comerciales) 4.3 | Ventas repetidas, AMB urbano 4.4 | IPVN Bucaramanga AM (vivienda nueva) 4.2 | Reajuste por decreto 3.2
+
+CORRELACIÓN DE LAS VARIACIONES ANUALES 2016-2023 (Pearson, n = 8)
+                                       Ventas repetidas, Bucaramanga urbano  IVP Bucaramanga (avalúos comerciales)  Ventas repetidas, AMB urbano  IPVN Bucaramanga AM (vivienda nueva)  Reajuste por decreto
+Ventas repetidas, Bucaramanga urbano                                   1.00                                  -0.27                          0.99                                 -0.04                 -0.07
+IVP Bucaramanga (avalúos comerciales)                                 -0.27                                   1.00                         -0.18                                 -0.07                  0.01
+Ventas repetidas, AMB urbano                                           0.99                                  -0.18                          1.00                                 -0.12                 -0.07
+IPVN Bucaramanga AM (vivienda nueva)                                  -0.04                                  -0.07                         -0.12                                  1.00                  0.81
+Reajuste por decreto                                                  -0.07                                   0.01                         -0.07                                  0.81                  1.00

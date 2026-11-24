@@ -1,0 +1,17 @@
+{
+  "fuente": "https://www.datos.gov.co/resource/7y2j-43cv",
+  "fecha_descarga": "2026-11-22",
+  "filtro": "starts_with(divipola,'68') AND cod_natujur in('125','203','204','205','219','331','347','317','902','903','909','910','911','912','913','915','917','918','919','920','924','964')",
+  "filas_esperadas": 737238,
+  "filas_descargadas": 737238,
+  "archivo": "santander_actos.csv",
+  "verificacion_sin_valor": {
+    "consulta": "$select=tiene_valor,count(*) $where=starts_with(divipola,'68') AND cod_natujur='125' $group=tiene_valor",
+    "resultado": {
+      "tiene_valor_0": 51689,
+      "tiene_valor_1": 249667
+    },
+    "consulta_valor_nulo": 51689,
+    "fecha": "2026-11-22"
+  }
+}

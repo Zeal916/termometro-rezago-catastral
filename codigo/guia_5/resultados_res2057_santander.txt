@@ -1,0 +1,48 @@
+PERFIL DE LA RESOLUCIÓN 2057 DE 2025 EN SANTANDER
+
+1. COMPLETITUD DE LA EXTRACCIÓN (todo el país)
+  PDF: 58 páginas, del Diario Oficial páginas 357 a 414
+  Porcentajes en el texto del PDF: 7,545; filas extraídas: 7,544; zonas válidas sin duplicar: 7,484 de 527 municipios
+  Santander: 1,058 zonas (14.1% del país) en 68 municipios
+  Zonas por municipio en Santander: mínimo 8, mediana 15, máximo 31
+  Aumentos faltantes o negativos: 0 / 0
+  Verificación contra el PDF (otro patrón): 1,058 zonas en ambas, 0 en una sola, 0 con valor distinto
+
+2. DISTRIBUCIÓN DEL AUMENTO POR ZONA (%)
+  Percentiles 10/25/50/75/90  Santander: 45 / 121 / 464 / 1,315 / 3,267 | máximo 43,859
+                              País:      7 / 86 / 326 / 814 / 1,870
+  Zonas con 4% exacto: Santander 44 (4.2%); país 656 (8.8%)
+  Zonas con más de 1.000%: Santander 335 (31.7%); país 1,521 (20.3%)
+  Mediana municipal del aumento en Santander: p25 202, p50 434, p75 720
+
+3. CONSISTENCIA DENTRO DE CADA MUNICIPIO (zona con aumento mayor a 3 veces la mediana del municipio)
+  Zonas marcadas: 215 (20.3%) en 61 de 68 municipios
+  Razón p75/p25 del aumento dentro del municipio: mediana 4.5, máximo 47.5
+  Cinco zonas con mayor aumento: RIONEGRO zona 22: 43,859% (mediana del municipio 428.5%); ARATOCA zona 12: 36,679% (mediana del municipio 269.0%); LOS SANTOS zona 27: 32,977% (mediana del municipio 992.0%); TONA zona 26: 32,137% (mediana del municipio 621.5%); COROMORO zona 13: 19,938% (mediana del municipio 1,102.0%)
+
+4. COBERTURA CON EVIDENCIA DE MERCADO (pares de ventas repetidas 2015-2023)
+  Municipios con 30 o más pares rurales: 18 | con índice rural propio (30 pares y 5 por año): 15 | con índice urbano propio: 10
+  Pares rurales por municipio: mediana 8; municipios con 0 pares rurales: 14
+  Zonas cubiertas por los 15 municipios con índice rural: 293 de 1,058
+
+5. CONTRASTE EXPLORATORIO EN LOS 15 MUNICIPIOS CON ÍNDICE RURAL (sin año de última actualización)
+  Índice rural 2023 (2015 = 100): mediana 186, rango 126 a 222; reajuste acumulado 128.3
+  Mercado/reajuste: mediana 1.45
+  Municipios con índice rural mayor al reajuste: 14 de 15
+  Spearman entre índice rural 2023 y aumento mediano: -0.19 (n = 15)
+  Municipio | pares rurales | índice 2023 | mercado/reajuste | aumento mediano % | p25-p75 | zonas >3x
+  OCAMONTE                  79      222     1.73      253.0   117.5-722.5     4
+  BARICHARA                158      208     1.62      637.0   433.0-1,514.5     4
+  VILLANUEVA                76      206     1.61       66.0   8.0-380.0     8
+  SAN ANDRES                39      204     1.59      124.0   96.0-450.0     6
+  ENCINO                    38      196     1.53      479.0   302.5-2,178.5     4
+  TONA                      62      192     1.50      621.5   259.2-1,708.5     6
+  COROMORO                  69      187     1.46    1,102.0   317.0-1,779.0     3
+  RIONEGRO                 291      186     1.45      428.5   138.2-1,217.0     6
+  SAN JOSE DE MIRANDA       45      168     1.31      101.0   80.5-173.5     3
+  CONCEPCION                35      161     1.26       86.0   74.0-309.5     5
+  PUENTE NACIONAL          170      159     1.24      460.5   374.5-532.2     1
+  CHARALA                  152      155     1.21      477.0   130.0-1,017.0     3
+  LEBRIJA                  248      144     1.12      570.0   240.5-1,792.5     7
+  LOS SANTOS               850      141     1.10      992.0   149.5-2,751.0     6
+  ZAPATOCA                 110      126     0.98      440.5   230.2-601.5     4

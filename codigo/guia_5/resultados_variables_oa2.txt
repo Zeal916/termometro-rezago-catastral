@@ -1,0 +1,56 @@
+VARIABLES DEL FOLIO PARA OA2. PILOTO AMB
+Pares analizados (para_indice y sin caída): 12,467 | % mercado (>5% anual): 41.3%
+Prueba: 3,741 pares de 3,642 folios
+
+CÓDIGOS USADOS (nombre tal como viene en la base)
+  203  HIPOTECA
+  204  HIPOTECA ABIERTA
+  205  HIPOTECA CON CUANTIA INDETERMINADA
+  219  HIPOTECA ABIERTA SIN LIMITE DE CUANTIA
+  317  CONSTITUCIÓN REGLAMENTO DE PROPIEDAD HORIZONTAL
+  331  REFORMA REGLAMENTO DE PROPIEDAD HORIZONTAL
+  347  ADICIÓN RÉGIMEN DE PROPIEDAD HORIZONTAL
+
+COMPROBACIÓN DE LAS DEFINICIONES
+  Compraventas limpias del AMB con hipoteca el mismo día: 31.9% de 133,720
+  Folios con anotación 1 en 2015-2023: 86,887; con fecha de apertura llena: 17,440 (desde 2021-06-25); abiertos antes de 2015: 0
+  Pares cuyo primer acto de PH es posterior a la segunda venta (no se marcan como PH): 339
+
+PREVALENCIA Y % DE PARES DE MERCADO SEGÚN CADA VARIABLE
+  hipoteca_venta_1             presente en  21.1% de los pares | mercado: con  26.1% (n=2,632) / sin  45.4% (n=9,835)
+  hipoteca_venta_2             presente en  16.5% de los pares | mercado: con  62.3% (n=2,062) / sin  37.2% (n=10,405)
+  propiedad_horizontal         presente en  29.6% de los pares | mercado: con  34.2% (n=3,691) / sin  44.3% (n=8,776)
+  primera_venta_folio_nuevo    presente en  15.3% de los pares | mercado: con  38.4% (n=1,909) / sin  41.9% (n=10,558)
+
+AUC EN PRUEBA (bosque aleatorio, 400 árboles, hoja mínima 20, semilla 0)
+  (a) Partición por par, estratificada (réplica exacta del notebook 03)
+      Variables del registro:            0.676
+      Más las 4 variables del folio:     0.734
+      Diferencia: +0.058 (IC 95%: +0.047 a +0.070)
+      Folios con pares en entrenamiento y en prueba a la vez: 427
+  (b) Partición por folio (sensibilidad): 3,714 pares de prueba
+      Variables del registro:            0.684
+      Más las 4 variables del folio:     0.750
+      Diferencia: +0.066 (IC 95%: +0.054 a +0.077)
+  IC 95%: bootstrap pareado sobre la prueba, 1.000 réplicas remuestreando folios, con los modelos fijos
+
+IMPORTANCIA POR PERMUTACIÓN CON LAS VARIABLES DEL FOLIO, PARTICIÓN (a) (caída del AUC, 10 repeticiones)
+  log_valor_1                   0.10074
+  hipoteca_venta_2              0.07095
+  redondo_2                     0.01766
+  anios_entre_ventas            0.01671
+  hipoteca_venta_1              0.01136
+  anio_venta_2                  0.01023
+  propiedad_horizontal          0.00984
+  redondo_1                     0.00719
+  cruza_ley1943                 0.00648
+  primera_venta_folio_nuevo     0.00238
+  mun_BUCAR                     0.00230
+  cruza_act_bga                 0.00196
+  anio_venta_1                  0.00163
+  mun_GIRÓN                     0.00122
+  mun_FLORI                     0.00075
+  mun_PIEDE                     0.00017
+  rural                         0.00014
+  num_vendedores                0.00010
+  num_compradores              -0.00005

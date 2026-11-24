@@ -1,0 +1,79 @@
+ENTENDIMIENTO DE LAS COMPRAVENTAS DE SANTANDER (AMB frente a los otros municipios)
+
+1. CALIDAD ANTES DE LIMPIAR
+ambito                                                               AMB    Art49    Otros
+compraventas                                                    165517.0  90982.0  44857.0
+municipios                                                           4.0     68.0     15.0
+fecha formato dd/mm/aa (%)                                          19.1      9.5      5.6
+valor vacío (%)                                                      0.0     32.8     48.7
+valor de 0 a COP 1 M (%)                                             0.5      2.0      2.0
+zona SIN INFORMACION (%)                                             1.3      1.4      0.0
+rural (%)                                                           10.2     52.1     37.3
+documento sin número de escritura (%)                                0.0     27.6     12.9
+escritura con varios predios, de los documentos con número (%)      18.9     16.3     14.5
+valor redondo, de los > 1 M (%)                                     60.0     80.1     72.5
+  Compraventas sin valor en toda Santander: 51,689 (en la API, tiene_valor = 0 cuenta 51,689; ver LEEME_santander.json)
+  Art. 49, sin valor por zona (%): RURAL 26.2 | SIN INFORMACION 0.2 | URBANO 41.1
+  Documentos sin número de escritura: Art49 25,122 | Otros 5,771; textos: {'01-ESCRIT': 16742, '01-ESCRITURA': 14151}; con valor > COP 1 M: 387
+  Escrituras con número y varios predios (de ellas, con predios en más de un municipio): AMB 13,316 (244) | Art49 3,928 (29) | Otros 2,219 (27)
+
+2. EMBUDO DE LIMPIEZA (mismas reglas del AMB)
+  Compraventas 2015-2023 (cód. 125)                      AMB 165,517 | Art49 90,982 | Otros 44,857
+  Fecha válida                                           AMB 165,517 | Art49 90,982 | Otros 44,857
+  Valor > COP 1 M                                        AMB 164,747 | Art49 59,356 | Otros 22,097
+  Un solo valor en la anotación                          AMB 164,743 | Art49 59,354 | Otros 22,097
+  Duplicado exacto (folio, fecha, valor): queda uno      AMB 164,631 | Art49 59,301 | Otros 22,090
+  Mismo folio y fecha con valores distintos: salen todos AMB 164,541 | Art49 59,271 | Otros 22,086
+  Documento con número de escritura                      AMB 164,541 | Art49 58,884 | Otros 22,086
+  Escritura de un solo predio                            AMB 133,720 | Art49 49,521 | Otros 19,009
+  Compraventas limpias por zona: {('AMB', 'RURAL'): 13847, ('AMB', 'SIN INFORMACION'): 1803, ('AMB', 'URBANO'): 118070, ('Art49', 'RURAL'): 27591, ('Art49', 'SIN INFORMACION'): 1093, ('Art49', 'URBANO'): 20837, ('Otros', 'RURAL'): 7694, ('Otros', 'SIN INFORMACION'): 1, ('Otros', 'URBANO'): 11314}
+  Municipios con compraventas limpias: {'AMB': 4, 'Art49': 68, 'Otros': 15}
+
+3. PARES DE VENTAS REPETIDAS
+  Pares consecutivos del mismo folio                     AMB 19,672 | Art49 8,046 | Otros 3,021
+  Pares con >= 365 días                                  AMB 14,469 | Art49 5,580 | Otros 1,995
+  Pares sin cambio físico                                AMB 14,313 | Art49 5,423 | Otros 1,958
+  Pares para el índice (sin cambios de 5 veces o más)    AMB 13,978 | Art49 5,016 | Otros 1,774
+  Pares para el índice por grupo: {'AMB urbano': 12399, 'AMB rural': 1398, 'Art. 49 urbano': 2025, 'Art. 49 rural': 2864, 'Otros urbano': 818, 'Otros rural': 956}
+  Pares para el índice sin zona (fuera de los grupos): 308
+  Art. 49: municipios con al menos un par para el índice (con o sin zona) 56 de 68; con 30 o más 29; con 30 o más pares rurales 18; mediana de pares rurales por municipio 8
+  Mediana de la razón de precios: con cambio físico 3.49; sin cambio físico 1.14
+
+4. SEGMENTOS DE LOS PARES PARA EL ÍNDICE (% por grupo)
+grupo                           AMB urbano  AMB rural  Art. 49 urbano  Art. 49 rural  Otros urbano  Otros rural
+segmento                                                                                                       
+1 Valor congelado                     11.8       16.0            13.2           15.5           9.2         11.3
+2 Réplica del reajuste                 6.5        5.6             3.5            2.6           8.6          3.9
+3 Crecimiento bajo (0-5%)             34.4       29.3            23.6           23.3          28.0         27.6
+4 Crecimiento de mercado (>5%)        35.9       42.1            54.7           54.6          43.8         52.2
+5 Caída                               11.4        7.0             5.0            4.1          10.5          5.0
+  Patrón de avalúo (segmentos 1 a 3): AMB urbano 52.8% | AMB rural 50.9% | Art. 49 urbano 40.3% | Art. 49 rural 41.3% | Otros urbano 45.7% | Otros rural 42.8%
+  Variación anual mediana: AMB urbano 2.9% | AMB rural 3.2% | Art. 49 urbano 6.0% | Art. 49 rural 6.1% | Otros urbano 4.0% | Otros rural 5.5%
+
+5. QUIEBRE DE 2019: % de réplica del reajuste y de crecimiento de mercado por periodo de las escrituras
+  AMB urbano    réplica: ambas <2019 13.7%, cruza 2019 5.2%, ambas 2019+ 4.1% | mercado: ambas <2019 29.7%, cruza 2019 36.5%, ambas 2019+ 39.2% | pares {'A ambas <2019': 2284, 'B cruza 2019': 7315, 'C ambas 2019+': 2800}
+  AMB rural     réplica: ambas <2019 15.1%, cruza 2019 3.3%, ambas 2019+ 3.7% | mercado: ambas <2019 32.4%, cruza 2019 44.2%, ambas 2019+ 44.5% | pares {'A ambas <2019': 259, 'B cruza 2019': 764, 'C ambas 2019+': 375}
+  Art. 49 urbano réplica: ambas <2019 8.7%, cruza 2019 2.5%, ambas 2019+ 2.6% | mercado: ambas <2019 34.9%, cruza 2019 61.1%, ambas 2019+ 54.5% | pares {'A ambas <2019': 321, 'B cruza 2019': 1009, 'C ambas 2019+': 695}
+  Art. 49 rural réplica: ambas <2019 6.3%, cruza 2019 1.3%, ambas 2019+ 2.9% | mercado: ambas <2019 37.7%, cruza 2019 59.9%, ambas 2019+ 54.3% | pares {'A ambas <2019': 459, 'B cruza 2019': 1516, 'C ambas 2019+': 889}
+  Otros urbano  réplica: ambas <2019 33.6%, cruza 2019 3.2%, ambas 2019+ 4.9% | mercado: ambas <2019 21.1%, cruza 2019 53.5%, ambas 2019+ 40.2% | pares {'A ambas <2019': 128, 'B cruza 2019': 404, 'C ambas 2019+': 286}
+  Otros rural   réplica: ambas <2019 10.5%, cruza 2019 1.9%, ambas 2019+ 3.8% | mercado: ambas <2019 31.6%, cruza 2019 60.2%, ambas 2019+ 48.8% | pares {'A ambas <2019': 152, 'B cruza 2019': 513, 'C ambas 2019+': 291}
+
+6. ÍNDICE BAILEY-MUTH-NOURSE (2015 = 100, mínimos cuadrados, como el notebook 03)
+      AMB urbano  AMB rural  Art. 49 urbano  Art. 49 rural  Otros urbano  Otros rural  Reajuste por decreto
+2015       100.0      100.0           100.0          100.0         100.0        100.0                 100.0
+2016       102.9      107.8           110.1          102.8         109.4        111.0                 103.0
+2017       104.6      109.2           111.0          107.9         106.5        107.8                 106.1
+2018       107.7      117.3           122.7          116.0         111.4        124.6                 109.3
+2019       122.7      130.8           150.5          142.6         151.7        142.2                 112.6
+2020       124.4      135.4           159.3          150.7         145.1        154.0                 115.9
+2021       127.0      152.3           166.5          160.1         146.7        166.7                 119.4
+2022       135.8      158.5           176.8          173.4         146.8        177.8                 123.0
+2023       140.9      166.7           191.2          187.2         166.0        186.8                 128.3
+  Crecimiento anual (%): tramo | AMB urbano | AMB rural | Art. 49 urbano | Art. 49 rural | Otros urbano | Otros rural | Reajuste por decreto
+  2015-2018 | 2.5 | 5.5 | 7.0 | 5.1 | 3.7 | 7.6 | 3.0
+  2018-2019 | 14.0 | 11.5 | 22.7 | 22.9 | 36.2 | 14.1 | 3.0
+  2019-2023 | 3.5 | 6.3 | 6.2 | 7.0 | 2.3 | 7.1 | 3.3
+  2015-2023 | 4.4 | 6.6 | 8.4 | 8.2 | 6.5 | 8.1 | 3.2
+
+7. HIPOTECA REGISTRADA EL MISMO DÍA (% de las compraventas limpias)
+  AMB rural 22.6% | AMB urbano 33.3% | Art49 rural 2.9% | Art49 urbano 9.1% | Otros rural 3.0% | Otros urbano 14.7%
