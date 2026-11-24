@@ -6,7 +6,7 @@ Anteproyecto del curso **Gerencia de Proyectos de Analytics** (Maestría en Inte
 
 **Este repositorio es la fuente de documentación del proyecto.** Contiene el documento final, las entregas de las cinco guías con sus fuentes editables, el código, los datos del piloto, los scripts que descargan lo que no se versiona, el diccionario de variables y la hoja maestra de cifras. Si se pierde todo lo demás, el proyecto se recupera desde aquí (ver [Recuperar el proyecto](#recuperar-el-proyecto)).
 
-**Empiece por:** [`documento/anteproyecto.pdf`](documento/anteproyecto.pdf), el documento final que consolida las cinco guías (14 páginas).
+**Empiece por:** [`documento/anteproyecto.pdf`](documento/anteproyecto.pdf), el documento final que consolida las cinco guías (18 páginas).
 
 ## Estructura
 

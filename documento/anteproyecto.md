@@ -25,7 +25,24 @@ Este documento consolida las cinco guías del anteproyecto. Las entregas complet
 
 **Generación y jerarquización de ideas.** El equipo exploró el dataset completo del IGAC (30,9 M de actos registrales) y fuentes complementarias, y generó ocho ideas con las cuatro estrategias de la guía (plan estratégico, métricas de desempeño, análisis financiero y lluvia de ideas). Las filtró con las siete características de un proyecto de Analytics (enfoque en el cliente, métricas medibles, *champion*, evento recurrente, ligado al negocio, beneficio financiero trazable y solución desconocida). Pasaron tres, que se integran en un solo proyecto: la idea 5 (detector de escrituras declaradas por el avalúo) limpia el dato, la 1 (termómetro de rezago) mide la brecha y la 2 (revisión del Art. 49) la contrasta con el ajuste. Se descartaron cinco: acumulación de precios en el tope VIS (se guarda como respaldo), radar de lavado de activos (sin casos confirmados), valor absoluto de cada compraventa (sin área ni estrato), tablero descriptivo (solución conocida) e índice del AMB (ya existe el IPVU). La matriz de valor y capacidad (IBM, 2020) ubica la idea 1 como foco y la 2 como valiosa pero difícil, porque depende de vigencias dispersas en PDF (Figura 1).
 
+Table: Tabla 1. Filtro de las ocho ideas con las siete características de un proyecto de Analytics (Guía 1).
+
+| Característica | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|-------------------|------|------|------|------|------|------|------|------|
+| 1. Enfoque en el cliente | Sí | Sí | Sí | Sí | Sí | Sí | Parcial | Sí |
+| 2. Métricas medibles rápido | Sí | Sí | Sí | No (sin casos confirmados) | Sí | No (sin área ni estrato) | Sí | Sí |
+| 3. *Champion* dueño del proceso | Sí (IGAC) | Sí (IGAC) | Parcial (MinVivienda) | Parcial | Sí (OIC) | Sí | Sí | Sí |
+| 4. Evento recurrente | Sí | Sí (fase rural 2026, revisiones abiertas) | Sí | Sí | Sí | Sí | Sí | Sí |
+| 5. Ligado a objetivos del negocio | Sí | Sí | Parcial | Sí | Sí | Sí | Sí | Sí |
+| 6. Beneficio financiero trazable | Sí (predial) | Sí (predial) | Parcial | No | Sí (avalúos sin sesgo) | Parcial | No | Parcial |
+| 7. Solución desconocida | Sí (no hay índice rural) | Sí | Sí | Sí | Sí | Sí | No (tableros del OIC) | No (IPVU) |
+| **Decisión** | **Pasa** | **Pasa** | Descartada | Descartada | **Pasa** | Descartada | Descartada | Descartada |
+
+Ideas: 1 termómetro de rezago; 2 revisión del Art. 49; 3 acumulación de precios en el tope VIS; 4 radar de lavado de activos; 5 detector de escrituras declaradas por el avalúo; 6 valor absoluto de cada compraventa; 7 tablero descriptivo; 8 índice de ventas repetidas del AMB.
+
 ![Figura 1. Matriz de valor para el cliente y capacidad de avanzar de las ideas que pasaron el filtro (Guía 1).](img/matriz_valor_capacidad.png){width=78%}
+
+**Preguntas de la oportunidad.** (1) *Oportunidad*: el IGAC necesita saber dónde el avalúo está más lejos del mercado para decidir dónde actualizar o revisar primero y sustentar o corregir el Art. 49. (2) *Retos*: el valor registrado no siempre es el precio real; las ventas no traen área, estrato ni zona homogénea; los municipios pequeños tienen pocas reventas; el tema es sensible (paro y demandas) y la regla puede cambiar (C159). (3) *Prioridad*: decidir con evidencia de mercado, empezando por los municipios del Art. 49 con reclamos abiertos. (4) *Recursos*: sí; datos abiertos y un equipo que cubre datos, modelación, negocio y comunicación. (5) *Tiempo*: 16 semanas en dos cursos. (6) *Autoridad final*: la Dirección General del IGAC, con la Dirección de Gestión Catastral como dueña del proceso.
 
 **5W.** *Quién*: el IGAC (Dirección de Gestión Catastral, dueña del proceso, con el OIC) es cliente y *champion*; deben participar los analistas del OIC, las direcciones territoriales y las secretarías de Hacienda; ganan los municipios rezagados y los propietarios de zonas sobreajustadas, y pueden perder los propietarios de municipios priorizados y el IGAC si la evidencia contradice su ajuste. *Qué*: medir la brecha entre mercado y avalúo por municipio y señalar dónde el Art. 49 no coincide con las ventas. *Dónde*: el país donde el índice se pueda identificar (340 municipios urbanos y 324 rurales), con piloto en Santander, epicentro del paro (68 municipios del Art. 49, 15 con índice rural propio). *Cuándo*: el problema es permanente y la urgencia es ahora (demanda admitida en septiembre de 2026, PND 2026-2030 en febrero de 2027). *Por qué*: el reajuste es menor que la valorización y, cuando una escritura se declara por el avalúo, el registro reproduce el rezago en lugar de medirlo.
 
@@ -35,9 +52,24 @@ Este documento consolida las cinco guías del anteproyecto. Las entregas complet
 
 **Métricas de negocio derivadas.** El problema define tres métricas de negocio, medibles y con línea base: municipios con evidencia de mercado propia (hoy 53 urbanos y 0 rurales; meta 340 y 324), municipios del Art. 49 con contraste entre mercado y ajuste (hoy 0; meta 143) y municipios donde el avalúo quedó bajo el piso legal de 60% (hoy 49 urbanos y 53 rurales sin intervalo de confianza; meta: todos con IC 95%). El último es el beneficio financiero trazable: la parte de la base del predial que dejó de corresponder al mercado.
 
-**Requerimientos (modelo Kano).** Los requerimientos se clasificaron con el modelo Kano y se priorizaron con una matriz de viabilidad por impacto (score de 1 a 100). La clase Kano define qué es obligatorio y el score ordena dentro de cada clase. La Tabla 1 muestra los requerimientos a **potenciar** (básicos, unidimensionales y atractivos) y a **disminuir**; se **mantiene** como restricción no automatizar cambios de avalúo (inverso) y se **ignora** la personalización visual (indiferente). Cada uno tiene el indicador con el que se verificará al cierre del Capstone.
+Cada métrica de la carta se descompuso en submétricas y en un umbral a partir del cual se considera fracaso (Tabla 2).
 
-Table: Tabla 1. Requerimientos priorizados, objetivo de análisis e indicador de cierre (detalle en el anexo de la Guía 2).
+Table: Tabla 2. Descomposición de las métricas de éxito y umbrales de fracaso (Guía 2).
+
+| Métrica de la carta | Submétricas | Se considera fracaso si |
+|--------------------|-------------------------------|-------------------------------|
+| MdAPE de 16,5% o menos | MdAPE por zona y periodo; observaciones válidas; AUC del clasificador frente a la etiqueta débil | El IC 95% de la mejora frente a 18,3% incluye 0 |
+| AUC mayor que 0,757 | AUC con anomalías ×2 y ×0,5; desempeño urbano y rural; proporción capturada con el cupo de 2% | El IC 95% de la mejora frente a 0,757 incluye 0 |
+| 340 urbanos y 324 rurales | Municipios con índice propio; proporción de elegibles; ancho del IC (±10%) | Menos de 340 / 324 con índice identificado |
+| 143 municipios del Art. 49 | Municipios con año de última actualización; marca "coherente" o "revisar" | Menos de 143 contrastados al cierre del Capstone |
+| Municipios bajo el piso de 60% | Municipios con índice 2023 mayor a 211 cuyo IC 95% excluye 211 | Algún municipio marcado sin IC |
+| Tablero | Vistas publicadas; trazabilidad de los criterios de cada alerta | Alguna vista o alerta sin su razón o sin advertencia de uso |
+
+**Resultados esperados y cambios en la organización (Guía 2, Fase a).** Se espera una solución que identifique el rezago entre avalúos y mercado y apoye la priorización de municipios, con índices por ventas repetidas urbanos y rurales, alertas de transacciones atípicas y un tablero. Participan capacidades de gestión catastral, ingeniería de datos, modelación y visualización: el IGAC y el OIC como referentes de negocio y el equipo como desarrollador. En la organización, la priorización pasaría a apoyarse en indicadores cuantitativos y trazables, y el contraste entre reajustes y precios se haría de forma sistemática, sujeto a validación técnica y adopción institucional.
+
+**Requerimientos (modelo Kano).** Los requerimientos se clasificaron con el modelo Kano y se priorizaron con una matriz de viabilidad por impacto (score de 1 a 100). La clase Kano define qué es obligatorio y el score ordena dentro de cada clase. La Tabla 3 muestra los requerimientos a **potenciar** (básicos, unidimensionales y atractivos) y a **disminuir**; se **mantiene** como restricción no automatizar cambios de avalúo (inverso) y se **ignora** la personalización visual (indiferente). Cada uno tiene el indicador con el que se verificará al cierre del Capstone.
+
+Table: Tabla 3. Requerimientos priorizados, objetivo de análisis e indicador de cierre (detalle en el anexo de la Guía 2).
 
 | ID | Requerimiento | Kano | Score | OA | Indicador de cierre |
 |----|-----------------|--------|------|-----|----------------------------------------|
@@ -67,9 +99,9 @@ R9 y R10 se agregaron en una segunda iteración, al contrastar la primera clasif
 
 ![Figura 2. Índice de mercado urbano (mediana de 136 municipios) entre sus dos cotas, frente al avalúo sin actualizar (Guía 1).](img/banda_nacional.png){width=82%}
 
-**Objetivos de análisis.** El objetivo general se descompone en seis objetivos en cascada, cada uno ligado a requerimientos y métricas (Tabla 2).
+**Objetivos de análisis.** El objetivo general se descompone en seis objetivos en cascada, cada uno ligado a requerimientos y métricas (Tabla 4).
 
-Table: Tabla 2. Objetivos de análisis, técnica candidata y acción que habilitan.
+Table: Tabla 4. Objetivos de análisis, técnica candidata y acción que habilitan.
 
 | OA | Objetivo | Técnica candidata | Acción que habilita |
 |-----|------------------------------|--------------------------------|----------------------------|
@@ -80,11 +112,37 @@ Table: Tabla 2. Objetivos de análisis, técnica candidata y acción que habilit
 | OA5 | Brecha, ranking y contraste del Art. 49 | Reglas de decisión auditables | Priorizar; sustentar o corregir el ajuste |
 | OA6 | Detectar operaciones atípicas | Desviación frente al índice; anomalías inyectadas | Revisión por analistas del OIC |
 
-**Fuentes.** Todas son abiertas: el registro de transacciones y los demás actos del folio (hipoteca, propiedad horizontal, construcción, englobe; 5,4 M descargados por código), la Resolución 2057 (7.484 zonas de 527 municipios, ya extraídas), las memorias técnicas y actos de revisión del Art. 49, los índices oficiales (IPVN, IVP, IPVU), el catálogo de gestores catastrales y los decretos de reajuste. Se generan dos insumos que no existen: la etiqueta de tipo de escritura y la tabla de vigencias catastrales. No se requiere encuesta para el modelo; el cuestionario Kano es solo para validar requerimientos.
+**Fuentes y transformaciones.** Casi todo existe y es público; se generan dos insumos (Tabla 5). No se requiere encuesta para el modelo; el cuestionario Kano es solo para validar requerimientos. El avalúo de cada predio no se puede unir con las ventas (los catastros abiertos no traen matrícula), por lo que el índice se compara con el reajuste por decreto.
 
-**Línea base y metas.** Todas las metas parten de una línea base medida sobre 56.994 reventas de prueba, sin filtrar por el valor que se predice (Tabla 3). La regla del reajuste gana a los índices porque 36,9% de las reventas crece como el avalúo: ahí falla 3,5%, frente a 7,2% del índice; en el resto falla 43,6% y el índice 38,3%. Si se conociera de antemano el tipo de escritura el error bajaría a 14,8%; la meta pide capturar la mitad de esa mejora con variables conocidas antes de la venta. Una mejora cuenta solo si el IC 95% de la diferencia excluye el cero.
+Table: Tabla 5. Fuentes, tipo de dato, estado y uso (Guías 1 y 2).
 
-Table: Tabla 3. Línea base y metas técnicas y de negocio.
+| Fuente | Tipo | Estado | Uso |
+|-----------------------|--------------|------------|------------------------------|
+| Registro de Transacciones IGAC 2015-2023 (7y2j-43cv) y actos del folio | Estructurado transaccional, API Socrata | Existe | Base del índice, línea base y alertas; actos para depurar cambios físicos y crear variables de OA2 |
+| Resolución IGAC 2057 de 2025 | PDF por zona homogénea | Existe; 7.484 zonas extraídas | Aumento por contrastar (Art. 49) |
+| Memorias técnicas del Art. 49 y actos de revisión (Res. 0384) | PDF por municipio | Existe; disperso | Avalúo vigente, valor comercial propuesto y año de actualización |
+| IPVN e IVP (DANE), IPVU (Banco de la República) | Series de tiempo | Existe | Validación externa del índice urbano |
+| Gestores catastrales (bhcx-bx97), DIVIPOLA, decretos de reajuste | Catálogos y normas | Existe | Municipios con el IGAC como gestor; reajuste de cerca de 3% |
+| Etiqueta de tipo de escritura | Derivado | Se genera | Etiqueta débil de OA2 |
+
+Los umbrales de las transformaciones se fijaron con una razón explícita y una prueba de sensibilidad (Tabla 6).
+
+Table: Tabla 6. Umbrales de los datos y su justificación (Guía 1).
+
+| Umbral | Razón | Verificación |
+|--------------------|--------------------------------------|---------------------|
+| Solo escrituras de un predio | Una escritura con varios predios trae un precio global | 30.821 casos en el AMB (Guía 4) |
+| Valor mayor que COP 1 M | Valores menores son errores o actos simbólicos | 770 casos en el AMB (Guía 4) |
+| Al menos 365 días entre ventas | Las reventas rápidas mezclan errores y operaciones atípicas | Sensibilidad con 180 días |
+| Cambio menor a 5 veces, solo para el índice | Cambios mayores suelen ser errores o cambios físicos; la evaluación usa todas las reventas | Sensibilidad con 3 y 10 veces |
+| Índice propio: 30 pares y 5 por año | Sin pares en un año, su nivel no está identificado | Ancho del IC (meta ±10%); si no, índice departamental |
+| Cupo de alertas de 2% (unas 960 al año) | Carga que un equipo pequeño puede revisar (cerca de 4 por día hábil) | Sensibilidad con 1% y 5% |
+
+**¿La organización apoyará la solución?** Sí, por mandato: el OIC debe monitorear el mercado y alertar sobre comportamientos atípicos, y la metodología del Art. 49 (Resolución 1912 de 2024) ya usa transacciones de la SNR y modelos estadísticos. El limitante es que no hay contacto directo con el IGAC, que tiene nueva dirección y un gobierno crítico del ajuste; por eso el producto se presenta como una medición neutral frente a la regla y no como un dictamen.
+
+**Línea base y metas.** Todas las metas parten de una línea base medida sobre 56.994 reventas de prueba, sin filtrar por el valor que se predice (Tabla 7). La regla del reajuste gana a los índices porque 36,9% de las reventas crece como el avalúo: ahí falla 3,5%, frente a 7,2% del índice; en el resto falla 43,6% y el índice 38,3%. Si se conociera de antemano el tipo de escritura el error bajaría a 14,8%; la meta pide capturar la mitad de esa mejora con variables conocidas antes de la venta. Una mejora cuenta solo si el IC 95% de la diferencia excluye el cero.
+
+Table: Tabla 7. Línea base y metas técnicas y de negocio.
 
 | Métrica | Línea base | Meta |
 |------------------------------|----------------------------------------|------------------------------|
@@ -96,15 +154,44 @@ Table: Tabla 3. Línea base y metas técnicas y de negocio.
 | Proceso: hitos / horas | Seguimiento semanal desde S3 | 90% o más a tiempo / desviación ±15% |
 | Subjetiva: utilidad de la priorización (panel, 1 a 5) | Sin medir | 4 o más |
 
-**Estado del arte.** El proyecto se apoya en siete trabajos recientes y aplicaciones vigentes (anexo de la Guía 2, Tabla 17). El documento del Art. 49 (IGAC, 2024) supone que las transacciones están por debajo del valor comercial; el proyecto mide ese sesgo en lugar de suponerlo. La acumulación de valores declarados en el valor oficial también aparece en Mumbai y São Paulo (Anagol et al., 2025). Avenancio-León y Howard (2022) usan la relación avalúo-precio como medida de equidad; Zilli et al. (2024) respaldan los árboles potenciados con líneas base explícitas; Han et al. (2022), la evaluación de anomalías sin etiquetas; y Pulgarín-Franco (2024) muestra que actualizar no basta para aumentar el recaudo, por lo que el beneficio se mide como base gravable. La diferencia del proyecto es combinar la clasificación de escrituras, los índices rurales por municipio y el contraste de un ajuste masivo ya aplicado.
+**Técnicas candidatas para clasificar escrituras.** La regla del reajuste es el benchmark (MdAPE de 18,3%; gana al coincidir con 36,9% de las reventas, pero no distingue el tipo de escritura). La regresión logística es la línea base interpretable y barata; los árboles potenciados capturan no linealidades e interacciones, pero son menos interpretables y más sensibles a etiquetas débiles. Criterios de selección: mejora del MdAPE con IC 95% que excluya 0, capacidad de explicar los factores asociados a las diferencias, viabilidad en computadores personales y estabilidad frente a etiquetas débiles; si el complejo no supera con claridad al simple, se elige el simple.
+
+**Estado del arte.** El planteamiento se apoya en siete trabajos recientes y aplicaciones vigentes (Tabla 8). La diferencia del proyecto es combinar tres elementos que esos trabajos tratan por separado: la clasificación de escrituras declaradas por el avalúo, los índices rurales por municipio y el contraste de un ajuste masivo ya aplicado.
+
+Table: Tabla 8. Trabajos relacionados y aporte al proyecto (Guía 2).
+
+| Trabajo | Hallazgo principal | Aporte al proyecto |
+|--------------------|------------------------------|----------------------------------|
+| IGAC (2024), documento metodológico del Art. 49 | Ajustó unos 245.000 datos del OIC (95% de la SNR) por considerarlos bajo el valor comercial | Mismo cliente y fuente; el proyecto mide ese sesgo en lugar de suponerlo |
+| Banco de la República, IPVU | Índice de ventas repetidas con avalúos hipotecarios en 9 ciudades | Valida el método en Colombia; el proyecto lo lleva a 340 municipios urbanos y 324 rurales |
+| Avenancio-León y Howard (2022) | El avalúo responde menos que el mercado a las características del vecindario | Respalda la relación avalúo-precio como métrica de equidad |
+| Anagol et al. (2025) | 7,3% de las escrituras de Mumbai declaran un valor a menos de 1% del valor oficial | Es el fenómeno encontrado: la cercanía al valor oficial es variable para OA2 |
+| Zilli et al. (2024) | Random Forest y Gradient Boosting dominan el avalúo masivo y superan a los métodos tradicionales | Candidatos de OA2 y OA4; necesidad de línea base e IC |
+| Han et al. (2022), ADBench | Ningún método no supervisado gana en todos los casos | Evaluar alertas con anomalías inyectadas y contra líneas base |
+| Pulgarín-Franco (2024) | En 53 municipios colombianos, actualizar no aumentó por sí solo el recaudo | El beneficio se mide como base gravable, no como recaudo |
 
 **Recursos y presupuesto.** Cuatro integrantes, cerca de 6 horas por semana cada uno: 384 horas en 16 semanas (192 en el anteproyecto y 192 en el Capstone). Python y bibliotecas libres, Git y computadores personales: las compraventas y los actos (unos 11 M de filas) caben en memoria. Desembolso en efectivo de COP 0; costo de oportunidad de COP 23.040.000 (384 horas a COP 60.000, supuesto del equipo), de los cuales COP 11.520.000 corresponden al Capstone.
 
+**Criterios de éxito del proyecto.** *Alcance*: en el anteproyecto, carta y anexo, requerimientos y fuentes, informe de calidad con diccionario, análisis exploratorio y propuesta de modelos; en el Capstone, exploración descriptiva, índice, brecha, contraste del Art. 49, alertas, factores asociados a las diferencias y tablero. *Tiempo*: al menos 90% de los hitos en la fecha del cronograma. *Costo*: COP 0 en licencias y datos y desviación de horas de ±15% o menos por semana. *Calidad*: cumplir las metas de negocio y técnicas (Tabla 7) con todo el análisis reproducible con un script.
+
 ## 4. Riesgos (Guía 3)
 
-Los riesgos se identificaron con una estructura de desglose de riesgos (RBS; Hillson, 2002) de tres niveles: cinco ramas (datos, técnico-analítico, gestión del proyecto, cliente y *stakeholders*, externo), 11 categorías y 21 factores propios del proyecto. Cada factor se evaluó con un AMEF en escala de 1 a 10 (RPN = severidad × ocurrencia × detección): 9 riesgos son altos (RPN de 200 o más), 7 medios y 5 bajos. El orden coincide con el de una matriz de probabilidad por impacto: los cinco mayores RPN son también los cinco primeros de la matriz. Datos y técnico-analítico suman 62% del RPN total, por lo que ahí se concentran las acciones (Tabla 4; AMEF completo en el anexo de la Guía 3).
+Los riesgos se identificaron con una estructura de desglose de riesgos (RBS; Hillson, 2002) de tres niveles: cinco ramas (datos, técnico-analítico, gestión del proyecto, cliente y *stakeholders*, externo), 11 categorías y 21 factores propios del proyecto. Cada factor se evaluó con un AMEF en escala de 1 a 10 (RPN = severidad × ocurrencia × detección): 9 riesgos son altos (RPN de 200 o más), 7 medios y 5 bajos. El orden coincide con el de una matriz de probabilidad por impacto: los cinco mayores RPN son también los cinco primeros de la matriz. Datos y técnico-analítico suman 62% del RPN total, por lo que ahí se concentran las acciones (Tabla 10; AMEF completo en el anexo de la Guía 3).
 
-Table: Tabla 4. Riesgos de mayor RPN, acción y momento en el plan del Capstone.
+Table: Tabla 9. Estructura de desglose de riesgos (RBS) y concentración del RPN por rama (Guía 3).
+
+| Rama (nivel 1) | Categorías (nivel 2) | Factores | RPN total | RPN promedio | % del RPN |
+|---------------|----------------------------------------------|------|------|------|------|
+| 1. Datos | Valor registrado; cobertura y calidad del registro; fuentes y acceso | 6 | 1.272 | 212 | 34% |
+| 2. Técnico-analítico | Clasificación de escrituras; evaluación de los modelos; validación | 5 | 1.063 | 213 | 28% |
+| 3. Gestión del proyecto | Cronograma y horas; equipo y coordinación | 4 | 439 | 110 | 12% |
+| 4. Cliente y *stakeholders* | Validación con el cliente; uso y adopción | 3 | 672 | 224 | 18% |
+| 5. Externo | Normativo y judicial; político e institucional | 3 | 318 | 106 | 8% |
+| **Total** | 11 categorías | **21** | **3.764** | **179** | **100%** |
+
+Escalas del AMEF (1 a 10): la severidad va de "sin efecto en los requerimientos" (1-2) a "deja sin cumplir un requerimiento básico o la pregunta de negocio" (9-10); la ocurrencia, de "remota" a "casi segura"; la detección, de "un control automático lo detecta de inmediato" a "no existe control". Un riesgo es alto con RPN de 200 o más y medio con 100 o más, y la atención es obligatoria si la severidad es 9 o más. Cliente y *stakeholders* tiene el mayor RPN promedio porque depende de un cliente sin contacto directo.
+
+Table: Tabla 10. Riesgos de mayor RPN, acción y momento en el plan del Capstone.
 
 | Factor de riesgo (RBS) | RPN | Acción incorporada al plan | Etapa |
 |----------------------------------|------|------------------------------------------------|----------|
@@ -121,9 +208,35 @@ Table: Tabla 4. Riesgos de mayor RPN, acción y momento en el plan del Capstone.
 
 **Calidad.** Se evaluaron las 165.517 compraventas del AMB 2015-2023 (Bucaramanga, Floridablanca, Girón y Piedecuesta), el territorio piloto de la limpieza. Los campos del modelo (folio, fecha, municipio y valor) están completos al 100%, sin filas ni claves registrales repetidas. Los problemas son de **granularidad, estandarización y codificación**, como anticipa la lista de chequeo: la unidad es la anotación en un folio y no el inmueble ni la escritura (una escritura con varios folios trae un precio global); la fecha viene en dos formatos (19% en dd/mm/aa); los identificadores catastrales están vacíos en el 100% (el avalúo de cada predio no se puede unir, así que el rezago se mide contra el reajuste por decreto); y la notaría cambia de formato a mitad de la serie, por lo que se descarta.
 
-**Limpieza.** Se elimina por regla, no por vacío; el valor no se imputa porque es la variable que se mide, y los extremos se marcan para el detector de anomalías en lugar de borrarse (Tabla 5). Los cambios físicos entre dos ventas se depuraron con los 76.065 actos de los 13.129 folios con pares, descargados de la API: en esos pares el precio se multiplica por 3,22 (mediana), frente a 1,10 en el resto.
+Table: Tabla 11. Síntesis de la calidad de los datos y concordancia con el problema de negocio (Guía 4).
 
-Table: Tabla 5. Embudo de limpieza y formación de pares, AMB 2015-2023.
+| Criterio | Hallazgo en la base original | Concordancia con el problema |
+|------------|----------------------------------------|----------------------------------|
+| Totalidad | Folio, fecha, municipio y valor completos al 100%; vacíos en numero_catastral (100%), folios_derivados (99,99%) y fecha_apertura (80,93%) | Se pueden formar pares (R3); el avalúo por predio no se une: el rezago se mide contra el reajuste |
+| Consistencia | Sin filas, pk ni claves registrales repetidas; 164 valores en cero y extremos de hasta COP 143.246 M | Base trazable (R1); ceros, extremos y ventas anotadas dos veces se tratan en la limpieza |
+| Claridad (granularidad) | 139.909 inmuebles; 19.086 con ventas en distintos años (13,6%); el valor es el declarado | Hay candidatos a ventas repetidas, pero hay que depurar (OA1) y clasificar escrituras (OA2) |
+| Formato | CSV de 26 variables; fecha en dos formatos (19% dd/mm/aa) | Las fechas se unifican para calcular días entre ventas |
+| Edad y accesibilidad | 2015-2023; datos abiertos con origen en la SNR | Nueve años de valorización; reproducible sin costo |
+
+**Limpieza.** Se elimina por regla, no por vacío; el valor no se imputa porque es la variable que se mide, y los extremos se marcan para el detector de anomalías en lugar de borrarse (Tabla 13). Los cambios físicos entre dos ventas se depuraron con los 76.065 actos de los 13.129 folios con pares, descargados de la API: en esos pares el precio se multiplica por 3,22 (mediana), frente a 1,10 en el resto.
+
+Table: Tabla 12. Causas de limpieza identificadas (puntos a-d de la Guía 4) y decisión.
+
+| Punto | Hallazgo en el AMB | Registros | Decisión |
+|-------------|----------------------------------------|----------|--------------------|
+| a. Rango válido | Valor 0, menor a COP 1 M o exactamente 1 M | 770 | Eliminar |
+| a. Rango del par | Ventas del mismo folio con menos de un año | 5.203 pares | Excluir del índice |
+| b. Formato | Fecha en dos formatos | 31.569 | Unificar; ninguna inválida |
+| b. Categoría vacía | Zona SIN INFORMACION | 1.855 | Recuperar de otra venta del folio (52); el resto, categoría propia |
+| c. Extremos | Sobre el percentil 99,5 (COP 1.050 M); cola de COP 1 a 10 M | 663; 5.806 | Marcar, no eliminar (insumo de OA6) |
+| c. Cambio extremo en el par | Precio por 5 o más, o dividido por 5, sin cambio físico | 335 pares | Excluir del índice; conservar para OA6 |
+| d. Interrelaciones | Escrituras de varios predios (precio global; mediana COP 30,6 M frente a 97 M) | 30.821 | Eliminar |
+| d. Duplicados | Mismo folio y fecha: igual valor (queda una) o distinto (salen ambas) | 112 + 90 | Dejar una / eliminar ambas |
+| d. Cambio físico | Construcción, área, división, englobe, loteo o PH entre ventas (precio por 3,22) | 156 pares | Excluir del índice |
+
+La imputación por regresión no se aplica al valor, porque es la variable que se mide e imputarla fabricaría el precio; tampoco hace falta, porque lo eliminado no se concentra en un año (de 14,9% en 2019 a 21,0% en 2015). La imputación aleatoria se descarta porque introduce variación que no viene del mercado.
+
+Table: Tabla 13. Embudo de limpieza y formación de pares, AMB 2015-2023.
 
 | Paso | Quedan | Salen |
 |----------------------------------------------------------------|------------------|------------------|
@@ -134,7 +247,21 @@ Table: Tabla 5. Embudo de limpieza y formación de pares, AMB 2015-2023.
 | Pares consecutivos del mismo folio con al menos 365 días | 14.469 | — |
 | Sin cambio físico ni cambio de precio de 5 veces o más: **pares para el índice** | 13.978 | 491 (marcados para OA6) |
 
-**Entendimiento.** Se aplicaron siete de las nueve técnicas de la guía (Informs, 2014): filtración, reducción de dimensiones (de 25 a 14 columnas), extracción de 11 variables (tasa anual del par, valor redondo, réplica del decreto, cruce de la Ley 1943), estadísticas básicas, adición de información externa (decretos de reajuste, Ley 1943, actualización de Bucaramanga), segmentación y variables más importantes; la imputación no se usó y la clasificación supervisada se deja para OA2. Cuatro hallazgos orientan el modelo:
+**Entendimiento.** Se aplicaron siete de las nueve técnicas de la guía (Informs, 2014), cada una justificada frente al problema (Tabla 14). Cuatro hallazgos orientan el modelo.
+
+Table: Tabla 14. Selección de técnicas de entendimiento de los datos (Guía 4).
+
+| Técnica | ¿Se usa? | Por qué, frente al problema | Resultado |
+|----------------|------------|----------------------------------|---------------------|
+| 1. Filtración | Sí | El índice solo admite pares comparables; cada análisis declara su subconjunto sin borrar | 13.978 pares; tres periodos frente a 2019 |
+| 2. Imputación | No | Los campos del modelo están completos; imputar el valor fabricaría el precio | No aplica |
+| 3. Reducción de dimensiones | Sí, por selección | 7 de 25 columnas son constantes y 4 repiten información; con una sola variable numérica un ACP no aporta | De 25 a 14 columnas |
+| 4. Extracción de variables | Sí | El registro no dice si el valor es precio o avalúo; hay que construir indicios | 11 variables (tasa anual, valor redondo, réplica del decreto) |
+| 5. Estadísticas básicas | Sí | Nivel, dispersión y forma del valor por municipio, zona y año | Mediana COP 98 M; asimetría 161 (-0,7 en logaritmo) |
+| 6. Adición de información | Sí | El rezago se define frente a reglas externas | Decretos de reajuste, Ley 1943 y actualización de Bucaramanga |
+| 7. Segmentación | Sí | Separar pares de mercado de pares de avalúo con reglas explicables | 5 segmentos; 52,4% en patrón de avalúo |
+| 8. Variables más importantes | Sí | Saber qué anticipa un precio de mercado (insumo de OA2) | Valor inicial y redondez dominan; AUC 0,68 |
+| 9. Clasificación o agrupación | Agrupación sí; clasificación no | No hay etiqueta verdadera; una mezcla gaussiana muestra los grupos sin suponerlos | Grupo estable de 53% en 1,7% anual |
 
 1. **El registro mezcla dos poblaciones.** El 52,4% de los pares limpios queda con el valor congelado, replica el reajuste o crece entre 0% y 5% al año; la variación mediana es 2,98%, casi igual al reajuste. Una mezcla gaussiana encuentra un grupo estable de 53% centrado en 1,7% anual. No es un error de dato: lo separa el clasificador (OA2), no una regla de limpieza.
 2. **2019 es un quiebre.** El índice de ventas repetidas crece 2,8% anual hasta 2018 (como el decreto) y salta 13,9% en 2019 en los cuatro municipios a la vez, cuando la Ley 1943 obligó a declarar el precio real; la proporción de valores redondos sube de cerca de 48% a 66,5%. El índice debe modelar ese quiebre.
@@ -151,9 +278,9 @@ Table: Tabla 5. Embudo de limpieza y formación de pares, AMB 2015-2023.
 
 ## 6. Enfoques, métodos, evaluación y monitoreo (Guía 5, Parte I)
 
-**Elección de enfoques.** El problema exige los cuatro enfoques, y los datos confirmaron cada uno y cambiaron cómo se aplica (Tabla 6).
+**Elección de enfoques.** El problema exige los cuatro enfoques, y los datos confirmaron cada uno y cambiaron cómo se aplica (Tabla 15).
 
-Table: Tabla 6. Enfoques, pregunta que responden y evidencia de los datos que los justifica.
+Table: Tabla 15. Enfoques, pregunta que responden y evidencia de los datos que los justifica.
 
 | Enfoque | Pregunta | OA | Evidencia de los datos |
 |-----------|--------------------------|--------|-------------------------------------------------------|
@@ -164,9 +291,9 @@ Table: Tabla 6. Enfoques, pregunta que responden y evidencia de los datos que lo
 
 El componente prescriptivo usa **reglas de decisión y no optimización**: el costo de actualizar cada municipio, que exigiría una asignación con presupuesto, no es público. Las reglas (brecha frente al reajuste, piso legal de 60%, consistencia entre zonas y entre aumento y mercado) usan solo datos públicos y se pueden explicar a quien decide.
 
-**Selección de métodos.** Los métodos se eligen por seis factores: precisión de los datos frente a la del modelo, relevancia frente a la pregunta, disponibilidad y nivel de agregación de los datos, tiempo y personal (Informs, 2014, pp. 55-56). Tres pesan en todos: la decisión es por municipio y zona, no por predio; el registro no permite estimar cada predio; y el tiempo del Capstone favorece métodos libres, reproducibles con un script y explicables (Tabla 7).
+**Selección de métodos.** Los métodos se eligen por seis factores: precisión de los datos frente a la del modelo, relevancia frente a la pregunta, disponibilidad y nivel de agregación de los datos, tiempo y personal (Informs, 2014, pp. 55-56). Tres pesan en todos: la decisión es por municipio y zona, no por predio; el registro no permite estimar cada predio; y el tiempo del Capstone favorece métodos libres, reproducibles con un script y explicables (Tabla 16).
 
-Table: Tabla 7. Métodos por objetivo, justificación y alternativa descartada.
+Table: Tabla 16. Métodos por objetivo, justificación y alternativa descartada.
 
 | OA | Método | Por qué | Alternativa descartada |
 |-----|--------------------------------------|--------------------------------|-------------------------|
@@ -183,9 +310,9 @@ Table: Tabla 7. Métodos por objetivo, justificación y alternativa descartada.
 2. *Técnicas de evaluación.* IC 95% por *bootstrap* de folios con contraste de hipótesis sobre cada mejora; anomalías inyectadas (×2 y ×0,5, más tipos realistas) con AUC por tipo; validación externa del índice urbano contra IVP e IPVN y del contraste rural contra la Resolución 2057; revisión por el panel de 50 alertas y de las marcas "revisar".
 3. *Selección del mejor modelo.* Se descarta el candidato que no pase la auditoría de fuga; en OA2 se elige por su efecto en el MdAPE de OA4 y no solo por el AUC; el modelo complejo gana solo si el IC 95% de su mejora frente al simple excluye el cero; el resultado debe confirmarse en la validación temporal; si ningún clasificador mejora la línea base, se reporta la banda entre las dos cotas.
 
-**Monitoreo y control.** Las métricas de la ejecución son el insumo del monitoreo: cada una tiene línea base, meta, disparador con su acción y responsable (Tabla 8). Los umbrales son propuestas del equipo y se revisan con el panel en la primera semana del Capstone.
+**Monitoreo y control.** Las métricas de la ejecución son el insumo del monitoreo: cada una tiene línea base, meta, disparador con su acción y responsable (Tabla 17). Los umbrales son propuestas del equipo y se revisan con el panel en la primera semana del Capstone.
 
-Table: Tabla 8. Métricas de la ejecución y su uso en monitoreo y control.
+Table: Tabla 17. Métricas de la ejecución y su uso en monitoreo y control.
 
 | OA | Métrica | Línea base → meta | Disparador y acción | Responsable |
 |-------|----------------------|--------------------|------------------------------------|---------------|
@@ -200,9 +327,21 @@ Las herramientas de control son una **hoja maestra de cifras** generada por los 
 
 ## 7. Plan del Capstone, implementación y cierre (Guía 5, Parte II)
 
-**Cronograma ajustado.** Se mantienen las 16 semanas y las 192 horas del Capstone (incluidas 8 de contingencia), pero el cronograma de la carta se ajustó para reflejar las dependencias técnicas entre objetivos: datos antes de modelación, índice sobre escrituras ya clasificadas y alertas medidas contra el índice depurado (Tabla 9 y Figura 5).
+**Ejecución del anteproyecto frente al plan.** El cronograma de la carta (Guía 1) asignó 79 horas a S1-S3 y 113 a S4-S8. Todas las entregas se hicieron en su semana; el cambio respecto al plan fue de método, no de fechas (Tabla 18).
 
-Table: Tabla 9. Cronograma del Capstone por fase.
+Table: Tabla 18. Plan y ejecución del anteproyecto (S1-S8).
+
+| Semanas | Plan de la carta | Ejecución | Ajuste |
+|----------|------------------------------|------------------------------|------------------------|
+| S1-S3 | Caso, ideación, jerarquización, carta y anexo; requerimientos, fuentes y estado del arte; inicio de vigencias de Santander | Guía 1 entregada y revisada con la retroalimentación (24 oct); Guía 2 entregada | Se agregaron R9 y R10 |
+| S4 | Calidad, piloto de depuración en el AMB, diccionario y video | Guía 3 (RBS, AMEF) y video de avance | Diccionario completado en S8 |
+| S5-S6 | Análisis exploratorio, índices piloto, sensibilidad y contraste en Santander | Guía 4: calidad, limpieza y entendimiento del AMB | El contraste en Santander pasó a S7 |
+| S7 | Propuesta de modelos | Ampliación a Santander y Guía 5 (Parte I) | Año de última actualización reemplazado por la relación implícita de la Res. 2057 |
+| S8 | Cierre: documento final | Documento final y repositorio | — |
+
+**Cronograma ajustado.** Se mantienen las 16 semanas y las 192 horas del Capstone (incluidas 8 de contingencia), pero el cronograma de la carta se ajustó para reflejar las dependencias técnicas entre objetivos: datos antes de modelación, índice sobre escrituras ya clasificadas y alertas medidas contra el índice depurado (Tabla 19 y Figura 5).
+
+Table: Tabla 19. Cronograma del Capstone por fase.
 
 | Fase | Semanas | Horas | Actividades principales | Responsable | Hito |
 |--------------|--------|------|----------------------------------------|---------------|-----------------|
@@ -218,25 +357,25 @@ Table: Tabla 9. Cronograma del Capstone por fase.
 
 **Implementación.** El producto es un tablero de cinco vistas (exploración, índice, brecha y ranking, contraste del Art. 49 y alertas) y los scripts que lo regeneran. Cada vista y cada alerta lleva la advertencia estándar: es una señal para revisar, no una irregularidad ni un dictamen sobre un avalúo o una persona. En el equipo usuario, un analista de datos ejecuta la actualización anual, un analista catastral interpreta el ranking y las alertas y decide qué revisar, y quien dirige el proceso de actualización usa el ranking para priorizar. El **entrenamiento** consiste en un manual de operación (actualizar los datos y regenerar el tablero), una guía de interpretación (qué significa cada medida y sus límites) y una demostración ante el panel. La **explotación sostenible** se garantiza con un script anual que descarga los datos nuevos, ejecuta la cascada y registra la versión, sin depender de quien lo construyó. Los **beneficios en el tiempo** se evalúan en cada actualización con las métricas de negocio (cobertura, rezago bajo el piso de 60%, contraste del Art. 49) y la calificación del panel.
 
-**Cierre.** Al final del Capstone cada requerimiento de la Tabla 1 se marca como cumplido, cumplido en parte o no cumplido, con su razón, usando el indicador de cierre de esa tabla; la satisfacción de los interesados se mide con la calificación del panel y la proporción de alertas que considera dignas de revisión.
+**Cierre.** Al final del Capstone cada requerimiento de la Tabla 3 se marca como cumplido, cumplido en parte o no cumplido, con su razón, usando el indicador de cierre de esa tabla; la satisfacción de los interesados se mide con la calificación del panel y la proporción de alertas que considera dignas de revisión.
 
-**Riesgos y recursos.** Se mantienen los recursos previstos: cuatro integrantes con un responsable por proceso, cerca de 6 horas semanales por persona, datos públicos, Python y Git, COP 0 de desembolso y COP 11.520.000 de costo de oportunidad en el Capstone. Las acciones de los riesgos de mayor RPN quedaron dentro del cronograma (Tabla 4): no requieren recursos adicionales, sino validaciones por folio, evaluación temporal, intervalos de confianza y revisión del panel antes de presentar resultados.
+**Riesgos y recursos.** Se mantienen los recursos previstos: cuatro integrantes con un responsable por proceso, cerca de 6 horas semanales por persona, datos públicos, Python y Git, COP 0 de desembolso y COP 11.520.000 de costo de oportunidad en el Capstone. Las acciones de los riesgos de mayor RPN quedaron dentro del cronograma (Tabla 10): no requieren recursos adicionales, sino validaciones por folio, evaluación temporal, intervalos de confianza y revisión del panel antes de presentar resultados.
 
 **Beneficios esperados.** Se mantienen los beneficios de las Guías 1 y 2: índice de mercado en 340 municipios urbanos y 324 rurales (hoy 53 y 0), contraste del Art. 49 en 143 municipios (hoy 0), municipios bajo el piso de 60% identificados con IC 95%, error de estimación de 16,5% o menos (hoy 18,3%) y alertas mejores que la mejor línea base. Los cualitativos son una priorización transparente y reproducible, evidencia pública para un ajuste en litigio y para el debate del PND 2026-2030 y del C159, reglas que habrían marcado aumentos extremos en la propia resolución (como el 32.433% inicial de una zona de Baraya, corregido a 4%) y un método replicable por la Red de Observatorios Inmobiliarios Catastrales. Se hacen dos precisiones a partir del anteproyecto: los beneficios se verificarán con datos reservados, intervalos de confianza y validación temporal, y donde la información no alcance (por ejemplo, municipios sin año de última actualización) se reportará la limitación y se usará la alternativa definida (índice departamental, marca "revisar" o banda entre cotas).
 
 ## 8. Verificación del anteproyecto y ajustes aplicados
 
-La Tabla 10 responde la lista de chequeo propuesta para la entrega final y registra la acción tomada en cada caso.
+La Tabla 20 responde la lista de chequeo propuesta para la entrega final y registra la acción tomada en cada caso.
 
-Table: Tabla 10. Lista de chequeo del anteproyecto.
+Table: Tabla 20. Lista de chequeo del anteproyecto.
 
 | Dimensión | Pregunta (resumida) | Sí/No | Evidencia y acción |
 |-------------|----------------------------|-----|------------------------------------------------------|
 | Ideas y jerarquización | ¿La selección jerarquizó proyectos potenciales con características de Analytics? | Sí | 8 ideas, filtro de 7 características y matriz valor-capacidad; se integraron 1, 2 y 5 (sección 1) |
 | Problema de negocio | ¿Responde a una necesidad estratégica de la que se derivan métricas? | Sí | Meta de 70% de área actualizada del PND y Art. 49; tres métricas de negocio con línea base (sección 2) |
-| Requerimientos | ¿Están clasificados en potenciar, disminuir, mantener o ignorar? | Sí | Kano con score; 10 a potenciar, 5 a disminuir, inverso como restricción e indiferente ignorado (Tabla 1) |
-| Problema de Analytics | ¿Es coherente con los requerimientos, el negocio y el enfoque? | Sí | Cada OA ligado a requerimientos y métricas (Tablas 1 y 2) y a un enfoque (Tabla 6) |
-| Recolección de datos | ¿Hubo problemas de granularidad, estandarización o codificación? | Sí | Anotación por folio y escrituras de varios predios; fechas en dos formatos; identificadores catastrales vacíos y notaría inconsistente. Se resolvieron por regla (Tabla 5) |
+| Requerimientos | ¿Están clasificados en potenciar, disminuir, mantener o ignorar? | Sí | Kano con score; 10 a potenciar, 5 a disminuir, inverso como restricción e indiferente ignorado (Tabla 3) |
+| Problema de Analytics | ¿Es coherente con los requerimientos, el negocio y el enfoque? | Sí | Cada OA ligado a requerimientos y métricas (Tablas 3 y 4) y a un enfoque (Tabla 15) |
+| Recolección de datos | ¿Hubo problemas de granularidad, estandarización o codificación? | Sí | Anotación por folio y escrituras de varios predios; fechas en dos formatos; identificadores catastrales vacíos y notaría inconsistente. Se resolvieron por regla (Tabla 13) |
 | Preprocesamiento | ¿Reveló información que amerita iterar pasos previos? | Sí | Cuatro iteraciones: R9 y R10 agregados; clasificar escrituras y no pares; quiebre de 2019 en el índice; relación implícita de la Res. 2057, porque ninguna de las 68 memorias declara el año de última actualización |
 | Proceso | ¿Se siguió el proceso y las actividades de cada guía? | Sí | Las cinco guías se desarrollaron completas; las versiones de entrega están en el repositorio |
 | Proceso | ¿Se identificó qué rehacer o mejorar? | Sí | Cronograma con dependencias, metas revisables en C1, riesgos con acción en el plan |
