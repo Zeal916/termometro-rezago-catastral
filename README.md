@@ -16,6 +16,7 @@ Este repositorio contiene los **anexos del documento final del anteproyecto**: l
 | `anexos/guia_3/` | RBS y AMEF (21 factores de riesgo con RPN, plan de acciones y contraste con la matriz probabilidad × impacto), en PDF y Excel |
 | `anexos/guia_4/` | Informe de calidad, limpieza y entendimiento de los datos (piloto del AMB) |
 | `anexos/guia_5/` | Parte I (enfoques, métodos, evaluación, monitoreo e implementación) y Parte II (cronograma, riesgos y beneficios) |
+| `codigo/guia_1/` | `analisis_guia1.py`: análisis nacional (5,4 M de compraventas) que produce la línea base (MdAPE, AUC), los índices por municipio y zona, y el cruce con la Resolución 2057; salidas en `datos/guia_1/` |
 | `codigo/guia_4/` | `limpieza_amb.py`, `descarga_actos.py` y los notebooks `02_entendimiento_calidad_compraventas.ipynb` y `03_entendimiento.ipynb` |
 | `codigo/diccionario.py` | Genera el diccionario de variables a partir de los CSV |
 | `datos/` | Compraventas del AMB 2015-2023, compraventas limpias, pares de ventas repetidas y actos de los folios (`datos/api/`) |
@@ -32,6 +33,8 @@ py -I codigo/guia_4/descarga_actos.py   # opcional: vuelve a descargar los actos
 py -I codigo/guia_4/limpieza_amb.py     # repite la limpieza con los actos descargados
 py -I codigo/diccionario.py             # regenera el diccionario de variables
 ```
+
+El análisis nacional se ejecuta con `py -I codigo/guia_1/analisis_guia1.py`: descarga lo que falte a `datos/guia_1/descarga/` (no versionada, varios GB) y escribe `cifras.json`, los CSV y las figuras en `datos/guia_1/`.
 
 El notebook `03_entendimiento.ipynb` se ejecuta desde `codigo/guia_4/` y lee los archivos de `datos/`. El notebook `02_entendimiento_calidad_compraventas.ipynb` usa la extracción original de 26 columnas (`Registro_de_transacciones_base.csv`), que incluye las columnas `numero_catastral` y `numero_catastral_antiguo` (vacías en el 100%); la descarga de `datos/` trae las otras 24.
 

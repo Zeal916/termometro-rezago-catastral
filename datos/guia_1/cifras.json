@@ -1,0 +1,158 @@
+{
+ "compraventas": 5424769,
+ "con_valor": 3995772,
+ "escritura_1_predio": 3836961,
+ "municipios_con_valor": 1096,
+ "actos_folio": {
+  "hipoteca": 2866546,
+  "propiedad_horizontal": 1951104,
+  "construccion": 287118,
+  "englobe_desenglobe": 306459
+ },
+ "actos_folio_total": 5411227,
+ "actos_total": 30903248,
+ "compraventas_1_predio_valor_fecha": 2853681,
+ "reventas_todas": 430456,
+ "reventas_pct": 15.1,
+ "reventas_365": 284978,
+ "reventas_365_pct": 10.0,
+ "pares": 256973,
+ "pares_pct": 9.0,
+ "pares_urbanos": 183439,
+ "pares_rurales": 71004,
+ "pares_sin_zona": 2530,
+ "pares_crec_0a5pct_anual": 0.407,
+ "pares_crec_exacto_0_o_3pct": 0.141,
+ "pares_crec_0a5pct_por_anio_2a_venta": {
+  "2016": 0.45,
+  "2017": 0.49,
+  "2018": 0.5,
+  "2019": 0.31,
+  "2020": 0.36,
+  "2021": 0.4,
+  "2022": 0.41,
+  "2023": 0.41
+ },
+ "mun_URBANO_30": 431,
+ "mun_indice_URBANO": 340,
+ "mun_RURAL_30": 399,
+ "mun_indice_RURAL": 324,
+ "idx2023_RURAL_robusto_p50": 161,
+ "mun_cotas_urbanas": 136,
+ "idx2023_URBANO_cota_inferior": 153,
+ "idx2023_URBANO_cota_superior": 250,
+ "idx2023_URBANO_ols": 180,
+ "idx_URBANO_cotas_por_anio": {
+  "2015": [
+   100,
+   100
+  ],
+  "2016": [
+   103,
+   111
+  ],
+  "2017": [
+   106,
+   120
+  ],
+  "2018": [
+   109,
+   130
+  ],
+  "2019": [
+   125,
+   161
+  ],
+  "2020": [
+   133,
+   178
+  ],
+  "2021": [
+   136,
+   197
+  ],
+  "2022": [
+   144,
+   220
+  ],
+  "2023": [
+   153,
+   250
+  ]
+ },
+ "reajuste_acumulado_2015_2023_aprox": 127,
+ "umbral_indice_piso60": 211,
+ "mun_bajo_piso60_sin_ic": {
+  "URBANO": 49,
+  "RURAL": 53
+ },
+ "perdida_avaluo_vs_mercado_pct": [
+  17,
+  49
+ ],
+ "MdAPE_regla": 18.3,
+ "MdAPE_sin_ajuste": 23.4,
+ "MdAPE_indice_ols": 24.6,
+ "MdAPE_indice_robusto": 20.6,
+ "pares_prueba": 56994,
+ "MdAPE_regla_IC95": [
+  18.0,
+  18.8
+ ],
+ "MdAPE_dif_robusto_menos_regla_IC95": [
+  2.0,
+  2.6
+ ],
+ "prueba_pct_compatible_avaluo": 36.9,
+ "MdAPE_por_grupo": {
+  "compatible_avaluo": {
+   "regla": 3.5,
+   "indice_robusto": 7.2
+  },
+  "resto": {
+   "regla": 43.6,
+   "indice_robusto": 38.3
+  }
+ },
+ "MdAPE_oraculo": 14.8,
+ "MdAPE_meta": 16.5,
+ "alertas_regla": {
+  "AUC_x2_x05": 0.745,
+  "AUC_x10_x01": 0.944,
+  "deteccion_x2_x05_con_2pct_pct": 3.0,
+  "deteccion_x10_x01_con_2pct_pct": 19.5
+ },
+ "alertas_indice_robusto": {
+  "AUC_x2_x05": 0.757,
+  "AUC_x10_x01": 0.952,
+  "deteccion_x2_x05_con_2pct_pct": 3.0,
+  "deteccion_x10_x01_con_2pct_pct": 23.4
+ },
+ "alertas_AUC_dif_robusto_menos_regla_IC95": [
+  0.011,
+  0.013
+ ],
+ "alertas_presupuesto_pct": 2.0,
+ "alertas_al_anio_con_presupuesto": 957,
+ "reventas_365_cambio_5x_o_mas_pct": 9.8,
+ "res2057_porcentajes_en_texto": 7545,
+ "res2057_filas_extraidas": 7544,
+ "art49_zonas": 7484,
+ "art49_municipios": 527,
+ "art49_pct_p10_p50_p90": [
+  7,
+  326,
+  1870
+ ],
+ "art49_zonas_4pct": 656,
+ "art49_zonas_mas_1000pct": 1521,
+ "art49_mun_indice_rural": 143,
+ "art49_mun_indice_urbano": 132,
+ "santander_art49": 68,
+ "santander_art49_indice_rural": 15,
+ "art49_spearman_municipal": 0.1,
+ "art49_municipios_comparables": 143,
+ "mun_gestor_igac": 836,
+ "mun_igac_indice_urbano": 235,
+ "mun_igac_indice_rural": 235
+}
