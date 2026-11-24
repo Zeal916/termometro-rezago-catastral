@@ -1,0 +1,19 @@
+EMBUDO DE COMPRAVENTAS
+Compraventas del AMB 2015-2023 (cód. 125)           165,517
+Fecha válida                                        165,517  (-0)
+Valor > COP 1 M (sale valor 0 y < 1 M)              164,747  (-770)
+Un solo valor en la anotación                       164,743  (-4)
+Duplicado exacto (folio, fecha, valor): queda uno   164,631  (-112)
+Mismo folio y fecha con valores distintos: salen todos  164,541  (-90)
+Escritura de un solo predio                         133,720  (-30,821)
+Zona recuperada por folio: 52 de 1,855
+Marcados extremo alto (p99,5 > COP 1,050 M): 663
+Marcados cola baja (COP 1-10 M): 5,806
+
+PARES
+Pares consecutivos del mismo folio                   19,672
+Pares con >= 365 días                                14,469
+Pares sin cambio físico entre las dos ventas         14,313
+Pares para el índice (además, sin cambios de 5 veces o más)   13,978
+Por zona: {'URBANO': 12399, 'RURAL': 1398, 'SIN INFORMACION': 181}
+Mediana razón de precios: con cambio físico 3.22; sin cambio físico 1.10

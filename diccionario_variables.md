@@ -1,0 +1,60 @@
+# Diccionario de variables
+
+Piloto del Área Metropolitana de Bucaramanga (AMB), 2015-2023. Generado con `codigo/diccionario.py` a partir de los CSV de `datos/`; el porcentaje de vacíos se recalcula cada vez que se regenera.
+
+| Archivo | Filas | Columnas | Contenido |
+|---|---|---|---|
+| `datos/amb_compraventas_2015_2023.csv` | 165.517 | 24 | Compraventas (cód. 125) del AMB descargadas de 7y2j-43cv |
+| `datos/compraventas_limpias.csv` | 133.720 | 25 | Compraventas tras las reglas de limpieza, con marcas de extremos |
+| `datos/pares_amb.csv` | 14.469 | 31 | Pares de ventas consecutivas del mismo folio con al menos 365 días |
+| `datos/api/actos_folios_pares.csv` | 76.065 | 8 | Todos los actos de los 13.129 folios con pares (descarga del 8 nov 2026) |
+
+| Variable | Archivos | Origen | Tipo | Descripción | Uso o decisión | % vacíos |
+|---|---|---|---|---|---|---|
+| `pk` | original, limpias, pares | Registro IGAC 7y2j-43cv | texto | Llave única de la anotación: DIVIPOLA-ORIP-matrícula-anotación-acto-año | Control de duplicados (sin repetidos) | original: 0,00%; limpias: 0,00%; pares: 0,00% |
+| `matricula` | todos | Registro IGAC 7y2j-43cv | texto | Folio de matrícula inmobiliaria (ORIP-número); identifica el inmueble | Llave para formar pares y unir los actos del folio | original: 0,00%; limpias: 0,00%; pares: 0,00%; actos: 0,00% |
+| `num_anotacion` | todos | Registro IGAC 7y2j-43cv | entero | Número de la anotación dentro del folio | Ordena los actos del folio; parte de la clave registral | original: 0,00%; limpias: 0,00%; pares: 0,00%; actos: 0,00% |
+| `orip` | original, limpias, pares | Registro IGAC 7y2j-43cv | texto | Oficina de registro (300 Bucaramanga; 314 Piedecuesta) | Sale del análisis: repite divipola | original: 0,00%; limpias: 0,00%; pares: 0,00% |
+| `divipola` | todos | Registro IGAC 7y2j-43cv | texto | Código DANE del municipio | Agregación por municipio; se lee como texto | original: 0,00%; limpias: 0,00%; pares: 0,00%; actos: 0,00% |
+| `municipio` | original, limpias, pares | Registro IGAC 7y2j-43cv | texto | Nombre del municipio | Segmentación por municipio | original: 0,00%; limpias: 0,00%; pares: 0,00% |
+| `departamento` | original, limpias, pares | Registro IGAC 7y2j-43cv | texto | Departamento | Constante en el piloto | original: 0,00%; limpias: 0,00%; pares: 0,00% |
+| `categoria_ruralidad_2024` | original, limpias, pares | Registro IGAC 7y2j-43cv | texto | Categoría de ruralidad del municipio | Constante en el piloto; jerarquía del índice en el país | original: 0,00%; limpias: 0,00%; pares: 0,00% |
+| `dinamica_2024` | original, limpias, pares | Registro IGAC 7y2j-43cv | texto | Indicador de dinámica inmobiliaria del municipio | Constante en el piloto | original: 0,00%; limpias: 0,00%; pares: 0,00% |
+| `cod_natujur` | todos | Registro IGAC 7y2j-43cv | texto | Código de la naturaleza jurídica del acto (125 = compraventa) | Filtro de compraventas; en los actos identifica hipoteca, PH y cambios físicos | original: 0,00%; limpias: 0,00%; pares: 0,00%; actos: 0,00% |
+| `nombre_natujur` | todos | Registro IGAC 7y2j-43cv | texto | Nombre de la naturaleza jurídica | Descriptivo | original: 0,00%; limpias: 0,00%; pares: 0,00%; actos: 0,00% |
+| `documento_justificativo` | todos | Registro IGAC 7y2j-43cv | texto | Tipo, número y fecha de la escritura, y notaría | Se extrae fecha_escritura; la notaría se descarta (formato inconsistente en el tiempo) | original: 0,00%; limpias: 0,00%; pares: 0,00%; actos: 0,01% |
+| `fecha_radica_texto` | todos | Registro IGAC 7y2j-43cv | texto (fecha) | Fecha de radicación en dos formatos (AAAA-MM-DD hh:mm:ss y dd/mm/aa, 19%) | Se unifica en fecha | original: 0,00%; limpias: 0,00%; pares: 0,00%; actos: 0,00% |
+| `year_radica` | original, limpias, pares | Registro IGAC 7y2j-43cv | entero | Año de radicación | Repite la fecha; sale del análisis | original: 0,00%; limpias: 0,00%; pares: 0,00% |
+| `fecha_apertura_texto` | original | Registro IGAC 7y2j-43cv | texto (fecha) | Fecha de apertura del folio | Se elimina, no se imputa | original: 80,93% |
+| `folios_derivados` | original | Registro IGAC 7y2j-43cv | texto | Folios derivados del folio | Se elimina, no se imputa | original: 99,99% |
+| `estado_folio` | original, limpias, pares | Registro IGAC 7y2j-43cv | texto | Estado del folio (activo o cerrado) | Descriptivo | original: 0,00%; limpias: 0,00%; pares: 0,00% |
+| `count_a` | original, limpias, pares | Registro IGAC 7y2j-43cv | entero | Número de compradores | Candidata; importancia por permutación < 0,001 | original: 0,00%; limpias: 0,00%; pares: 0,00% |
+| `count_de` | original, limpias, pares | Registro IGAC 7y2j-43cv | entero | Número de vendedores | Candidata; importancia por permutación < 0,001 | original: 0,00%; limpias: 0,00%; pares: 0,00% |
+| `predios_nuevos` | original, limpias, pares | Registro IGAC 7y2j-43cv | entero | Indicador de predio nuevo en la anotación | Candidata a primera venta de un folio nuevo (OA2) | original: 0,00%; limpias: 0,00%; pares: 0,00% |
+| `tiene_mas_de_un_valor` | original, limpias, pares | Registro IGAC 7y2j-43cv | 0/1 | La anotación trae más de un valor | Regla de limpieza: salen 4 anotaciones | original: 0,00%; limpias: 0,00%; pares: 0,00% |
+| `tiene_valor` | original, limpias, pares | Registro IGAC 7y2j-43cv | 0/1 | La anotación trae valor | Constante en el piloto | original: 0,00%; limpias: 0,00%; pares: 0,00% |
+| `tipo_predio_zona` | original, limpias, pares | Registro IGAC 7y2j-43cv | texto | Zona URBANO / RURAL / SIN INFORMACION | Segmentación urbano-rural (R2); zona vacía recuperada de otra venta del folio (52) | original: 0,00%; limpias: 0,00%; pares: 0,00% |
+| `valor` | todos | Registro IGAC 7y2j-43cv | numérico (COP) | Valor declarado en la escritura | Variable que se mide: no se imputa; salen los valores de COP 1 M o menos | original: 0,00%; limpias: 0,00%; pares: 0,00%; actos: 0,00% |
+| `numero_catastral, numero_catastral_antiguo` | extracción de 26 columnas (Guía 4, Parte I) | Registro IGAC 7y2j-43cv | texto | Número predial catastral, vacío en el 100% de los registros | No permite unir el avalúo de cada predio; el rezago se mide contra el reajuste por decreto | 100% (no viene en esta descarga) |
+| `fecha` | limpias, pares | limpieza_amb.py | fecha | Fecha de radicación unificada | Serie de tiempo; días entre ventas | limpias: 0,00%; pares: 0,00% |
+| `extremo_alto` | limpias, pares | limpieza_amb.py | booleano | Valor sobre el percentil 99,5 (COP 1.050 M) | Se marca, no se borra; candidato para OA6 | limpias: 0,00%; pares: 0,00% |
+| `cola_baja_1_10M` | limpias, pares | limpieza_amb.py | booleano | Valor entre COP 1 M y 10 M (cuotas, derechos parciales o errores) | Se marca, no se borra | limpias: 0,00%; pares: 0,00% |
+| `fecha_ant` | pares | limpieza_amb.py | fecha | Fecha de la venta anterior del mismo folio | Forma el par; al menos 365 días | pares: 0,00% |
+| `valor_ant` | pares | limpieza_amb.py | numérico (COP) | Valor de la venta anterior | Forma el par | pares: 0,00% |
+| `razon` | pares | limpieza_amb.py | numérico | valor / valor_ant | Cambio de precio del par | pares: 0,00% |
+| `cambio_fisico` | pares | limpieza_amb.py | booleano | Acto de construcción, área o linderos, división, englobe, loteo o PH entre las dos ventas | Excluye del índice; se conserva marcado para OA6 | pares: 0,00% |
+| `cambio_extremo_5x` | pares | limpieza_amb.py | booleano | La razón es de 5 o más, o de 1/5 o menos | Excluye del índice; se conserva marcado para OA6 | pares: 0,00% |
+| `para_indice` | pares | limpieza_amb.py | booleano | Par apto para el índice (365 días, sin cambio físico ni cambio de 5 veces) | 13.978 pares | pares: 0,00% |
+| `log_valor` | derivada en el notebook | 03_entendimiento.ipynb | numérico | ln(valor) | Corrige la asimetría (161 a -0,7) | 100% (no viene en esta descarga) |
+| `redondo` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Valor múltiplo exacto de COP 1 M | Indicio de precio negociado | 100% (no viene en esta descarga) |
+| `fecha_escritura` | derivada en el notebook | 03_entendimiento.ipynb | fecha | Fecha leída de documento_justificativo | Fija el año del avalúo vigente al firmar | 100% (no viene en esta descarga) |
+| `dias_esc_rad` | derivada en el notebook | 03_entendimiento.ipynb | entero | Días entre escritura y radicación | Control de calidad (mediana 15, p95 77) | 100% (no viene en esta descarga) |
+| `anios` | derivada en el notebook | 03_entendimiento.ipynb | numérico | Años entre las dos radicaciones (días / 365,25) | Horizonte del par (mediana 3,2) | 100% (no viene en esta descarga) |
+| `g` | derivada en el notebook | 03_entendimiento.ipynb | numérico | Tasa anual del par: razon^(1/anios) - 1 | Segmentación, mezcla gaussiana y etiqueta débil | 100% (no viene en esta descarga) |
+| `congelado` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Mismo valor en las dos ventas | Segmento de valor congelado | 100% (no viene en esta descarga) |
+| `factor_decreto` | derivada en el notebook | 03_entendimiento.ipynb | numérico | Producto de (1 + reajuste) entre los años de las dos escrituras (3%; 4,31% en 2023) | Crecimiento de un avalúo no actualizado | 100% (no viene en esta descarga) |
+| `replica_decreto` | derivada en el notebook | 03_entendimiento.ipynb | booleano | razon a menos de 0,5% de factor_decreto | Segmento de réplica del reajuste | 100% (no viene en esta descarga) |
+| `cruza_ley1943` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Primera escritura antes de 2019 y segunda desde 2019 | Quiebre de 2019 (Ley 1943 de 2018) | 100% (no viene en esta descarga) |
+| `cruza_act_bga` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Igual que cruza_ley1943, solo en Bucaramanga | Actualización catastral de Bucaramanga (2019) | 100% (no viene en esta descarga) |
+
+Códigos de acto tratados como cambio físico: 317 (reglamento de PH), 902, 903, 917 y 964 (área y linderos), 909 (urbanización), 910, 911 y 912 (construcción o mejora), 913, 915 y 919 (englobe y desenglobe), 918 (división material), 920 y 924 (loteo y reloteo). La reforma (331) y la adición (347) del reglamento de PH no se tratan como cambio físico.
