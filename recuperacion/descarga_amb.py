@@ -1,12 +1,12 @@
 """Descarga del Registro de Transacciones Inmobiliarias del IGAC (datos.gov.co, 7y2j-43cv) para el piloto del
 Área Metropolitana de Bucaramanga (Bucaramanga, Floridablanca, Girón y Piedecuesta), 2015-2023. No requiere credenciales.
 
-Uso, desde la raíz del repositorio:
-  py -I codigo/descarga_amb.py compraventas  -> datos/amb_compraventas_2015_2023.csv (base de la Guía 4, 165.517 filas)
-  py -I codigo/descarga_amb.py actos         -> datos/guia_5/amb_7y2j-43cv.csv (todos los actos; insumo de variables_oa2_amb.py)
-  py -I codigo/descarga_amb.py conteo        -> solo consulta cuántas filas tiene cada descarga
+Uso, desde la raíz del repositorio (las rutas de salida son relativas a anexos/):
+  py -I recuperacion/descarga_amb.py compraventas  -> datos/amb_compraventas_2015_2023.csv (base de la Guía 4, 165.517 filas)
+  py -I recuperacion/descarga_amb.py actos         -> datos/guia_5/amb_7y2j-43cv.csv (todos los actos; insumo de anexos/codigo/guia_5/variables_oa2_amb.py)
+  py -I recuperacion/descarga_amb.py conteo        -> solo consulta cuántas filas tiene cada descarga
 
-El archivo de compraventas ya viene versionado en datos/; este script permite reconstruirlo si se pierde.
+El archivo de compraventas ya viene versionado en anexos/datos/; este script permite reconstruirlo si se pierde.
 """
 import csv
 import io
@@ -18,7 +18,7 @@ import urllib.request
 from datetime import date
 from pathlib import Path
 
-RAIZ = Path(__file__).resolve().parents[1]
+RAIZ = Path(__file__).resolve().parents[1] / "anexos"  # los datos viven en anexos/datos
 URL = "https://www.datos.gov.co/resource/7y2j-43cv.csv"
 AMB = "divipola in('68001','68276','68307','68547')"
 PERIODO = "year_radica between '2015' and '2023'"

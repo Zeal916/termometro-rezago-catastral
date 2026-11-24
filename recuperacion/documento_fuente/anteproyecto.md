@@ -430,9 +430,10 @@ Normas: Decreto 148 de 2020; Ley 2294 de 2023, art. 49; Ley 1943 de 2018 y Ley 2
 | A. Guía 1 | Carta del proyecto y anexo (ideación, filtro, 5W, accesibilidad, limitantes, beneficios, criterios de éxito, cronograma) | `anexos/guia_1/` |
 | B. Guía 2 | Planteamiento del problema de Analytics y anexo (Kano, recursos, fuentes, objetivos, métricas, estado del arte) | `anexos/guia_2/` |
 | C. Guía 3 | RBS y AMEF completos, con plan de acciones y contraste probabilidad × impacto | `anexos/guia_3/` |
-| D. Guía 4 | Informe de calidad, limpieza y entendimiento; notebooks y scripts | `anexos/guia_4/`, `codigo/guia_4/` |
+| D. Guía 4 | Informe de calidad, limpieza y entendimiento; notebooks y scripts | `anexos/guia_4/`, `anexos/codigo/guia_4/` |
 | E. Guía 5 | Partes I y II en su versión de entrega | `anexos/guia_5/` |
-| F. Datos y código | Análisis nacional (línea base), piloto del AMB, ampliación a Santander, variables de OA2, índices oficiales y perfil de la Res. 2057 | `codigo/`, `datos/` |
-| G. Diccionario | 45 variables con origen, tipo, vacíos y uso | `diccionario_variables.md` |
-| H. Fuentes editables | Word, Excel, HTML y scripts con los que se generó cada entrega | `anexos/guia_*/fuente/` |
-| I. Cifras | Cada cifra de este documento con el archivo y la línea de resultados que la respalda | `CIFRAS.md` |
+| F. Datos y código | Análisis nacional (línea base), piloto del AMB, ampliación a Santander, variables de OA2, índices oficiales y perfil de la Res. 2057 | `anexos/codigo/`, `anexos/datos/` |
+| G. Diccionario | 45 variables con origen, tipo, vacíos y uso | `anexos/diccionario_variables.md` |
+| H. Cifras | Cada cifra de este documento con el archivo y la línea de resultados que la respalda | `anexos/CIFRAS.md` |
+
+Las fuentes editables de cada entrega, la fuente de este documento y el procedimiento para reconstruir el proyecto desde cero están en `recuperacion/`.

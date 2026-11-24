@@ -1,8 +1,8 @@
 # Hoja maestra de cifras
 
-Cada cifra del documento final (`documento/anteproyecto.md`) con el archivo que la produce. Es la herramienta de control prevista en el plan: antes de cada entrega se contrasta el documento con esta hoja y, si un script cambia, se actualizan las dos.
+Cada cifra del documento final (`documento/anteproyecto.pdf`; texto fuente en `recuperacion/documento_fuente/anteproyecto.md`) con el archivo que la produce. Es la herramienta de control prevista en el plan: antes de cada entrega se contrasta el documento con esta hoja y, si un script cambia, se actualizan las dos.
 
-Convención: `cifras.json:clave` es una clave de `datos/guia_1/cifras.json`; `resultados_X.txt §n` es la sección n de `codigo/guia_5/resultados_X.txt`.
+Las rutas son relativas a `anexos/`. Convención: `cifras.json:clave` es una clave de `datos/guia_1/cifras.json`; `resultados_X.txt §n` es la sección n de `codigo/guia_5/resultados_X.txt`.
 
 ## 1. Contexto (fuentes documentales, no calculadas)
 
@@ -69,6 +69,6 @@ Convención: `cifras.json:clave` es una clave de `datos/guia_1/cifras.json`; `re
 
 | Cifra | Fuente |
 |---|---|
-| 21 factores de riesgo, 9 altos, RPN máximo 360; 62% del RPN en datos y técnico-analítico | `anexos/guia_3/AMEF_Guia_3.xlsx` |
-| Scores Kano (R1 = 90 … A5 = 45) | `anexos/guia_2/Anexo_Guia_2.pdf`, Tablas 1 y 2 |
-| 384 horas (192 + 192), COP 60.000 por hora, COP 23.040.000; 8 h de contingencia en el Capstone | `anexos/guia_2/Anexo_Guia_2.pdf`, Tablas 4 y 5; `anexos/guia_5/Guia_5_Parte_II.docx` |
+| 21 factores de riesgo, 9 altos, RPN máximo 360; 62% del RPN en datos y técnico-analítico | `guia_3/AMEF_Guia_3.xlsx` |
+| Scores Kano (R1 = 90 … A5 = 45) | `guia_2/Anexo_Guia_2.pdf`, Tablas 1 y 2 |
+| 384 horas (192 + 192), COP 60.000 por hora, COP 23.040.000; 8 h de contingencia en el Capstone | `guia_2/Anexo_Guia_2.pdf`, Tablas 4 y 5; `guia_5/Guia_5_Parte_II.docx` |

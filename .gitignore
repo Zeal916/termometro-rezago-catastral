@@ -3,5 +3,6 @@ __pycache__/
 *.pyc
 ~$*
 .DS_Store
-datos/guia_1/descarga/
-datos/guia_5/
+anexos/datos/guia_1/descarga/
+anexos/datos/guia_5/
+recuperacion/documento_fuente/anteproyecto.html

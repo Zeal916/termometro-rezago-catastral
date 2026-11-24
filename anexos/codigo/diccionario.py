@@ -1,5 +1,5 @@
 """Genera diccionario_variables.md y diccionario_variables.csv a partir de los CSV de datos/.
-Uso (desde la raíz del repositorio): py -I codigo/diccionario.py
+Uso (desde anexos/): py -I codigo/diccionario.py
 """
 import sys
 from pathlib import Path

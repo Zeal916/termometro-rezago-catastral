@@ -1,4 +1,5 @@
-"""Genera anteproyecto.html, anteproyecto.pdf (Edge sin interfaz) y anteproyecto.docx (pandoc) desde anteproyecto.md.
+"""Genera documento/anteproyecto.pdf (Edge sin interfaz) y documento/anteproyecto.docx (pandoc) desde anteproyecto.md;
+el HTML intermedio queda en esta carpeta y no se versiona.
 Uso: py -I construir.py
 """
 import subprocess
@@ -10,7 +11,9 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.shared import Pt, Cm
 
 AQUI = Path(__file__).resolve().parent
-MD, HTML, PDF, DOCX = (AQUI / f"anteproyecto.{e}" for e in ("md", "html", "pdf", "docx"))
+SALIDA = AQUI.parents[1] / "documento"  # el entregable vive en documento/
+MD, HTML = AQUI / "anteproyecto.md", AQUI / "anteproyecto.html"
+PDF, DOCX = SALIDA / "anteproyecto.pdf", SALIDA / "anteproyecto.docx"
 EDGE = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 
 subprocess.run(["pandoc", MD.name, "-s", "--embed-resources", "--css", "estilo.css",
@@ -19,7 +22,7 @@ subprocess.run([EDGE, "--headless=new", "--disable-gpu", "--no-pdf-header-footer
                 f"--print-to-pdf={PDF}", HTML.as_uri()], check=True, capture_output=True)
 print("PDF:", len(fitz.open(PDF)), "páginas")
 
-subprocess.run(["pandoc", MD.name, "-o", DOCX.name], cwd=AQUI, check=True)
+subprocess.run(["pandoc", MD.name, "-o", str(DOCX)], cwd=AQUI, check=True)
 doc = Document(DOCX)
 for s in doc.sections:
     s.left_margin = s.right_margin = Cm(2.2)
