@@ -34,7 +34,7 @@ py -I codigo/guia_4/limpieza_amb.py     # repite la limpieza con los actos desca
 py -I codigo/diccionario.py             # regenera el diccionario de variables
 ```
 
-El análisis nacional se ejecuta con `py -I codigo/guia_1/analisis_guia1.py`: descarga lo que falte a `datos/guia_1/descarga/` (no versionada, varios GB) y escribe `cifras.json`, los CSV y las figuras en `datos/guia_1/`.
+El análisis nacional se ejecuta con `py -I codigo/guia_1/analisis_guia1.py`: descarga lo que falte a `datos/guia_1/descarga/` (no versionada, cerca de 800 MB) y escribe `cifras.json`, los CSV y las figuras en `datos/guia_1/`.
 
 El notebook `03_entendimiento.ipynb` se ejecuta desde `codigo/guia_4/` y lee los archivos de `datos/`. El notebook `02_entendimiento_calidad_compraventas.ipynb` usa la extracción original de 26 columnas (`Registro_de_transacciones_base.csv`), que incluye las columnas `numero_catastral` y `numero_catastral_antiguo` (vacías en el 100%); la descarga de `datos/` trae las otras 24.
 
