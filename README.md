@@ -4,7 +4,7 @@ Anteproyecto del curso **Gerencia de Proyectos de Analytics** (Maestría en Inte
 
 **Problema.** El IGAC debe decidir en qué municipios actualizar o revisar primero el avalúo catastral y sustentar o corregir el ajuste del Art. 49 de la Ley 2294 de 2023 (Resolución 2057 de 2025). El proyecto mide, con las ventas repetidas del Registro de Transacciones Inmobiliarias del IGAC 2015-2023 (datos.gov.co, `7y2j-43cv`), la brecha entre el avalúo y el mercado por municipio, en zona urbana y rural, después de separar las escrituras declaradas por el avalúo.
 
-**Empiece por:** [`documento/anteproyecto.pdf`](documento/anteproyecto.pdf), el documento final que consolida las cinco guías (18 páginas).
+**Empiece por:** [`documento/anteproyecto.pdf`](documento/anteproyecto.pdf), el documento final que consolida las cinco guías (20 páginas con portada, abstract e índice, según la estructura de la guía del anteproyecto).
 
 ## Cómo está organizado
 

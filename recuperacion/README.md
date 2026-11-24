@@ -67,6 +67,8 @@ Se edita `documento_fuente/anteproyecto.md` y se regenera:
 cd recuperacion/documento_fuente && py -I construir.py    # escribe ../../documento/anteproyecto.pdf y .docx
 ```
 
+El documento sigue la estructura de la guía del anteproyecto (portada, abstract, índice, introducción, estado del arte, desarrollo por fases 5.1 a 5.5, referencias y anexos). `construir.py` genera el PDF dos veces: la primera ubica la página de cada sección, tabla y figura y la segunda escribe el índice con esos números. Imprime primero en `documento_fuente/_borrador.pdf` y luego reemplaza `documento/anteproyecto.pdf`; si ese PDF está abierto en un visor, el script lo avisa y hay que cerrarlo y volver a ejecutarlo.
+
 Si cambia una cifra, se actualizan juntos el script, su salida, `anexos/CIFRAS.md` y el documento.
 
 ## No incluido
