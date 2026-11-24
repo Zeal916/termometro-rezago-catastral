@@ -1,0 +1,264 @@
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body { font-family: Arial; font-size: 10pt; color: #000000; line-height: 1.2; }
+h1 { font-family: Arial; font-size: 14pt; color: #000000; margin: 0 0 2pt 0; }
+h2 { font-family: Arial; font-size: 12pt; color: #000000; margin: 10pt 0 4pt 0; }
+h3 { font-family: Arial; font-size: 10.5pt; color: #000000; margin: 6pt 0 3pt 0; }
+p { margin: 0 0 4pt 0; }
+li { margin: 0 0 2pt 0; }
+table { border-collapse: collapse; width: 100%; margin: 3pt 0 6pt 0; }
+th, td { border: 1px solid #000000; padding: 2pt 4pt; font-family: Arial; font-size: 8.5pt; color: #000000; vertical-align: top; }
+th { background: #e6e6e6; font-weight: bold; text-align: left; }
+.small { font-size: 8.5pt; }
+.fig { text-align: center; margin: 4pt 0; }
+</style>
+</head>
+<body>
+
+<h1>Termómetro de rezago catastral. Anexo de la carta del proyecto</h1>
+<p><b>Proyecto:</b> Evidencia de mercado para medir la relación entre el avalúo catastral y el mercado, priorizar la actualización y revisar el ajuste de avalúos del Art. 49 (Ley 2294 de 2023).</p>
+<p><b>Curso:</b> Gerencia de Proyectos de Analytics, MIAD, Universidad de los Andes. <b>Equipo:</b> Nicolás Santos, Cristian Ortiz, Daniel Aguirre, Dayan Hincapie. <b>Asesor:</b> Carlos Ramírez. <b>Fecha de entrega:</b> 26 de octubre de 2026 (última revisión: 24 de octubre de 2026).</p>
+
+<h2>Parte I. Idealización de problemáticas</h2>
+<h3>1.1 Ideas generadas con las cuatro estrategias</h3>
+<p>El equipo exploró el dataset completo del IGAC (30,9 millones de actos registrales, no solo compraventas) y fuentes públicas complementarias. Las ideas son:</p>
+<table>
+<tr><th style="width:4%">#</th><th style="width:32%">Idea</th><th style="width:21%">Naturaleza</th><th>Origen</th></tr>
+<tr><td>1</td><td>Termómetro de rezago catastral: medir cuánto se ha separado el precio de mercado del avalúo en cada municipio, en zona urbana y rural.</td><td>Alineada al plan estratégico y derivada de métricas de desempeño</td><td>La norma exige un avalúo de 60% a 100% del valor comercial; antes del ajuste el rezago promedio era de 16,5 años (IGAC).</td></tr>
+<tr><td>2</td><td>Revisión del ajuste del Art. 49 con transacciones registradas.</td><td>Derivada de métricas de desempeño</td><td>Ajuste de 2026 sobre 1.639.140 predios rurales, con paro campesino, revisiones a la baja y demandas.</td></tr>
+<tr><td>3</td><td>Acumulación de precios en el tope de la vivienda VIS.</td><td>Análisis financiero</td><td>En 2023 hubo 8.763 ventas en 150 salarios mínimos, 79 veces más que en los precios vecinos.</td></tr>
+<tr><td>4</td><td>Radar de compras inusuales para prevención de lavado de activos.</td><td>Alineada al plan estratégico</td><td>Tipologías de la UIAF y estándares del GAFI.</td></tr>
+<tr><td>5</td><td>Detector de escrituras declaradas por el avalúo y no por el precio real.</td><td>Análisis financiero</td><td>41% de las reventas crece entre 0% y 5% anual, igual que el reajuste.</td></tr>
+<tr><td>6</td><td>Estimación del valor absoluto de cada compraventa.</td><td>Orgánica</td><td>Lluvia de ideas inicial del equipo.</td></tr>
+<tr><td>7</td><td>Tablero descriptivo de la dinámica de compraventas.</td><td>Orgánica</td><td>Lluvia de ideas inicial del equipo.</td></tr>
+<tr><td>8</td><td>Índice de ventas repetidas para el Área Metropolitana de Bucaramanga.</td><td>Alineada al plan estratégico</td><td>Trabajo previo del equipo con 19.764 pares de ventas.</td></tr>
+</table>
+
+<h3>1.2 Filtro con las siete características</h3>
+<table>
+<tr><th style="width:24%">Característica</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+<tr><td>1. Enfoque en el cliente</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Parcial</td><td>Sí</td></tr>
+<tr><td>2. Métricas disponibles o medibles rápido</td><td>Sí</td><td>Sí</td><td>Sí</td><td>No (sin casos confirmados)</td><td>Sí</td><td>No (sin área ni estrato)</td><td>Sí</td><td>Sí</td></tr>
+<tr><td>3. Existe un champion dueño del proceso</td><td>Sí (IGAC)</td><td>Sí (IGAC)</td><td>Parcial (MinVivienda)</td><td>Parcial</td><td>Sí (OIC, calidad del dato de mercado)</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
+<tr><td>4. Evento recurrente</td><td>Sí</td><td>Sí (fase rural 2026, revisiones abiertas y fase urbana adoptada)</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
+<tr><td>5. Ligado a objetivos del negocio</td><td>Sí</td><td>Sí</td><td>Parcial</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
+<tr><td>6. Beneficio financiero trazable</td><td>Sí (predial)</td><td>Sí (predial)</td><td>Parcial</td><td>No</td><td>Sí (predial: avalúos sin sesgo)</td><td>Parcial</td><td>No</td><td>Parcial</td></tr>
+<tr><td>7. Solución desconocida</td><td>Sí (no hay índice rural)</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td><td>No (tableros del OIC)</td><td>No (IPVU del Banco de la República)</td></tr>
+<tr><td><b>Decisión</b></td><td><b>Pasa</b></td><td><b>Pasa</b></td><td>Descartada</td><td>Descartada</td><td><b>Pasa</b></td><td>Descartada</td><td>Descartada</td><td>Descartada</td></tr>
+</table>
+
+<h3>1.3 Resultado</h3>
+<ol>
+<li>Pasan las ideas 1, 2 y 5, que cumplen las siete características. Se refuerzan entre sí: la 5 limpia el dato, la 1 mide el rezago y la 2 lo contrasta con el ajuste del IGAC. Se integran en un solo proyecto.</li>
+<li>La idea 2 es recurrente: el Art. 49 tiene una fase rural (2026), revisiones abiertas por la Resolución 0384 y una metodología urbana ya adoptada (Resolución 1939 de 2025).</li>
+<li>Se descartan las ideas 3, 4, 6, 7 y 8 porque no cumplen al menos una característica. La 3 se guarda como respaldo.</li>
+</ol>
+
+<h2>Parte II. Jerarquización, selección y descripción</h2>
+<h3>2.1 Matriz de valor y capacidad de avanzar (IBM, 2020)</h3>
+<p>Solo se ubican las ideas que pasaron el filtro. Cada una se calificó de 1 a 5 en dos ejes: el valor considera el tamaño del problema y la urgencia del cliente; la capacidad considera los datos, el tiempo de dos cursos y el conocimiento del equipo. El horizonte indica cuándo se aborda cada una. La 2 es valiosa pero hoy difícil: depende de vigencias dispersas en memorias y resoluciones.</p>
+<p class="fig"><img src="salidas/fig3_matriz_ibm.png" width="560"></p>
+
+<h3>2.2 Respuestas a las preguntas de la oportunidad</h3>
+<ol>
+<li><b>Descripción de la oportunidad.</b> El IGAC necesita saber en qué municipios el avalúo catastral está más lejos del mercado, para decidir dónde actualizar o revisar primero y para sustentar o corregir el ajuste del Art. 49. Las medidas oficiales de precios cubren como máximo 53 municipios urbanos y ninguna mide zonas rurales.</li>
+<li><b>Retos principales.</b> (a) El valor registrado no siempre es el precio real: una parte de las escrituras se declara por el avalúo. (b) Las ventas no traen área, estrato ni zona homogénea. (c) Los municipios pequeños tienen pocas reventas. (d) El tema es sensible: hubo un paro campesino y hay demandas en curso. (e) La regla puede cambiar con el nuevo gobierno y con el proyecto de ley C159 de 2026.</li>
+<li><b>Prioridad.</b> Que el IGAC pueda decidir con evidencia de mercado dónde actualizar o revisar primero, empezando por los municipios del Art. 49 que tienen reclamos y revisiones abiertas.</li>
+<li><b>Recursos.</b> Sí. Los datos son abiertos y el equipo cubre datos, modelación, negocio y comunicación. El detalle está en la Parte III, punto 3.4.</li>
+<li><b>Tiempo disponible.</b> Dos cursos: 8 semanas de anteproyecto (octubre y noviembre de 2026) y el Capstone en el siguiente periodo.</li>
+<li><b>Autoridad final.</b> La Dirección General del IGAC, con la Dirección de Gestión Catastral como dueña del proceso de actualización y del ajuste del Art. 49.</li>
+</ol>
+
+<h3>2.3 Dinámica de las 5W</h3>
+<table>
+<tr><th style="width:12%">Pregunta</th><th>Respuesta</th></tr>
+<tr><td>Quién</td><td><b>Cliente y champion:</b> IGAC, Dirección de Gestión Catastral, con el OIC (Dirección de Investigación y Prospectiva).<br><b>Deben participar:</b> analistas del OIC, direcciones territoriales del IGAC (revisan los aumentos con la Resolución 0384), secretarías de Hacienda municipales y la SNR como fuente.<br><b>Afectados positivamente:</b> municipios con rezago (más recaudo y mejor planeación), propietarios de zonas sobreajustadas (posible corrección) y la ciudadanía (equidad, porque las tierras más baratas eran las más rezagadas).<br><b>Afectados negativamente:</b> propietarios de municipios priorizados (más predial), municipios donde se reduzca el ajuste (menos recaudo), el IGAC si la evidencia contradice su ajuste (riesgo reputacional y jurídico) y los gremios agropecuarios que se oponen al ajuste.<br><b>Interesados en la decisión:</b> DNP (PND 2026-2030), Ministerio de Hacienda (finanzas territoriales), Congreso (proyecto de ley C159 de 2026), Federación Colombiana de Municipios y gobernaciones con mesas de revisión, como Santander y Valle.</td></tr>
+<tr><td>Qué</td><td>Medir con transacciones reales la brecha entre el mercado y el avalúo por municipio, en zona urbana y rural, priorizar municipios para actualizar o revisar y señalar dónde el ajuste del Art. 49 no coincide con lo que muestran las ventas.</td></tr>
+<tr><td>Dónde</td><td>Todo el país donde el índice se pueda identificar: 340 municipios en zona urbana y 324 en zona rural. Piloto en Santander, epicentro del paro de abril de 2026: de sus 68 municipios del Art. 49, 15 tienen índice rural propio y en ellos se contrasta el aumento de la Resolución 2057 con el mercado. Los demás se cubren con un índice departamental y no se evalúan uno por uno.</td></tr>
+<tr><td>Cuándo</td><td>El problema es permanente: después de un ajuste, el avalúo vuelve a subir solo por decreto y la brecha se abre otra vez. La urgencia es ahora: el Consejo de Estado admitió en septiembre de 2026 una demanda contra la Resolución 2057, el PND 2026-2030 llega al Congreso en febrero de 2027 y el proyecto C159 de 2026 está en trámite.</td></tr>
+<tr><td>Por qué</td><td>El reajuste anual es menor que la valorización del mercado. El IGAC reporta que el ajuste bajó el rezago promedio de 16,5 a 4,5 años, pero no hay una medida independiente que lo confirme. Además, cuando una escritura se declara por el avalúo, el registro reproduce el rezago en lugar de medirlo.</td></tr>
+</table>
+
+<h3>2.4 Planteamiento del problema de negocio</h3>
+<table>
+<tr><th style="width:24%">Elemento</th><th>Respuesta</th></tr>
+<tr><td>Mejoraremos...</td><td>La medición de la relación entre el avalúo y el mercado con la que se decide qué municipios actualizar o revisar primero, y con la que se verifica el ajuste del Art. 49.</td></tr>
+<tr><td>Para...</td><td>La Dirección de Gestión Catastral y el OIC del IGAC, y por su intermedio los municipios que dependen del predial.</td></tr>
+<tr><td>Necesitan participar...</td><td>Los analistas del OIC (validan el índice), las direcciones territoriales del IGAC (revisan los aumentos) y las secretarías de Hacienda municipales (usan la priorización).</td></tr>
+<tr><td>El usuario lidia hoy porque...</td><td>Las medidas oficiales son urbanas y parciales: IPVN del DANE (53 municipios, vivienda nueva), IVP del DANE (22 capitales, base del reajuste urbano) e IPVU del Banco de la República (9 ciudades). No hay índice rural, y el reajuste rural sigue los precios al productor agropecuario, no los de la tierra. La Resolución 2057 fijó los aumentos desde el nivel central y, tras el paro, las direcciones territoriales los revisan municipio por municipio, sin un contraste público e independiente con las ventas.</td></tr>
+<tr><td>Al resolver esto se impacta el negocio porque...</td><td>La actualización y las revisiones se dirigen a donde la brecha es mayor y el ajuste se sustenta o corrige con evidencia reproducible. La medida sirve con cualquier regla: con el piso actual de 60% o con el techo de 50% que propone el proyecto C159, cumplirla exige medir el valor comercial.</td></tr>
+</table>
+
+<h2>Parte III. Accesibilidad</h2>
+<h3>3.1 ¿Existen los datos? ¿Dónde están?</h3>
+<table>
+<tr><th style="width:31%">Fuente</th><th style="width:15%">Nivel</th><th>Acceso y uso</th></tr>
+<tr><td>Registro de Transacciones Inmobiliarias IGAC 2015-2023 (datos.gov.co, 7y2j-43cv)</td><td>Acto registral por folio</td><td>API pública Socrata, sin datos nuevos desde abril de 2025. 5.424.769 compraventas, 3.995.772 con valor, 1.096 municipios. Trae también los demás actos del folio (hipoteca, propiedad horizontal, construcción, englobe y desenglobe), que sirven para depurar y anticipar el tipo de escritura.</td></tr>
+<tr><td>Resolución IGAC 2057 de 2025 (Diario Oficial 53.354)</td><td>Zona homogénea geoeconómica (ZHG)</td><td>PDF público con el aumento de cada zona. Se extrajeron las 7.484 zonas de los 527 municipios.</td></tr>
+<tr><td>Actos de revisión de la Resolución 0384 de 2026</td><td>ZHG, por municipio</td><td>Los expide cada dirección territorial. En octubre de 2026 el normograma del IGAC publica 15, todos de Norte de Santander; en Santander siguen en trámite. Se muestran si se publican; no son insumo obligatorio.</td></tr>
+<tr><td>Memorias técnicas del Art. 49 y resoluciones de actualización (igac.gov.co)</td><td>ZHG y municipio</td><td>PDF con avalúo vigente, valor comercial propuesto y año de la última actualización. Algunas tablas son imágenes (OCR).</td></tr>
+<tr><td>IPVN e IVP (DANE); IPVU (Banco de la República)</td><td>Ciudad</td><td>Publicados. Sirven para validar el índice urbano donde coinciden.</td></tr>
+<tr><td>Gestores catastrales (datos.gov.co, bhcx-bx97) y DIVIPOLA (DANE)</td><td>Municipio</td><td>Datos abiertos. 836 municipios con el IGAC como gestor; agrupación por departamento y ruralidad.</td></tr>
+<tr><td>Decretos anuales de reajuste de avalúos</td><td>Nacional, por año</td><td>Gestor normativo. Reajuste de predios no actualizados: cerca de 3% al año; menor en predios rurales agropecuarios.</td></tr>
+</table>
+<p>Fuentes evaluadas y no utilizables: el avalúo predio a predio no se puede unir con las ventas (los catastros abiertos, como los R1 y R2 del AMB, no traen matrícula).</p>
+
+<h3>3.2 ¿Se puede modelar el problema?</h3>
+<ol>
+<li><b>Sí, sin área ni estrato.</b> Se compara cada inmueble consigo mismo: el cambio de precio entre dos ventas del mismo folio (Bailey, Muth y Nourse, 1963; Case y Shiller, 1987). Casi siempre el área y el estrato no cambian; los cambios físicos (construcción, englobe, desenglobe) se depuran con los actos del mismo folio: piloto en el AMB en la semana 4, con los actos ya descargados, y todo el país en el Capstone. Hay 256.973 pares utilizables: 183.439 urbanos, 71.004 rurales y 2.530 sin zona en la fuente. <b>Límite:</b> de las compraventas de un predio con valor, 15% tiene una venta anterior, 10% con al menos un año de diferencia y 9% entra al índice. El producto decide por municipio; no estima el valor de compraventas sin venta anterior.</li>
+<li><b>La señal existe, con cotas.</b> En 2023 el índice urbano mediano (2015 = 100, 136 municipios grandes) está entre 153 y 250, y un avalúo sin actualizar llegó a 127. El índice robusto con todas las reventas es la cota inferior: entre 2015 y 2018 casi la mitad de las escrituras seguía el avalúo y la mediana se pega al reajuste. Quitar las reventas que crecen 0% a 5% anual da la cota superior, que exagera por tres razones: deja sobrerrepresentados los pares mixtos, con la primera venta declarada por el avalúo y la segunda por el precio real (por eso salta de 130 a 161 en 2019, tras la Ley 1943 de 2018); conserva cambios físicos menores a 5 veces aún sin depurar; y quita también ventas de mercado que se valorizaron poco. El índice por mínimos cuadrados con todos los pares (180) cae en el tercio inferior de la banda. El avalúo perdió entre 17% y 49% frente al mercado.</li>
+<li><b>Hallazgo que orienta el modelo.</b> El 41% de las reventas crece entre 0% y 5% anual y el 14% exactamente 0% o 3%. La proporción bajó de 50% en 2018 a 31% en 2019, cuando la Ley 1943 de 2018 exigió declarar el precio real (art. 90 del Estatuto Tributario), y volvió a 40% en 2021-2023. El tipo de valor es de cada escritura, no de cada par: un par puede combinar dos escrituras por avalúo, dos de mercado o una de cada una. Por eso el modelo clasificará escrituras, no pares.</li>
+<li><b>Línea base medida sin fuga.</b> Se entrena con pares filtrados y se prueba con todas las reventas de al menos un año, sin filtrar por el valor que se quiere predecir. La regla del reajuste tiene un error mediano de 18,3% (IC 95%: 18,0 a 18,8); sin ajuste, 23,4%; con un índice por mínimos cuadrados, 24,6%; con un índice robusto, 20,6%. La regla gana porque 36,9% de las reventas crece como el avalúo: ahí falla 3,5%, frente a 7,2% del índice. En el resto falla 43,6% y el índice 38,3%. Si se supiera de antemano el tipo de escritura, el error bajaría a 14,8%. Esa agrupación usa el valor observado: para lograrlo fuera de muestra hacen falta variables conocidas antes de la venta, como una hipoteca registrada el mismo día, la propiedad horizontal o la primera venta de un folio nuevo.</li>
+</ol>
+<p class="fig"><img src="salidas/fig1_indice_vs_reajuste.png" width="560"></p>
+
+<h3>3.3 ¿La organización apoyará e implementará la solución?</h3>
+<ol>
+<li><b>Sí, por mandato.</b> El OIC tiene entre sus funciones monitorear el mercado y alertar sobre comportamientos atípicos (IGAC, 2024). La metodología del Art. 49 (Resolución 1912 de 2024) ya usa transacciones de la SNR y modelos estadísticos, así que el método propuesto habla el mismo lenguaje.</li>
+<li><b>Limitantes de adopción.</b> El proyecto no cuenta con contacto directo con el IGAC; la validación se hace con documentos públicos: memorias técnicas del Art. 49 e índices oficiales urbanos. El IGAC tiene nuevo director desde el 1 de octubre de 2026 y el nuevo gobierno es crítico del ajuste. Por eso el producto se presenta como una medición neutral frente a la regla y no como un dictamen sobre avalúos.</li>
+</ol>
+
+<h3>3.4 Recursos</h3>
+<table>
+<tr><th style="width:12%">Tipo</th><th style="width:48%">Recursos</th><th>Condiciones</th></tr>
+<tr><td>Humanos</td><td>Nicolás Santos (líder y negocio), Cristian Ortiz (datos), Daniel Aguirre (modelación) y Dayan Hincapie (visualización y documentación). Asesor de dominio: Carlos Ramírez.</td><td>Cerca de 6 horas por semana por persona en promedio: 192 horas del equipo en el curso y 192 en el Capstone.</td></tr>
+<tr><td>Datos</td><td>Las fuentes de la tabla 3.1.</td><td>Cerca de 800 MB de compraventas y 5,4 M de actos del folio (hipoteca, propiedad horizontal, construcción, englobe y desenglobe) bajados por código y con pocas columnas, no los 30,9 M de actos. Resoluciones y memorias en PDF.</td></tr>
+<tr><td>Tecnológicos</td><td>Python 3.11 (pandas, statsmodels, pdfplumber, matplotlib), API Socrata, OCR Tesseract para tablas en imagen, repositorio Git y Office. En el Capstone, tablero en Power BI Desktop o Streamlit.</td><td>Computadores personales: las compraventas y los actos del folio (unos 11 millones de filas) caben en memoria. Sin licencias pagas adicionales. Credenciales fuera del código.</td></tr>
+</table>
+
+<h2>Parte IV. Replanteamiento y limitantes</h2>
+<h3>4.1 Problema replanteado</h3>
+<p>Construir un índice de precios de mercado por municipio, en zona urbana y rural, con las ventas repetidas del Registro IGAC 2015-2023, identificando las escrituras declaradas por el avalúo, para medir la relación entre el avalúo y el mercado, priorizar la actualización y la revisión en los municipios donde el IGAC es gestor, contrastar el ajuste del Art. 49 con el mercado según el año de la última actualización, y señalar operaciones atípicas. Este semestre demuestra con datos que la brecha se puede medir; el Capstone construye el producto.</p>
+
+<h3>4.2 Umbrales y su justificación</h3>
+<table>
+<tr><th style="width:27%">Umbral</th><th>Razón</th><th style="width:25%">Verificación prevista</th></tr>
+<tr><td>Solo escrituras de un predio</td><td>Una escritura con varios predios trae un precio global (por ejemplo, apartamento, parqueadero y depósito).</td><td>Conteo de escrituras con valor repetido (S3).</td></tr>
+<tr><td>Valor mayor a COP 1 M</td><td>Valores menores son errores de digitación o actos simbólicos.</td><td>Revisión de una muestra (S4).</td></tr>
+<tr><td>Al menos 365 días entre ventas</td><td>Las reventas rápidas mezclan errores y operaciones atípicas; van a reglas de calidad y alertas.</td><td>Comparar con 180 días.</td></tr>
+<tr><td>Cambio menor a 5 veces, solo para construir el índice</td><td>Cambios mayores suelen ser errores o cambios físicos. La evaluación usa todas las reventas, porque el filtro usa el valor que se quiere predecir.</td><td>Sensibilidad con 3 y 10 veces (S5 y S6).</td></tr>
+<tr><td>Índice propio: 30 pares y al menos 5 en cada año 2015-2023</td><td>Sin pares en un año, el nivel de ese año frente a 2015 no está identificado o sale inestable. Con menos datos se usa un índice departamental.</td><td>Ancho del intervalo de confianza del índice (meta ±10%).</td></tr>
+<tr><td>Presupuesto de alertas: 2% de las reventas, unas 960 al año</td><td>Carga fija que un equipo pequeño puede revisar, cerca de 4 por día hábil; permite comparar modelos con la misma carga.</td><td>Sensibilidad con 1% y 5%.</td></tr>
+</table>
+
+<h3>4.3 Limitantes</h3>
+<table>
+<tr><th style="width:12%">Tipo</th><th style="width:44%">Limitante</th><th>Manejo</th></tr>
+<tr><td>Analítica</td><td>Parte del valor registrado es el avalúo y no el precio; el índice queda entre dos cotas.</td><td>Clasificar cada escritura con variables previas a la venta; es el núcleo técnico del Capstone.</td></tr>
+<tr><td>Analítica</td><td>Pocos pares en municipios pequeños: 324 de los 1.096 municipios tienen índice rural propio.</td><td>Índice jerárquico por departamento y categoría de ruralidad.</td></tr>
+<tr><td>Analítica</td><td>La estimación individual solo cubre reventas: 15% de las compraventas de un predio con valor, 10% con al menos un año.</td><td>El producto decide por municipio; no estima el valor de compraventas sin venta anterior.</td></tr>
+<tr><td>Analítica</td><td>El índice mide 2015-2023; el ajuste del Art. 49 corrige el rezago desde la última actualización.</td><td>Contrastar desde el año de la última actualización; sin ese dato, el municipio solo puede quedar como "revisar", nunca como "incoherente".</td></tr>
+<tr><td>Datos</td><td>Las ventas no traen zona homogénea, área rural ni número predial.</td><td>El contraste es municipal; las zonas extremas se revisan con reglas sobre la propia resolución.</td></tr>
+<tr><td>Datos</td><td>El avalúo por predio no se puede unir con las ventas y el año de la última actualización está disperso en resoluciones.</td><td>El método no usa el avalúo por predio: compara el índice con el reajuste por decreto. Las vigencias salen de memorias y resoluciones: Santander en S5, el resto en el Capstone.</td></tr>
+<tr><td>Datos</td><td>Los aumentos de la Resolución 2057 se ajustan tras el paro y los actos se publican de forma gradual: hoy 15, ninguno de Santander.</td><td>El contraste usa el aumento original, público y completo; los ajustes publicados se muestran al lado, sin ser condición del proyecto.</td></tr>
+<tr><td>Recursos</td><td>Cuatro estudiantes de tiempo parcial, sin presupuesto.</td><td>Alcance por etapas, software libre y cómputo personal.</td></tr>
+<tr><td>Otros</td><td>Tema en litigio, cambio de gobierno y un proyecto de ley que cambiaría la regla.</td><td>Medición neutral frente a la regla, lenguaje de señal y evidencia, y seguimiento mensual del trámite.</td></tr>
+</table>
+
+<h2>Parte V. Beneficios esperados</h2>
+<h3>5.1 Métricas de negocio y nivel actual</h3>
+<table>
+<tr><th style="width:27%">Métrica de negocio</th><th style="width:19%">Valor actual</th><th style="width:22%">Valor objetivo</th><th>Por qué importa</th></tr>
+<tr><td>Municipios con evidencia de mercado propia para decidir dónde actualizar o revisar, urbano / rural</td><td>53 como máximo (IPVN, solo vivienda nueva) / 0</td><td>340 / 324, y el resto con índice departamental; de ellos, 235 / 235 con el IGAC como gestor</td><td>Sin una medida de mercado no se puede comparar el rezago entre municipios, y en zonas rurales no existe ninguna.</td></tr>
+<tr><td>Municipios del Art. 49 con contraste entre mercado y ajuste</td><td>0</td><td>143 con índice rural propio, desde el año de la última actualización</td><td>Hoy no hay contraste público e independiente; el gráfico muestra que sin el año de actualización no hay relación visible.</td></tr>
+<tr><td>Municipios donde el avalúo sin actualizar desde 2015 queda bajo el piso legal de 60% aunque entonces estuviera al 100% del valor comercial (pérdida mayor a 40%; índice 2023 mayor a 211)</td><td>Ninguno identificado; en la mediana urbana la pérdida va de 17% a 49%</td><td>Todos identificados con IC 95% y año de la última actualización; hoy, sin IC, son 49 urbanos y 53 rurales. El umbral usa el reajuste urbano de ~3%; en zona rural se recalcula en S3 con la serie agropecuaria</td><td>Es el beneficio financiero trazable y un incumplimiento concreto de la norma: la parte de la base del predial que dejó de corresponder al mercado.</td></tr>
+</table>
+<p class="small">Las tres métricas miden la decisión que el producto habilita. Su efecto en el recaudo o en el plan de actualización solo se mide si el IGAC lo adopta; en ese caso se propone medir qué parte del plan anual de actualización cae en los municipios de mayor brecha.</p>
+<p class="fig"><img src="salidas/fig2_art49_vs_mercado.png" width="560"></p>
+<p class="small">Lectura: el aumento corrige el rezago acumulado desde la última actualización, que puede tener 15 a 30 años, mientras el índice mide 2015 a 2023. Además, cada punto compara un índice rural municipal con la mediana simple de las zonas del municipio. Sin el año de la última actualización no se puede decir qué municipio está mal; por eso el contraste del Capstone se condiciona a esa fecha.</p>
+
+<h3>5.2 Beneficios cualitativos</h3>
+<ol>
+<li>Priorización transparente y reproducible del presupuesto de actualización y de revisión.</li>
+<li>Evidencia pública y verificable sobre un ajuste demandado, útil también para el debate del PND 2026-2030 y del proyecto C159 de 2026.</li>
+<li>Reglas de consistencia sobre la propia resolución que marcan zonas con aumentos extremos frente a las demás del municipio antes de publicarlas, como el 32.433% inicial de una zona de Baraya (Huila), corregido luego a 4%.</li>
+<li>Insumo de equidad tributaria: en Hato (Santander) el avalúo de las zonas más baratas era 2% del valor comercial y el de las más caras 20%.</li>
+<li>Método replicable por la Red de Observatorios Inmobiliarios Catastrales.</li>
+</ol>
+
+<h2>Parte VI. Criterios de éxito</h2>
+<h3>6.1 Criterios de entrega y cierre</h3>
+<table>
+<tr><th style="width:14%">Dimensión</th><th style="width:46%">Criterio</th><th>Justificación</th></tr>
+<tr><td>Alcance</td><td>Anteproyecto: carta y anexo, requerimientos y fuentes, informe de calidad con diccionario, análisis exploratorio y propuesta de modelos aprobados. Capstone: exploración descriptiva de las compraventas, índice, brecha, contraste del Art. 49, alertas, factores asociados a las diferencias entre valor estimado y registrado, y tablero.</td><td>Son los componentes que pide el caso para el producto mínimo y responden a las necesidades del cliente.</td></tr>
+<tr><td>Tiempo</td><td>Al menos 90% de los hitos en la fecha del cronograma (Anexo A).</td><td>El proyecto depende de entregas encadenadas: un retraso en datos retrasa todo lo demás.</td></tr>
+<tr><td>Costo</td><td>COP 0 en licencias y datos; desviación de horas planeadas de ±15% o menos por semana.</td><td>Solo se usan datos abiertos y software libre; las horas del equipo son el recurso escaso.</td></tr>
+<tr><td>Calidad</td><td>Cumplir las metas de negocio (5.1) y técnicas (6.2), con todo el análisis reproducible con un script.</td><td>Son medibles con líneas base ya calculadas.</td></tr>
+</table>
+<h3>6.2 Métricas técnicas del modelo</h3>
+<table>
+<tr><th style="width:27%">Métrica técnica</th><th style="width:19%">Línea base</th><th style="width:22%">Meta</th><th>Justificación</th></tr>
+<tr><td>Error mediano (MdAPE) al estimar el valor registrado de una reventa, en 56.994 reventas de prueba</td><td>18,3% con la regla del reajuste (IC 95%: 18,0 a 18,8)</td><td>16,5% o menos, con una mejora cuyo IC 95% excluya 0</td><td>Si se supiera de antemano el tipo de escritura, el error bajaría a 14,8%. La meta pide capturar la mitad de esa mejora con variables previas a la venta.</td></tr>
+<tr><td>AUC de detección de anomalías inyectadas x2 y x0,5</td><td>0,745 (regla); 0,757 (índice robusto)</td><td>Mayor que 0,757, la mejor línea base, con una mejora cuyo IC 95% excluya 0</td><td>Se altera cada reventa de prueba y se mide si su desviación supera la de las reventas sin alterar, sin etiquetas ni atributos del predio (Han et al., 2022). No depende del presupuesto: con 2% de alertas ningún método detecta más de 3%, porque sin depurar 9,8% de las reventas cambia 5 veces o más y llena el cupo. Ese 9,8% mezcla errores de digitación, que sí deben alertarse, con cambios físicos que saldrán al depurar.</td></tr>
+</table>
+<h3>6.3 Métricas de seguimiento del proyecto</h3>
+<table>
+<tr><th style="width:40%">Métrica de proceso</th><th>Valor actual</th><th>Meta</th><th>Frecuencia o corte</th></tr>
+<tr><td>Hitos entregados a tiempo</td><td>Inicia en S3</td><td>90% o más</td><td>Semanal</td></tr>
+<tr><td>Horas ejecutadas frente a planeadas</td><td>Inicia en S3</td><td>Desviación de ±15% o menos</td><td>Semanal</td></tr>
+<tr><td>Municipios del Art. 49 con año de última actualización consolidado</td><td>0 de 527</td><td>68 de Santander; los 527</td><td>S5; Capstone (C3)</td></tr>
+<tr><td>Variables y fuentes documentadas en el diccionario</td><td>0%</td><td>100%</td><td>S4</td></tr>
+</table>
+
+<h2>Parte VII. Contexto</h2>
+<ol>
+<li><b>El sector.</b> Las actividades inmobiliarias aportaron cerca de 7,4% del PIB en 2025 y emplean a cerca de 390.000 personas (DANE).</li>
+<li><b>La organización.</b> El IGAC es la máxima autoridad catastral y gestor directo en 836 municipios, según su registro de gestores en datos.gov.co. Su OIC debe comprender, monitorear y alertar sobre la dinámica del mercado (IGAC, 2024). Desde el 1 de octubre de 2026 su director es Jairo Alexis Frías Peña.</li>
+<li><b>El rezago.</b> En 2019 solo 5,7% del territorio tenía catastro actualizado (CONPES 3958). En julio de 2026 el IGAC reportó 41,34% del área actualizada, frente a la meta de 70% del PND 2022-2026. En su balance de gestión también reportó que el rezago promedio bajó de 16,5 a 4,5 años en 863 municipios, cifra que incluye municipios con otros gestores.</li>
+<li><b>La norma.</b> El avalúo debe estar entre 60% y 100% del valor comercial (Decreto 148 de 2020). Sin actualización solo sube por decreto: cerca de 3% al año, y en predios rurales agropecuarios según los precios al productor agropecuario (Ley 101 de 1993). En Hato (Santander), la memoria técnica del IGAC muestra avalúos entre 2% y 20% del valor comercial.</li>
+<li><b>El ajuste de 2026.</b> La Resolución 2057 de 2025 subió desde el 1 de enero de 2026 los avalúos de 1.639.140 predios rurales en 527 municipios: aumento mediano por zona de 326% y 1.521 zonas por encima de 1.000%. Tras el paro campesino de Santander (9 al 14 de abril), la Resolución 0384 permitió a las direcciones territoriales bajar los porcentajes; en Santander hay acuerdos de revisión en 33 municipios. El 25 de septiembre el Consejo de Estado admitió una demanda de nulidad. La Resolución 1939 de 2025 adoptó la metodología para un ajuste similar en zonas urbanas.</li>
+<li><b>El cambio de gobierno.</b> Desde el 7 de agosto de 2026 gobierna Abelardo de la Espriella, crítico del ajuste. El PND 2026-2030 llega al Congreso en febrero de 2027 y el proyecto de ley C159 de 2026 propone que el avalúo no supere el 50% del valor comercial.</li>
+<li><b>Relevancia.</b> Con el piso actual de 60% o con el techo propuesto de 50%, aplicar la regla exige medir el valor comercial por municipio. El proyecto produce esa medida con datos que el propio IGAC publica, sin tomar partido sobre cuál debe ser la regla.</li>
+</ol>
+
+<h2>Anexo A. Cronograma por grupos de procesos</h2>
+<ol>
+<li><b>Capacidad.</b> Cuatro personas, cerca de 6 horas por semana cada una: 24 horas del equipo por semana en promedio, 192 en las 8 semanas del curso y 192 en el Capstone, con el supuesto de igual duración y dedicación. Las horas de la tabla son del equipo; el responsable es el líder que responde por el proceso.</li>
+<li><b>Semana pico.</b> S3 junta la revisión de la carta y el anexo con los requerimientos y las fuentes: 49 horas, unas 12 por persona. Se compensa con S1 (9 horas) y S2 (21 horas). El monitoreo compara las horas reales con las planeadas de cada semana.</li>
+<li><b>Dependencias.</b> Los requerimientos parten del problema replanteado (Parte IV). Datos antes de calidad (S4), calidad antes del análisis exploratorio (S5 y S6) y este antes de la propuesta de modelos (S7). La consolidación de vigencias de Santander arranca en S3 porque están dispersas en memorias técnicas en PDF.</li>
+<li><b>Holgura.</b> Cuatro horas en S8 y ocho en C8 para absorber retrasos.</li>
+</ol>
+<table>
+<tr><th style="width:12%">Grupo de procesos</th><th style="width:25%">Actividades</th><th style="width:12%">Semanas</th><th style="width:7%">Horas del equipo</th><th style="width:10%">Líder responsable</th><th style="width:22%">Recursos y limitantes que considera</th><th>Entregable</th></tr>
+<tr><td>Inicio</td><td>Lectura del caso, fuentes e ideación.</td><td>S1: 5 a 11 oct</td><td>8</td><td>Nicolás Santos</td><td>Sin acceso al IGAC: se valida con documentos públicos.</td><td>Oportunidad elegida</td></tr>
+<tr><td>Planificación</td><td>Carta y anexo: primera versión.</td><td>S2: 12 a 18 oct</td><td>20</td><td>Nicolás Santos</td><td>Datos del AMB ya descargados.</td><td>Carta del proyecto</td></tr>
+<tr><td>Planificación</td><td>Carta y anexo revisados: línea base medida y contexto actualizado.</td><td>S3: 19 a 24 oct</td><td>22</td><td>Nicolás Santos</td><td>Semana pico; contexto revisado tras el cambio de gobierno.</td><td>Carta y anexo revisados (26 oct)</td></tr>
+<tr><td>Ejecución</td><td>Requerimientos (Kano), problema y métrica de analytics, fuentes y estado del arte; inicio de la consolidación de vigencias de Santander.</td><td>S3: 22 a 26 oct</td><td>26</td><td>Cristian Ortiz</td><td>Parte del problema replanteado; algunas memorias traen tablas como imagen (OCR).</td><td>Requerimientos, fuentes y estado del arte</td></tr>
+<tr><td>Ejecución</td><td>Calidad de datos, piloto de depuración de cambios físicos con los actos del folio (AMB), diccionario y video.</td><td>S4: 27 oct a 1 nov</td><td>24</td><td>Cristian Ortiz</td><td>Fechas en tres formatos; escrituras con varios predios; AMB ya descargado.</td><td>Informe de calidad, diccionario y video de avance</td></tr>
+<tr><td>Ejecución</td><td>Análisis exploratorio descriptivo (volumen, valores y territorio), índices piloto, sensibilidad y contraste piloto en Santander.</td><td>S5 y S6: 2 a 15 nov</td><td>40</td><td>Daniel Aguirre</td><td>Pocos pares en municipios pequeños: índice departamental.</td><td>Análisis exploratorio</td></tr>
+<tr><td>Ejecución</td><td>Propuesta de modelos: tipo de escritura, índices y alertas.</td><td>S7: 16 a 22 nov</td><td>24</td><td>Daniel Aguirre</td><td>Sin etiquetas: validación con memorias del Art. 49 y anomalías inyectadas.</td><td>Propuesta de modelos</td></tr>
+<tr><td>Monitoreo y control</td><td>Revisión semanal de hitos, horas y riesgos; seguimiento de la demanda y del proyecto C159.</td><td>S1 a S8, 1 hora por semana</td><td>8</td><td>Nicolás Santos</td><td>Alerta si una semana se desvía más de 15% de lo planeado.</td><td>Tablero de seguimiento</td></tr>
+<tr><td>Cierre</td><td>Documento y video final del anteproyecto.</td><td>S8: 23 a 29 nov</td><td>20</td><td>Dayan Hincapie</td><td>Incluye 4 horas de holgura.</td><td>Anteproyecto final</td></tr>
+<tr><td colspan="3"><b>Total del curso</b></td><td><b>192</b></td><td colspan="3"></td></tr>
+<tr><td>Planificación (Capstone)</td><td>Plan detallado y ajuste de metas con los resultados del anteproyecto.</td><td>C1</td><td>23</td><td>Nicolás Santos</td><td>Parte de la línea base y de la propuesta de modelos.</td><td>Plan del Capstone</td></tr>
+<tr><td>Ejecución (Capstone)</td><td>Datos: cambios físicos (país), variables previas a la venta y vigencias catastrales.</td><td>C2 y C3</td><td>40</td><td>Cristian Ortiz</td><td>Descarga de 5,4 M de actos del folio, filtrados por código (punto 3.4).</td><td>Base depurada</td></tr>
+<tr><td>Ejecución (Capstone)</td><td>Modelos: tipo de escritura, índice departamental, estimación, alertas y factores de diferencia.</td><td>C3 a C6</td><td>64</td><td>Daniel Aguirre</td><td>Núcleo técnico: separar escrituras de mercado y por avalúo.</td><td>Modelos validados</td></tr>
+<tr><td>Ejecución (Capstone)</td><td>Tablero: exploración descriptiva y termómetro.</td><td>C5 a C7</td><td>24</td><td>Dayan Hincapie</td><td>Advertencias de uso en cada vista.</td><td>Tablero de prueba</td></tr>
+<tr><td>Monitoreo y control (Capstone)</td><td>Seguimiento semanal y validación de métricas.</td><td>C1 a C8</td><td>8</td><td>Nicolás Santos</td><td>Metas de 6.2.</td><td>Informe de validación</td></tr>
+<tr><td>Cierre (Capstone)</td><td>Documentación de límites, plan de actualización anual y entrega.</td><td>C7 y C8</td><td>33</td><td>Dayan Hincapie</td><td>Incluye 8 horas de holgura; datos hasta 2023.</td><td>Producto y documento final</td></tr>
+<tr><td colspan="3"><b>Total del Capstone</b></td><td><b>192</b></td><td colspan="3"></td></tr>
+</table>
+<p class="small">Semanas S1 a S8 según el cronograma del curso; las del Capstone se ajustan al calendario del siguiente periodo.</p>
+
+<h2>Referencias</h2>
+<ol class="small">
+<li>Bailey, M., Muth, R. y Nourse, H. (1963). A regression method for real estate price index construction. Journal of the American Statistical Association, 58(304).</li>
+<li>Banco de la República. Índice de precios de la vivienda usada (IPVU), método de ventas repetidas. banrep.gov.co.</li>
+<li>Cámara de Representantes (2026). Proyecto de ley 159 de 2026 Cámara, topes al avalúo catastral y al impuesto predial.</li>
+<li>Case, K. y Shiller, R. (1987). Prices of single-family homes since 1970: new indexes for four cities. New England Economic Review.</li>
+<li>CONPES 3958 (2019). Estrategia para la implementación de la política pública de catastro multipropósito.</li>
+<li>DANE (2026). Boletín técnico del Índice de Precios de Vivienda Nueva (IPVN), II trimestre de 2026, e Índice de Valoración Predial (IVP).</li>
+<li>Decreto 148 de 2020 y decretos anuales de reajuste de avalúos (por ejemplo, Decreto 2311 de 2023).</li>
+<li>Han, S., Hu, X., Huang, H., Jiang, M. y Zhao, Y. (2022). ADBench: Anomaly Detection Benchmark. NeurIPS.</li>
+<li>IBM Garage (2020). The Business Opportunity Statement.</li>
+<li>IGAC (2024). Observatorio Inmobiliario Catastral. igac.gov.co.</li>
+<li>IGAC. Resoluciones 1912 de 2024 (metodología rural), 1939 de 2025 (metodología urbana), 2057 de 2025 (Diario Oficial 53.354) y 0384 de 2026 (Diario Oficial 53.453).</li>
+<li>IGAC (2026). Resultados de gestión 2022-2026 en el proceso de empalme; memoria técnica del artículo 49, municipio de Hato (Santander). igac.gov.co.</li>
+<li>IGAC (2026). Registro de transacciones inmobiliarias en Colombia 2015-2023 (7y2j-43cv) y Gestores catastrales de Colombia (bhcx-bx97). datos.gov.co.</li>
+<li>Ley 101 de 1993; Ley 2294 de 2023, artículo 49; Ley 1943 de 2018 y Ley 2010 de 2019 (artículo 90 del Estatuto Tributario).</li>
+<li>Prensa (2026). La Nación (caso Baraya); Vanguardia (14 de abril, acuerdos del paro; 9 de octubre, demanda admitida); El Frente (acuerdos en 33 municipios de Santander); Portafolio (cronograma del PND 2026-2030); El Tiempo (21 de junio, segunda vuelta presidencial).</li>
+</ol>
+</body>
+</html>

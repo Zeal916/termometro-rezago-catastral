@@ -24,13 +24,13 @@ import pandas as pd
 import pdfplumber
 
 BASE = Path(__file__).resolve().parent
-PDFS = BASE.parents[2] / "datos" / "memorias_art49_santander"
+PDFS = BASE.parents[1] / "datos" / "guia_5" / "memorias_art49_santander"  # no versionado: se descarga de los enlaces
 REAJUSTE_2023 = 100 * 1.03 ** 7 * 1.0431          # misma referencia de las secciones anteriores (128,3)
 COTA = 2017                                        # última actualización posible para entrar al Art. 49
 
 enl = pd.read_csv(BASE / "memorias_art49_santander_enlaces.csv", dtype={"div": str})
 mun = pd.read_csv(BASE / "res2057_santander_municipios.csv", dtype={"div": str})
-z = pd.read_csv(BASE.parents[1] / "Entrega 1" / "Guia1_v2_Termometro_Catastral" / "analisis" / "salidas" / "res2057_zonas.csv",
+z = pd.read_csv(BASE.parents[1] / "datos" / "guia_1" / "res2057_zonas.csv",
                 dtype={"div": str, "zhg": str})
 z = z[z["div"].isin(mun["div"])].copy()
 

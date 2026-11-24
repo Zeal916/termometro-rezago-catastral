@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Carta Proyecto - Guía 1</title>
+<link rel="stylesheet" href="estilos.css">
+<style>body{font-size:9.1pt;line-height:1.28} td,th{padding:1mm 1.5mm} h2{margin:3mm 0 1mm}</style></head>
+<body>
+<div class="title-band"><h1>Carta Proyecto</h1><div>Gerencia de Proyectos de Analytics · Guía 1 · Caso Dinámica Inmobiliaria 2026</div></div>
+
+<table>
+<tr><td class="k">Título del Proyecto</td><td colspan="3"><b>Valoración registrada y priorización de operaciones atípicas en compraventas del Área Metropolitana de Bucaramanga (2015–2023), como apoyo al Observatorio Inmobiliario Catastral del IGAC</b></td></tr>
+<tr><td class="k">Encargado del Proyecto</td><td>[Nombre del integrante líder del equipo]</td><td class="k">Asesor proyecto</td><td>[Nombre del asesor / profesora]</td></tr>
+<tr><td class="k">Fecha de Aprobación</td><td>[dd/mm/2026 – pendiente de aprobación del asesor]</td><td class="k">Última Revisión</td><td>18/10/2026 (v1.0)</td></tr>
+</table>
+
+<h2>Necesidades de la Compañía</h2>
+<table>
+<tr><td class="k">Contexto</td><td>El Observatorio Inmobiliario Catastral (OIC) del IGAC debe comprender, monitorear y alertar sobre las dinámicas del mercado inmobiliario (IGAC, 2024). Las actividades inmobiliarias aportan ≈7,4 % del PIB (2025) y ≈390 000 ocupados (DANE). El registro IGAC/SNR 2015–2023 contiene ≈30,9 M de anotaciones; en el Área Metropolitana de Bucaramanga (AMB: Bucaramanga, Floridablanca, Girón y Piedecuesta) hay 1 062 263 anotaciones y 165 517 compraventas, <b>todas con valor registrado</b>, frente a solo ≈40 % en Bogotá, Medellín, Cali y Barranquilla. Esto convierte al AMB en un territorio comparable y con volumen suficiente para un piloto replicable.</td></tr>
+<tr><td class="k">Planteamiento del Problema</td><td><b>Mejoraremos</b> la capacidad del OIC de entender qué explica los valores registrados de las compraventas y de decidir qué operaciones revisar primero, <b>para</b> los analistas del OIC/IGAC y las entidades territoriales que formulan programas de vivienda (con SNR y UIAF como usuarios secundarios de las señales). <b>Hoy</b> dichos actores no cuentan con una referencia estadística comparable para saber si un valor registrado es consistente con operaciones similares (zona, año, tipo), y los valores extremos (p. ej. 653 compraventas &gt; COP 1 000 M y un máximo de COP 143 246 M en Bucaramanga) se revisan de forma ad hoc o no se revisan. <b>Al resolverlo</b> se mejora la calidad de la información pública, se focaliza el esfuerzo de revisión en pocas operaciones y se apoyan decisiones de localización y viabilidad de vivienda con evidencia. Una señal atípica <u>no</u> es evidencia de fraude.</td></tr>
+<tr><td class="k">Clientes / Stakeholders</td><td><b>Cliente:</b> OIC–IGAC (Dirección de Investigación y Prospectiva). <b>Usuarios:</b> analistas OIC; Alcaldías y Área Metropolitana de Bucaramanga (vivienda); SNR; avaluadores y entidades financieras; oficiales de cumplimiento / UIAF. <b>Afectados positivamente:</b> los anteriores y la ciudadanía (mejor información). <b>Afectados negativamente / riesgo:</b> propietarios o intermediarios señalados erróneamente (falsos positivos), notarías/ORIP (carga adicional de aclaraciones). <b>Equipo y asesor</b> del curso.</td></tr>
+<tr><td class="k">CTQ (Factores Críticos de Satisfacción)</td><td>(1) Estimación del valor con error acotado y comparable por zona/año. (2) Alertas priorizadas, <b>explicables</b> (factores que las motivan) y con baja carga de falsos positivos. (3) Datos trazables y documentados (diccionario, calidad). (4) Interfaz clara para usuario no técnico. (5) Advertencias de uso: estimación ≠ avalúo; alerta ≠ fraude.</td></tr>
+<tr><td class="k">Key Business Drivers</td><td><b>Calidad/confiabilidad de la información</b> (completitud y consistencia del valor); <b>Productividad de revisión</b> (alertas útiles por hora-analista); <b>Impacto en SH</b> (utilidad para decisiones territoriales y de cumplimiento); <b>Time to Market</b> (MVP en 8 semanas); <b>Costo</b> (solo datos abiertos y software libre).</td></tr>
+</table>
+
+<h2>Proyecto</h2>
+<table>
+<tr><td class="k">Objetivo del Proyecto</td><td>Construir, en 8 semanas y con datos abiertos, un producto mínimo viable que (i) explore la dinámica de compraventas del AMB 2015–2023, (ii) estime el valor registrado de una compraventa con un error mejor que el de una referencia ingenua y señale los factores asociados a las diferencias, y (iii) priorice operaciones atípicas para revisión con explicación, documentando límites de uso.</td></tr>
+</table>
+<table>
+<tr><th colspan="2">Métricas (negocio y proceso)</th><th>Valor Actual</th><th>Valor Objetivo</th></tr>
+<tr><td colspan="2">Error de la estimación de valor (MdAPE, log-valor) vs. línea base ingenua (mediana municipio·año·zona)</td><td>Línea base: por medir (S3–S5)</td><td>Reducir ≥ 20 % el MAE relativo vs. la línea base</td></tr>
+<tr><td colspan="2">Precisión@100 de alertas, validada por muestra de revisión experta (negocio)</td><td>0 % (no existe priorización)</td><td>≥ 50 % «atípica explicable o error de dato»</td></tr>
+<tr><td colspan="2">Compraventas con valor &gt; COP 1 000 M sin revisión ni contexto</td><td>653 (0,9 % de Bucaramanga)</td><td>100 % con bandera de revisión y explicación</td></tr>
+<tr><td colspan="2">Variables y fuentes documentadas en diccionario (proceso)</td><td>0 %</td><td>100 %</td></tr>
+<tr><td colspan="2">Avance del plan (hitos entregados a tiempo) / desviación de horas</td><td>0 / 0 %</td><td>≥ 90 % de hitos; desviación ≤ ±15 %</td></tr>
+</table>
+<table>
+<tr><td class="k">Alcance del Proyecto</td><td><b>Incluye:</b> compraventas (cód. 125) de Bucaramanga, Floridablanca, Girón y Piedecuesta, 2015–2023; limpieza y calidad; variables territoriales/temporales/macro; modelo de valoración; detección de atípicos; tablero MVP; documentación. <b>Excluye:</b> otros actos jurídicos como objeto de modelación, otras ciudades, avalúos oficiales, conclusiones jurídicas o de fraude, puesta en producción.</td><td class="k">Restricciones</td><td>8 semanas; equipo de estudiantes de tiempo parcial; solo datos abiertos y cómputo personal; sin atributos del inmueble (área, estrato) ni <i>número catastral</i> (columna vacía en la fuente); valor declarado ≠ valor de mercado; sin etiquetas de fraude; datos hasta 2023.</td></tr>
+<tr><td class="k">Beneficios</td><td colspan="3"><b>Cuantitativos (a validar con el OIC):</b> concentrar la revisión en el 1 % superior (≈ 185 operaciones/año en el AMB frente a ≈ 18 400 compraventas/año); reducción del error de estimación ≥ 20 % frente a referencia ingenua; 100 % de variables documentadas. <b>Cualitativos:</b> información trazable y comparable, insumo para programas de vivienda, base replicable para otras ciudades de la Red de Observatorios, lenguaje de «señal», no de acusación.</td></tr>
+</table>
+
+<table>
+<tr><th colspan="2">Equipo de Trabajo – Nombre</th><th colspan="2">Rol</th></tr>
+<tr><td colspan="2">[Integrante 1]</td><td colspan="2">Líder de proyecto / analista de negocio</td></tr>
+<tr><td colspan="2">[Integrante 2]</td><td colspan="2">Ingeniería y calidad de datos</td></tr>
+<tr><td colspan="2">[Integrante 3]</td><td colspan="2">Modelación (valoración y atípicos)</td></tr>
+<tr><td colspan="2">[Integrante 4]</td><td colspan="2">Visualización, documentación y comunicación</td></tr>
+<tr><td colspan="2">[Asesor / experto OIC]</td><td colspan="2">Asesor y validador de dominio (sponsor de aprobación)</td></tr>
+</table>
+
+<h2>Planeación (DMAIC)</h2>
+<table>
+<tr><th style="width:12%">Fase</th><th>Actividades</th><th style="width:15%">Fechas</th><th style="width:16%">Responsable (Rev.)</th></tr>
+<tr><td><b>Definir</b></td><td>Lectura del caso, ideación y selección de oportunidad, 5W, carta proyecto, ubicación de fuentes (Guía 1).</td><td>Semanas 1–2</td><td>Líder / Int. 1</td></tr>
+<tr><td><b>Medir</b></td><td>Descarga vía API Socrata (7y2j-43cv), diccionario de datos, perfilado de calidad, líneas base (Guía 2 y 3).</td><td>Semanas 3–4</td><td>Int. 2</td></tr>
+<tr><td><b>Analizar</b></td><td>Análisis exploratorio, ingeniería de variables (territoriales/macro), comparabilidad y grupos de referencia (Guía 4).</td><td>Semanas 5–6</td><td>Int. 3 y 2</td></tr>
+<tr><td><b>Mejorar</b></td><td>Modelos de valoración y detección de atípicos, validación temporal, explicabilidad, tablero MVP.</td><td>Semanas 6–7</td><td>Int. 3 y 4</td></tr>
+<tr><td><b>Controlar</b></td><td>Documentación de límites de uso, plan de actualización/monitoreo, video y documento final.</td><td>Semana 8</td><td>Int. 4 / Líder</td></tr>
+</table>
+<p class="small">Nota: las semanas siguen el cronograma sugerido del caso; las fechas calendario se fijan al aprobar la carta.</p>
+</body></html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Anexo Guía 1</title>
+<link rel="stylesheet" href="estilos.css"></head>
+<body>
+<div class="title-band"><h1>Guía 1 – Anteproyecto: respuestas por parte</h1>
+<div>Gerencia de Proyectos de Analytics · Caso Dinámica Inmobiliaria 2026 · Equipo: [nombre del equipo] · Integrantes: [nombres]</div></div>
+
+<p>Este anexo sustenta la Carta Proyecto adjunta. Las cifras del dataset se obtuvieron consultando directamente la API pública del conjunto <i>Registro de transacciones inmobiliarias IGAC 2015–2023</i> (datos.gov.co, id 7y2j-43cv) el 18/10/2026. Lo que es propuesta del equipo (metas, supuestos) se marca como tal.</p>
+
+<h2>Parte I. Idealización de problemáticas</h2>
+<p>Se aplicaron las cuatro estrategias de la guía al contexto del caso y a una exploración inicial de los datos. Cada idea se evaluó contra las 7 características (C1 cliente · C2 métricas disponibles · C3 champion · C4 eventos recurrentes · C5 ligada a objetivos · C6 beneficio financiero trazable · C7 solución desconocida).</p>
+<table>
+<tr><th>#</th><th>Idea de intervención</th><th>Naturaleza</th><th class="c">C1</th><th class="c">C2</th><th class="c">C3</th><th class="c">C4</th><th class="c">C5</th><th class="c">C6</th><th class="c">C7</th><th>Decisión</th></tr>
+<tr><td>1</td><td>Estimar el valor registrado de compraventas comparables y explicar desviaciones</td><td>Alineada al plan estratégico (OIC: apoyar valoración)</td><td class="c ok">✓</td><td class="c ok">✓</td><td class="c ok">✓</td><td class="c ok">✓</td><td class="c ok">✓</td><td class="c mid">~</td><td class="c ok">✓</td><td><b>Se conserva</b></td></tr>
+<tr><td>2</td><td>Priorizar operaciones atípicas para revisión</td><td>Derivada de métricas/brecha (OIC «alertar»; UIAF señales de alerta)</td><td class="c ok">✓</td><td class="c ok">✓</td><td class="c ok">✓</td><td class="c ok">✓</td><td class="c ok">✓</td><td class="c mid">~</td><td class="c ok">✓</td><td><b>Se conserva</b></td></tr>
+<tr><td>3</td><td>Tablero descriptivo de la dinámica por municipio</td><td>Orgánica</td><td class="c ok">✓</td><td class="c ok">✓</td><td class="c ok">✓</td><td class="c ok">✓</td><td class="c ok">✓</td><td class="c no">✗</td><td class="c no">✗</td><td>Se descarta como proyecto; <b>queda como componente</b> del MVP (solución conocida)</td></tr>
+<tr><td>4</td><td>Subsanar la falta de valor en grandes ciudades (solo ≈40 % de compraventas con valor en Bogotá, Medellín, Cali, Barranquilla)</td><td>Derivada de métricas de calidad</td><td class="c mid">~</td><td class="c ok">✓</td><td class="c no">✗</td><td class="c ok">✓</td><td class="c ok">✓</td><td class="c no">✗</td><td class="c mid">~</td><td>Se descarta (depende de fuentes externas a SNR; sin champion). Se registra como <b>hallazgo/limitante</b></td></tr>
+<tr><td>5</td><td>Pronosticar el volumen de transacciones por municipio</td><td>Análisis financiero/macro</td><td class="c mid">~</td><td class="c ok">✓</td><td class="c no">✗</td><td class="c ok">✓</td><td class="c no">✗</td><td class="c no">✗</td><td class="c ok">✓</td><td>Se descarta (no apoya una decisión concreta del caso)</td></tr>
+</table>
+<div class="box"><b>Resultado:</b> sobreviven las ideas 1 y 2. Como el caso las plantea como dos dimensiones complementarias sobre la misma población comparable y la misma fuente, se integran en una sola oportunidad: <b>«valorar y priorizar compraventas en un territorio comparable»</b>. Se cumple la regla de la guía (más de una idea superó el filtro, no hubo que re-idear).</div>
+
+<h2>Parte II. Jerarquización, selección y descripción</h2>
+<h3>2.1 Preguntas de oportunidad (enfocadas en negocio, no en técnica)</h3>
+<table>
+<tr><td class="k">¿Cómo se describe?</td><td>El OIC carece de una referencia comparable que indique si un valor registrado es coherente con operaciones similares y de un criterio para decidir qué operaciones revisar primero.</td></tr>
+<tr><td class="k">Retos principales</td><td>Heterogeneidad territorial/temporal; valores atípicos extremos; ausencia de atributos del inmueble; valor declarado ≠ mercado; evitar interpretar una señal como fraude.</td></tr>
+<tr><td class="k">Prioridad principal</td><td>Primero una estimación comparable y confiable (base), luego la priorización de atípicos que la reutiliza (los residuos y el contexto de comparación).</td></tr>
+<tr><td class="k">¿Recursos?</td><td>Datos abiertos y software libre disponibles; equipo de 4 con tiempo parcial; falta acceso directo a expertos del OIC (se simula con entrevistas al asesor).</td></tr>
+<tr><td class="k">Tiempo disponible</td><td>8 semanas (cronograma del caso); Guía 1 en semana 2.</td></tr>
+<tr><td class="k">Autoridad de aprobación</td><td>Asesor del proyecto (aprobación académica); en el escenario real, la coordinación del OIC–IGAC (champion).</td></tr>
+</table>
+<h3>2.2 Matriz valor–potencial (versión IBM, Fig. 1)</h3>
+<p>Escala 1–5 (propuesta del equipo; valor para la organización vs. potencial de avance del equipo).</p>
+<table>
+<tr><th>Oportunidad</th><th class="c">Valor</th><th class="c">Potencial</th><th>Cuadrante / horizonte</th></tr>
+<tr><td>Valoración + priorización de atípicos (AMB)</td><td class="c">5</td><td class="c">4</td><td><b>Alto valor – alto potencial: enfocar ahora</b></td></tr>
+<tr><td>Tablero descriptivo</td><td class="c">3</td><td class="c">5</td><td>Victoria rápida: incluida como parte del MVP</td></tr>
+<tr><td>Replicar a otras ciudades de la Red de Observatorios</td><td class="c">5</td><td class="c">2</td><td>Mediano/largo plazo (tras el piloto)</td></tr>
+<tr><td>Integración de valor externo para grandes ciudades</td><td class="c">4</td><td class="c">1</td><td>Largo plazo (requiere otras fuentes)</td></tr>
+</table>
+<h3>2.3 Selección del territorio (condición del caso)</h3>
+<p>Se compararon los municipios más grandes por los cuatro criterios del caso. El hallazgo determinante fue la <b>cobertura del valor</b>: entre las compraventas, Bogotá tiene valor en 39,5 %, Medellín 42,1 %, Cali 40,9 % y Barranquilla 40,1 %, mientras que Bucaramanga, Ibagué, Pereira, Cúcuta, Cartagena, Armenia, Manizales, Villavicencio y Pasto tienen ≈100 %. Entre ellos se eligió el AMB.</p>
+<table>
+<tr><th>Criterio</th><th>Evidencia para el AMB (Bucaramanga, Floridablanca, Girón, Piedecuesta)</th></tr>
+<tr><td class="k">Cobertura temporal</td><td>El AMB registra compraventas en los 9 años (2015–2023), entre 12 724 y 21 502 por año.</td></tr>
+<tr><td class="k">Volumen</td><td>1 062 263 anotaciones; 165 517 compraventas (Bucaramanga 72 894; Floridablanca 37 793; Piedecuesta 30 895; Girón 23 935), ≈ 18 400 por año (rango 12 724 en 2020 a 21 502 en 2022). Suficiente para estimación estable y manejable en un computador personal.</td></tr>
+<tr><td class="k">Comparabilidad</td><td>Un mismo mercado urbano metropolitano; Bucaramanga está en la categoría DNP «Ciudades y aglomeraciones» (se verificará para los otros tres); 96,7 % de las compraventas de Bucaramanga son urbanas (70 520 de 72 894). Se comparará por municipio × año × zona.</td></tr>
+<tr><td class="k">Pertinencia</td><td>Programas de vivienda de la Alcaldía/AMB, avaluadores y sector financiero regional, y el OIC como usuario principal; permite demostrar un piloto replicable.</td></tr>
+</table>
+<p><b>Por qué compraventas:</b> es el acto con mayor volumen entre los actos con dinámica y valor (5,4 M a nivel nacional, ≈74 % con valor) y el que mejor representa una operación de mercado; otros actos (cancelaciones, aclaraciones, reglamentos) no expresan un precio comparable. El caso advierte que no toda anotación es comparable, de ahí el filtro por acto.</p>
+
+<h3>2.4 Dinámica de las 5 W</h3>
+<table>
+<tr><td class="k">Who (quién)</td><td>Financian/patrocinan: IGAC–OIC (champion). Explotan: analistas OIC, entidades territoriales, avaluadores, banca, UIAF/oficiales de cumplimiento. Afectados: propietarios y partes de las operaciones señaladas; notarías y ORIP.</td></tr>
+<tr><td class="k">What (qué)</td><td>Estimar el valor registrado de compraventas comparables y priorizar las atípicas, con explicación y límites de uso claros.</td></tr>
+<tr><td class="k">Where (dónde)</td><td>Área Metropolitana de Bucaramanga; fuente nacional SNR/IGAC; los registros son anotaciones en folios, jurisdicción de ORIP; el vínculo catastral/espacial hoy es débil (número catastral vacío en la fuente).</td></tr>
+<tr><td class="k">When (cuándo)</td><td>Continuo y recurrente: ≈18 400 compraventas por año; se necesita antes de decidir localización y viabilidad de programas de vivienda y en los ciclos de actualización del OIC. Entrega del MVP: semana 8.</td></tr>
+<tr><td class="k">Why (por qué)</td><td>Sector ≈7,4 % del PIB; mandato del OIC de monitorear y alertar; valores extremos y heterogeneidad ponen en riesgo la calidad de la información usada para decidir y para la gestión de riesgo LA/FT.</td></tr>
+</table>
+
+<h3>2.5 Planteamiento del problema de negocio (formato IBM, Fig. 2)</h3>
+<table>
+<tr><td class="k">Mejoraremos…</td><td>la capacidad de entender los valores registrados de compraventas en el AMB y de decidir qué operaciones revisar primero.</td></tr>
+<tr><td class="k">Para…</td><td>los analistas del OIC–IGAC y las entidades territoriales que diseñan programas de vivienda; secundariamente SNR, avaluadores, banca y cumplimiento.</td></tr>
+<tr><td class="k">El usuario lidia hoy porque…</td><td>no existe una referencia estadística comparable por zona/año/tipo; los valores extremos (653 compraventas &gt; COP 1 000 M y 15 &gt; COP 10 000 M solo en Bucaramanga) se detectan ad hoc; el 5,9 % de las compraventas de Bucaramanga está entre COP 1 y 10 M, donde conviven cuotas parciales y errores de digitación; y la fuente no trae atributos del inmueble.</td></tr>
+<tr><td class="k">Al resolverlo, el negocio mejora porque…</td><td>mejora la calidad y trazabilidad de la información pública, focaliza la capacidad de revisión en pocas operaciones y da evidencia para decisiones territoriales, alineado con la misión del OIC.</td></tr>
+</table>
+
+<h2>Parte III. Accesibilidad</h2>
+<table>
+<tr><td class="k">1. ¿Los datos existen o se pueden generar? ¿Dónde?</td><td><b>Sí.</b> Fuente principal: API Socrata de datos.gov.co (id 7y2j-43cv; licencia CC BY-SA 4.0; consulta SoQL por municipio y acto, paginable). Complementarias (propuestas, a confirmar en la Guía 2): DIVIPOLA y población DANE, indicadores de construcción (CEED/licencias), IPC/UVR y tasas hipotecarias (BanRep), catastro y ordenamiento territorial (IGAC/Alcaldías), SNR/UIAF para contexto de señales. Nada de esto exige datos privados.</td></tr>
+<tr><td class="k">2. ¿El problema se puede modelar y solucionar?</td><td><b>Parcialmente, con límites explícitos.</b> Valoración: regresión sobre log(valor) con modelos lineales y de árboles (gradient boosting) y validación temporal (entrenar ≤2021, validar 2022–2023). Atípicos: no hay etiquetas, por lo que se usan métodos no supervisados (Isolation Forest, residuos del modelo, robustos por grupo). Riesgo clave: sin área ni estrato el error será mayor de lo ideal; mitigación: variables territoriales y macro, grupos de comparación y métricas robustas.</td></tr>
+<tr><td class="k">3. ¿La organización apoyará e implementará la solución? Limitantes</td><td><b>Probable si se enmarca como apoyo a la priorización.</b> Encaja con el mandato del OIC («alertar sobre comportamientos atípicos») y con la Red Nacional de OIC. Limitantes: temor a interpretar una alerta como acusación; necesidad de que cada alerta sea explicable; interoperabilidad con sistemas del IGAC; mantenimiento tras el piloto; sin acceso directo al OIC se validará con el asesor y se reforzará con entrevistas cuando sea posible.</td></tr>
+</table>
+<div class="note"><b>Resultado de la revisión:</b> el problema original era factible en datos pero ambicioso en técnica (valoración «exacta» y detección de «irregularidades»). Se regresa a la Parte II y se reformula como <i>estimación de referencia + priorización de señales</i> (Parte IV).</div>
+
+<h2>Parte IV. Replanteamiento y limitantes</h2>
+<div class="box"><b>Problema de negocio replanteado:</b> «Dotar al OIC–IGAC de una herramienta de referencia que, para las compraventas del Área Metropolitana de Bucaramanga (2015–2023), estime un valor registrado esperado por grupo comparable, muestre los factores asociados a la brecha entre valor estimado y registrado, y priorice un número acotado de operaciones atípicas para revisión experta, sin emitir conclusiones jurídicas ni de fraude.»<br><span class="small">Aceptación de SH: pendiente de validar con el asesor/OIC (si no hay acceso a SH, se registra como supuesto).</span></div>
+<table>
+<tr><th style="width:24%">Tipo de limitante</th><th>Descripción y manejo</th></tr>
+<tr><td>Modelación analítica</td><td>Sin atributos del inmueble; sin etiquetas de fraude; el valor es declarado (puede estar subdeclarado); riesgo de sobreajuste temporal (pandemia 2020: caída a 12 724 compraventas en el AMB). Manejo: validación temporal, grupos comparables, métricas robustas, supuestos explícitos.</td></tr>
+<tr><td>Calidad del dato</td><td>Valores 0 (77 en Bucaramanga) y extremos; columna <i>numero_catastral</i> vacía (0 de 1 062 263 registros del AMB); la «unidad de observación» es una anotación en un folio, no un inmueble único (una venta puede generar folios derivados: 7 258 en el AMB); diferencia menor entre el recuento descrito (30 905 678) y el obtenido por API (30 903 248). Manejo: reglas de validez, tratamiento documentado de extremos (marcar, no borrar) y control de duplicados por <i>pk</i> (único en el AMB).</td></tr>
+<tr><td>Recursos financieros y de tiempo</td><td>Costo cercano a cero (datos abiertos, Python/R, cómputo personal); tiempo total 8 semanas con dedicación parcial; alcance acotado a un solo acto y un solo territorio.</td></tr>
+<tr><td>Interpretación y ética</td><td>Estimación ≠ avalúo (IVS); alerta ≠ fraude (UIAF, GAFI/GAFILAT, enfoque basado en riesgo); trato de datos de personas: la fuente no incluye nombres; no se cruzarán datos personales.</td></tr>
+</table>
+
+<h2>Parte V. Beneficios esperados</h2>
+<table>
+<tr><th>Beneficio</th><th>Métrica de negocio</th><th>Nivel actual</th><th>Meta (propuesta)</th><th>Tipo</th></tr>
+<tr><td>Referencia comparable de valor</td><td>Reducción del MAE relativo vs. línea base ingenua</td><td>Línea base por medir (S3–S5)</td><td>≥ 20 %</td><td>Cuantitativo</td></tr>
+<tr><td>Revisión focalizada</td><td>Precisión@100 de alertas (muestra experta)</td><td>0 % (sin priorización)</td><td>≥ 50 %</td><td>Cuantitativo</td></tr>
+<tr><td>Capacidad de revisión</td><td>Operaciones a revisar por año (1 % superior)</td><td>≈ 18 400 compraventas/año sin criterio</td><td>≈ 185/año con criterio</td><td>Cuantitativo / ahorro de tiempo</td></tr>
+<tr><td>Calidad de la información</td><td>Compraventas con valor &gt; COP 1 000 M con bandera y explicación</td><td>0 de 653 (Bucaramanga)</td><td>100 %</td><td>Cuantitativo</td></tr>
+<tr><td>Transparencia y trazabilidad</td><td>Variables/fuentes documentadas</td><td>0 %</td><td>100 %</td><td>Cualitativo-verificable</td></tr>
+<tr><td>Decisión territorial y replicabilidad</td><td>Percepción de utilidad (encuesta breve 1–5, asesor/expertos)</td><td>n/d</td><td>≥ 4/5; método replicable a otro municipio</td><td>Cualitativo</td></tr>
+</table>
+<p class="small">No se calcula un VPN: el piloto es académico y los costos evitados no son observables todavía. Si el OIC aporta horas-analista por revisión y costo/hora, el beneficio monetario se estima como (revisiones evitadas × horas × costo/hora) – costo del equipo.</p>
+
+<h2>Parte VI. Criterios de éxito</h2>
+<h3>6.1 Criterios de entrega o cierre (triple restricción + calidad) – con justificación</h3>
+<table>
+<tr><th style="width:15%">Dimensión</th><th>Criterio de éxito (medible)</th><th>Justificación / percepción SH</th></tr>
+<tr><td><b>Alcance</b></td><td>MVP con los 6 requisitos del caso: exploración histórica, resumen descriptivo, estimación con factores, atípicos priorizados, interfaz clara, limitaciones documentadas (6/6).</td><td>El caso define el MVP; sin esos elementos el OIC no puede usarlo.</td></tr>
+<tr><td><b>Tiempo</b></td><td>Entrega en la semana 8; ≥ 90 % de hitos a tiempo.</td><td>Calendario fijo del curso y del caso.</td></tr>
+<tr><td><b>Costo / recursos</b></td><td>COP 0 en licencias; desviación de horas del equipo ≤ ±15 %.</td><td>Recursos limitados (riesgo 1 del caso).</td></tr>
+<tr><td><b>Calidad</b></td><td>Modelo supera la línea base en ≥ 20 % (MAE relativo); precisión@100 ≥ 50 %; reglas de calidad aplicadas y reportadas.</td><td>Un modelo que no supera una regla simple no justifica su adopción (riesgo de desempeño).</td></tr>
+<tr><td><b>Satisfacción SH</b></td><td>Valoración ≥ 4/5 de claridad y utilidad por el asesor/expertos; 100 % de alertas con explicación.</td><td>El riesgo de adopción es interpretabilidad (caso, sección 7).</td></tr>
+</table>
+<h3>6.2 Métricas de avance (monitoreo y control)</h3>
+<table>
+<tr><th style="width:23%">Métrica</th><th>Qué mide</th><th>Frecuencia / umbral de alerta</th></tr>
+<tr><td>Horas reales vs. planeadas</td><td>Desviación de esfuerzo por fase DMAIC</td><td>Semanal; alerta &gt; 15 %</td></tr>
+<tr><td>% de registros AMB descargados y validados</td><td>Avance de adquisición (meta 1 062 263 / 165 517)</td><td>Semanas 3–4; 100 % al cierre de la S4</td></tr>
+<tr><td>Indicadores de calidad de datos</td><td>Completitud, unicidad, validez, % de valores extremos marcados</td><td>Por entrega de datos</td></tr>
+<tr><td>Pérdida de modelo (MAE, RMSE, MdAPE) en validación temporal</td><td>Desempeño y generalización</td><td>Por iteración; alerta si empeora &gt; 5 % vs. versión previa</td></tr>
+<tr><td>Hitos entregados</td><td>Guías 1–4, video de avance, documento final</td><td>Semanal</td></tr>
+</table>
+
+<h2>Parte VII. Contexto</h2>
+<p><b>Organización y sector.</b> El Instituto Geográfico Agustín Codazzi (IGAC) es la autoridad catastral y cartográfica de Colombia. Su Observatorio Inmobiliario Catastral (OIC) busca identificar, estandarizar, integrar y analizar información para hacer seguimiento al mercado, apoyar la valoración de inmuebles y alertar sobre comportamientos atípicos (IGAC, 2024), y se articula con la Red Nacional de OIC (IGAC, 2026). Las actividades inmobiliarias aportaron COP 137 050 mil millones de valor agregado en 2025 (≈7,4 % del PIB) y empleaban a ≈390 000 personas en diciembre de 2024 (DANE, 2025; 2026).</p>
+<p><b>Marco de referencia.</b> ISO 19152-1:2024 (LADM) ordena derechos, personas y unidades espaciales; los International Valuation Standards (IVSC, 2024) exigen consistencia y comparabilidad (la razón para comparar por grupos); y el enfoque basado en riesgos GAFI/GAFILAT y la UIAF (2014; 2026) justifican entender las alertas como señales que priorizan revisión.</p>
+<p><b>La fuente.</b> El registro IGAC/SNR contiene ≈30,9 M de anotaciones únicas de 2015–2023 en 1 105 municipios; 59 % tiene valor (18,2 M). Su unidad es la anotación (acto jurídico en un folio), no el inmueble ni la «venta de mercado». Las compraventas (cód. 125) suman 5,42 M.</p>
+<p><b>Bibliografía.</b> DANE (2025). GEIH, boletín dic. 2024. DANE (2026). Cuentas nacionales. GAFILAT (2022). Guía APNFD. IBM Garage (2020). Business Opportunity Statement. IGAC (2024). OIC. IGAC (2026). Registro de transacciones inmobiliarias 2015–2023, datos.gov.co (7y2j-43cv). ISO (2024). 19152-1. IVSC (2024). IVS. UIAF (2014; 2026).</p>
+</body></html>
