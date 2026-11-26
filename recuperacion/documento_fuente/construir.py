@@ -34,7 +34,7 @@ def entradas(md):
     for linea in md.splitlines():
         m = re.match(r"^(#{2,4}) (.+)$", linea)
         if m and "Índice de contenido" not in m.group(2):
-            out.append(("sec", len(m.group(1)) - 2, m.group(2).strip()))
+            out.append(("sec", len(m.group(1)) - 2, re.sub(r"\s*\{[^}]*\}$", "", m.group(2)).strip()))  # sin {#id .clase}
         m = re.match(r"^Table: (Tabla \d+\..+)$", linea)
         if m:
             out.append(("tab", 0, m.group(1).strip()))
@@ -142,24 +142,26 @@ try:
     TMP.replace(PDF)
 except PermissionError:
     raise SystemExit(f"No se pudo reemplazar {PDF}: ciérrelo en el visor de PDF y vuelva a ejecutar. El borrador quedó en {TMP}")
-# Anexo A: la carta del proyecto ajustada va al final del PDF, cada página en una hoja oficio con título y número
+# Anexo A: la carta del proyecto ajustada se dibuja en las dos páginas que el documento le reserva
+# (título del anexo arriba y número de página del documento, que ya traen esas páginas)
 CARTA = AQUI.parents[1] / "anexos" / "guia_1" / "Carta_Proyecto_ajustada.pdf"
 pdf, carta = fitz.open(PDF), fitz.open(CARTA)
+huecos = [i for i in range(3, len(pdf)) if "Anexo A. Carta del proyecto ajustada" in " ".join(pdf[i].get_text().split())]
+assert len(huecos) == len(carta) == 2, f"páginas reservadas para la carta: {huecos}"
 cm = 72 / 2.54
-for n, pag in enumerate(carta, 1):
-    hoja = pdf.new_page(width=8.5 * 72, height=14 * 72)
-    hoja.insert_text((2 * cm, 2 * cm + 10), f"Anexo A. Carta del proyecto ajustada ({n} de {len(carta)})", fontname="hebo", fontsize=12)
-    marco = fitz.Rect(2 * cm, 2.8 * cm, hoja.rect.width - 2 * cm, hoja.rect.height - 2.4 * cm)
-    caja = fitz.Rect()  # contenido de la página de Excel, sin sus márgenes blancos
-    for x in [d["rect"] for d in pag.get_drawings()] + [fitz.Rect(b[:4]) for b in pag.get_text("blocks") if b[1] < pag.rect.height * 0.9]:  # sin el pie de la plantilla
+for hoja, pag in zip((pdf[i] for i in huecos), carta):
+    marco = fitz.Rect(2 * cm, 3.4 * cm, hoja.rect.width - 2 * cm, hoja.rect.height - 2.4 * cm)
+    caja = fitz.Rect()  # contenido de la página de Excel, sin sus márgenes blancos ni el pie de la plantilla
+    for x in [d["rect"] for d in pag.get_drawings()] + [fitz.Rect(b[:4]) for b in pag.get_text("blocks") if b[1] < pag.rect.height * 0.9]:
         caja |= x
-    hoja.show_pdf_page(marco, carta, pag.number, keep_proportion=True, clip=caja + (-4, -4, 4, 4))
-    hoja.insert_text((hoja.rect.width - 2 * cm - 10, hoja.rect.height - 1.2 * cm), str(len(pdf)), fontname="helv", fontsize=9)
+    caja += (-4, -4, 4, 4)
+    escala = min(marco.width / caja.width, marco.height / caja.height)
+    marco = fitz.Rect(marco.x0, marco.y0, marco.x0 + caja.width * escala, marco.y0 + caja.height * escala)  # arriba, no centrada
+    hoja.show_pdf_page(marco, carta, pag.number, keep_proportion=True, clip=caja)
 pdf.save(TMP)
 pdf.close(); carta.close()
 TMP.replace(PDF)
-total = len(fitz.open(PDF))
-print("PDF:", total, "páginas (con la carta ajustada como Anexo A)")
+print("PDF:", total, "páginas (la carta ajustada en el Anexo A)")
 
 # Word editable: el índice es un campo de tabla de contenido que Word actualiza al abrir
 subprocess.run(["pandoc", MD.name, "--toc", "--toc-depth=3", "-o", str(DOCX)], cwd=AQUI, check=True)
