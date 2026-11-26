@@ -35,7 +35,8 @@ Piloto del Área Metropolitana de Bucaramanga (AMB), 2015-2023. Generado con `co
 | `tiene_valor` | original, limpias, pares | Registro IGAC 7y2j-43cv | 0/1 | La anotación trae valor | Constante en el piloto | original: 0,00%; limpias: 0,00%; pares: 0,00% |
 | `tipo_predio_zona` | original, limpias, pares | Registro IGAC 7y2j-43cv | texto | Zona URBANO / RURAL / SIN INFORMACION | Segmentación urbano-rural (R2); zona vacía recuperada de otra venta del folio (52) | original: 0,00%; limpias: 0,00%; pares: 0,00% |
 | `valor` | todos | Registro IGAC 7y2j-43cv | numérico (COP) | Valor declarado en la escritura | Variable que se mide: no se imputa; salen los valores de COP 1 M o menos | original: 0,00%; limpias: 0,00%; pares: 0,00%; actos: 0,00% |
-| `numero_catastral, numero_catastral_antiguo` | extracción de 26 columnas (Guía 4, Parte I) | Registro IGAC 7y2j-43cv | texto | Número predial catastral, vacío en el 100% de los registros | No permite unir el avalúo de cada predio; el rezago se mide contra el reajuste por decreto | 100% (no viene en esta descarga) |
+| `numero_catastral` | extracción de 26 columnas (Guía 4, Parte I) | Registro IGAC 7y2j-43cv | texto | Número predial catastral, vacío en el 100% de los registros | No permite unir el avalúo de cada predio; el rezago se mide contra el reajuste por decreto | 100% (no viene en esta descarga) |
+| `numero_catastral_antiguo` | extracción de 26 columnas (Guía 4, Parte I) | Registro IGAC 7y2j-43cv | texto | Número predial catastral anterior, vacío en el 100% de los registros | Igual que numero_catastral; no se descarga | 100% (no viene en esta descarga) |
 | `fecha` | limpias, pares | limpieza_amb.py | fecha | Fecha de radicación unificada | Serie de tiempo; días entre ventas | limpias: 0,00%; pares: 0,00% |
 | `extremo_alto` | limpias, pares | limpieza_amb.py | booleano | Valor sobre el percentil 99,5 (COP 1.050 M) | Se marca, no se borra; candidato para OA6 | limpias: 0,00%; pares: 0,00% |
 | `cola_baja_1_10M` | limpias, pares | limpieza_amb.py | booleano | Valor entre COP 1 M y 10 M (cuotas, derechos parciales o errores) | Se marca, no se borra | limpias: 0,00%; pares: 0,00% |
@@ -45,16 +46,16 @@ Piloto del Área Metropolitana de Bucaramanga (AMB), 2015-2023. Generado con `co
 | `cambio_fisico` | pares | limpieza_amb.py | booleano | Acto de construcción, área o linderos, división, englobe, loteo o PH entre las dos ventas | Excluye del índice; se conserva marcado para OA6 | pares: 0,00% |
 | `cambio_extremo_5x` | pares | limpieza_amb.py | booleano | La razón es de 5 o más, o de 1/5 o menos | Excluye del índice; se conserva marcado para OA6 | pares: 0,00% |
 | `para_indice` | pares | limpieza_amb.py | booleano | Par apto para el índice (365 días, sin cambio físico ni cambio de 5 veces) | 13.978 pares | pares: 0,00% |
-| `log_valor` | derivada en el notebook | 03_entendimiento.ipynb | numérico | ln(valor) | Corrige la asimetría (161 a -0,7) | 100% (no viene en esta descarga) |
-| `redondo` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Valor múltiplo exacto de COP 1 M | Indicio de precio negociado | 100% (no viene en esta descarga) |
-| `fecha_escritura` | derivada en el notebook | 03_entendimiento.ipynb | fecha | Fecha leída de documento_justificativo | Fija el año del avalúo vigente al firmar | 100% (no viene en esta descarga) |
-| `dias_esc_rad` | derivada en el notebook | 03_entendimiento.ipynb | entero | Días entre escritura y radicación | Control de calidad (mediana 15, p95 77) | 100% (no viene en esta descarga) |
-| `anios` | derivada en el notebook | 03_entendimiento.ipynb | numérico | Años entre las dos radicaciones (días / 365,25) | Horizonte del par (mediana 3,2) | 100% (no viene en esta descarga) |
-| `g` | derivada en el notebook | 03_entendimiento.ipynb | numérico | Tasa anual del par: razon^(1/anios) - 1 | Segmentación, mezcla gaussiana y etiqueta débil | 100% (no viene en esta descarga) |
-| `congelado` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Mismo valor en las dos ventas | Segmento de valor congelado | 100% (no viene en esta descarga) |
-| `factor_decreto` | derivada en el notebook | 03_entendimiento.ipynb | numérico | Producto de (1 + reajuste) entre los años de las dos escrituras (3%; 4,31% en 2023) | Crecimiento de un avalúo no actualizado | 100% (no viene en esta descarga) |
-| `replica_decreto` | derivada en el notebook | 03_entendimiento.ipynb | booleano | razon a menos de 0,5% de factor_decreto | Segmento de réplica del reajuste | 100% (no viene en esta descarga) |
-| `cruza_ley1943` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Primera escritura antes de 2019 y segunda desde 2019 | Quiebre de 2019 (Ley 1943 de 2018) | 100% (no viene en esta descarga) |
-| `cruza_act_bga` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Igual que cruza_ley1943, solo en Bucaramanga | Actualización catastral de Bucaramanga (2019) | 100% (no viene en esta descarga) |
+| `log_valor` | derivada en el notebook | 03_entendimiento.ipynb | numérico | ln(valor) | Corrige la asimetría (161 a -0,7) | No aplica (se calcula en el notebook) |
+| `redondo` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Valor múltiplo exacto de COP 1 M | Indicio de precio negociado | No aplica (se calcula en el notebook) |
+| `fecha_escritura` | derivada en el notebook | 03_entendimiento.ipynb | fecha | Fecha leída de documento_justificativo | Fija el año del avalúo vigente al firmar | No aplica (se calcula en el notebook) |
+| `dias_esc_rad` | derivada en el notebook | 03_entendimiento.ipynb | entero | Días entre escritura y radicación | Control de calidad (mediana 15, p95 77) | No aplica (se calcula en el notebook) |
+| `anios` | derivada en el notebook | 03_entendimiento.ipynb | numérico | Años entre las dos radicaciones (días / 365,25) | Horizonte del par (mediana 3,2) | No aplica (se calcula en el notebook) |
+| `g` | derivada en el notebook | 03_entendimiento.ipynb | numérico | Tasa anual del par: razon^(1/anios) - 1 | Segmentación, mezcla gaussiana y etiqueta débil | No aplica (se calcula en el notebook) |
+| `congelado` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Mismo valor en las dos ventas | Segmento de valor congelado | No aplica (se calcula en el notebook) |
+| `factor_decreto` | derivada en el notebook | 03_entendimiento.ipynb | numérico | Producto de (1 + reajuste) entre los años de las dos escrituras (3%; 4,31% en 2023) | Crecimiento de un avalúo no actualizado | No aplica (se calcula en el notebook) |
+| `replica_decreto` | derivada en el notebook | 03_entendimiento.ipynb | booleano | razon a menos de 0,5% de factor_decreto | Segmento de réplica del reajuste | No aplica (se calcula en el notebook) |
+| `cruza_ley1943` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Primera escritura antes de 2019 y segunda desde 2019 | Quiebre de 2019 (Ley 1943 de 2018) | No aplica (se calcula en el notebook) |
+| `cruza_act_bga` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Igual que cruza_ley1943, solo en Bucaramanga | Actualización catastral de Bucaramanga (2019) | No aplica (se calcula en el notebook) |
 
 Códigos de acto tratados como cambio físico: 317 (reglamento de PH), 902, 903, 917 y 964 (área y linderos), 909 (urbanización), 910, 911 y 912 (construcción o mejora), 913, 915 y 919 (englobe y desenglobe), 918 (división material), 920 y 924 (loteo y reloteo). La reforma (331) y la adición (347) del reglamento de PH no se tratan como cambio físico.

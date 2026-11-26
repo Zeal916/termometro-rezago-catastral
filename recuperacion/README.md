@@ -11,7 +11,6 @@ Todo lo necesario para reconstruir el anteproyecto desde cero o seguir editándo
 | `fuentes_editables/guia_4/` | Parte II (limpieza) en Markdown y Word |
 | `fuentes_editables/guia_5/` | Script que genera el Word de la Parte I |
 | `presentacion/` | Presentación del anteproyecto y guion del video final |
-| `notas_equipo/` | Notas de trabajo: hallazgos de la Guía 1, guion y pendientes del video, pendientes y bitácora de la limpieza de la Guía 4 |
 | `descarga_amb.py` | Descarga desde la API la base de compraventas del AMB y todos los actos del AMB |
 
 ## Requisitos

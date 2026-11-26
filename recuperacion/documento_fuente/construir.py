@@ -13,7 +13,10 @@ from pathlib import Path
 import fitz  # PyMuPDF
 from docx import Document
 from docx.enum.table import WD_TABLE_ALIGNMENT
-from docx.shared import Pt, Cm
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+from docx.shared import Pt, Cm, RGBColor
 
 AQUI = Path(__file__).resolve().parent
 SALIDA = AQUI.parents[1] / "documento"  # el entregable vive en documento/
@@ -31,7 +34,7 @@ def entradas(md):
     for linea in md.splitlines():
         m = re.match(r"^(#{2,4}) (.+)$", linea)
         if m and "Índice de contenido" not in m.group(2):
-            out.append(("sec", len(m.group(1)) - 2, m.group(2).strip()))
+            out.append(("sec", len(m.group(1)) - 2, re.sub(r"\s*\{[^}]*\}$", "", m.group(2)).strip()))  # sin {#id .clase}
         m = re.match(r"^Table: (Tabla \d+\..+)$", linea)
         if m:
             out.append(("tab", 0, m.group(1).strip()))
@@ -41,21 +44,47 @@ def entradas(md):
     return out
 
 
-def corto(texto, n=95):
-    texto = re.sub(r"[*_`]", "", texto)
-    return texto if len(texto) <= n else texto[: n - 1].rsplit(" ", 1)[0] + "…"
+def limpio(texto):
+    return re.sub(r"[*_`]", "", texto).strip().rstrip(".")
 
 
-def indice_html(items, paginas):
-    def fila(clase, texto, pag):
-        return (f'<div class="ix {clase}"><span class="ix-t">{html.escape(texto)}</span>'
-                f'<span class="ix-p">{pag}</span></div>')
-    sec = [fila(f"n{lvl}", re.sub(r"[*_`]", "", t), paginas.get(i, "00")) for i, (k, lvl, t) in enumerate(items) if k == "sec"]
-    tab = [fila("n0", corto(t, 58), paginas.get(i, "00")) for i, (k, _, t) in enumerate(items) if k == "tab"]
-    fig = [fila("n0", corto(t, 58), paginas.get(i, "00")) for i, (k, _, t) in enumerate(items) if k == "fig"]
-    return ('<div id="indice"><p class="ix-h">Contenido</p>' + "".join(sec)
-            + '<p class="ix-h">Tablas</p><div class="ix-cols">' + "".join(tab) + "</div>"
-            + '<p class="ix-h">Figuras</p><div class="ix-cols">' + "".join(fig) + "</div></div>")
+def indice_html(items, paginas, anclas):
+    """Índice en una columna. Cada entrada es un enlace a su sección, tabla o figura; los títulos largos
+    pasan al renglón siguiente con sangría y la línea de puntos y la página quedan en el último renglón."""
+    vistos = {"sec": 0, "tab": 0, "fig": 0}
+
+    def fila(i, k, lvl, texto):
+        destino = anclas[k][vistos[k]]
+        vistos[k] += 1
+        m = re.match(r"^((?:Tabla|Figura) \d+\.)\s*(.*)$", texto)
+        etiqueta = f'<span class="ix-l">{html.escape(m.group(1))}</span>' if m else ""
+        titulo = html.escape(m.group(2) if m else texto)
+        return (f'<a class="ix n{lvl}" href="#{destino}">{etiqueta}<span class="ix-t">{titulo}</span>'
+                f'<span class="ix-p">{paginas.get(i, "00")}</span></a>')
+
+    partes = {"sec": [], "tab": [], "fig": []}
+    for i, (k, lvl, t) in enumerate(items):
+        partes[k].append(fila(i, k, lvl if k == "sec" else 0, limpio(t)))
+    return ('<div id="indice"><p class="ix-h">Contenido</p>' + "".join(partes["sec"])
+            + '<p class="ix-h">Tablas</p>' + "".join(partes["tab"])
+            + '<p class="ix-h">Figuras</p>' + "".join(partes["fig"]) + "</div>")
+
+
+def anclar(doc_html):
+    """Identificadores de destino para el índice: los de pandoc en los títulos y uno por tabla y figura."""
+    sec = [m.group(2) for m in re.finditer(r'<h([2-4])[^>]*\bid="([^"]+)"[^>]*>(.*?)</h\1>', doc_html, re.S)
+           if "Índice de contenido" not in m.group(3)]
+    cont = {"tabla": 0, "figura": 0}
+
+    def marcar(tipo):
+        def f(m):
+            cont[tipo] += 1
+            return f'{m.group(0)} id="{tipo}-{cont[tipo]}"'
+        return f
+    doc_html = re.sub(r"<caption\b", marcar("tabla"), doc_html)
+    doc_html = re.sub(r"<figure\b", marcar("figura"), doc_html)
+    return doc_html, {"sec": sec, "tab": [f"tabla-{n}" for n in range(1, cont["tabla"] + 1)],
+                      "fig": [f"figura-{n}" for n in range(1, cont["figura"] + 1)]}
 
 
 def imprimir(html_texto):
@@ -102,28 +131,54 @@ def no_partir(m):
 
 
 base = re.sub(r"<table>.*?</table>", no_partir, base, flags=re.S)
-imprimir(base.replace(MARCA, indice_html(items, {})))      # pasada 1: números provisionales
+base, anclas = anclar(base)
+assert [len(anclas[k]) for k in ("sec", "tab", "fig")] == [sum(1 for x in items if x[0] == k) for k in ("sec", "tab", "fig")],     "el número de destinos no coincide con el de entradas del índice"
+imprimir(base.replace(MARCA, indice_html(items, {}, anclas)))      # pasada 1: números provisionales
 paginas, _ = ubicar(items)
-imprimir(base.replace(MARCA, indice_html(items, paginas)))  # pasada 2: números reales
+imprimir(base.replace(MARCA, indice_html(items, paginas, anclas)))  # pasada 2: números reales
 paginas2, total = ubicar(items)
 assert paginas2 == paginas, "la paginación cambió entre pasadas"
 try:
     TMP.replace(PDF)
 except PermissionError:
     raise SystemExit(f"No se pudo reemplazar {PDF}: ciérrelo en el visor de PDF y vuelva a ejecutar. El borrador quedó en {TMP}")
-print("PDF:", total, "páginas")
+# Anexo A: la carta del proyecto ajustada se dibuja en las dos páginas que el documento le reserva
+# (título del anexo arriba y número de página del documento, que ya traen esas páginas)
+CARTA = AQUI.parents[1] / "anexos" / "guia_1" / "Carta_Proyecto_ajustada.pdf"
+pdf, carta = fitz.open(PDF), fitz.open(CARTA)
+huecos = [i for i in range(3, len(pdf)) if "Anexo A. Carta del proyecto ajustada" in " ".join(pdf[i].get_text().split())]
+assert len(huecos) == len(carta) == 2, f"páginas reservadas para la carta: {huecos}"
+cm = 72 / 2.54
+for hoja, pag in zip((pdf[i] for i in huecos), carta):
+    marco = fitz.Rect(2 * cm, 3.4 * cm, hoja.rect.width - 2 * cm, hoja.rect.height - 2.4 * cm)
+    caja = fitz.Rect()  # contenido de la página de Excel, sin sus márgenes blancos ni el pie de la plantilla
+    for x in [d["rect"] for d in pag.get_drawings()] + [fitz.Rect(b[:4]) for b in pag.get_text("blocks") if b[1] < pag.rect.height * 0.9]:
+        caja |= x
+    caja += (-4, -4, 4, 4)
+    escala = min(marco.width / caja.width, marco.height / caja.height)
+    marco = fitz.Rect(marco.x0, marco.y0, marco.x0 + caja.width * escala, marco.y0 + caja.height * escala)  # arriba, no centrada
+    hoja.show_pdf_page(marco, carta, pag.number, keep_proportion=True, clip=caja)
+pdf.save(TMP)
+pdf.close(); carta.close()
+TMP.replace(PDF)
+print("PDF:", total, "páginas (la carta ajustada en el Anexo A)")
 
 # Word editable: el índice es un campo de tabla de contenido que Word actualiza al abrir
 subprocess.run(["pandoc", MD.name, "--toc", "--toc-depth=3", "-o", str(DOCX)], cwd=AQUI, check=True)
 doc = Document(DOCX)
 for s in doc.sections:
-    s.left_margin = s.right_margin = Cm(2.2)
+    s.page_width, s.page_height = Cm(21.59), Cm(35.56)  # oficio
+    s.left_margin = s.right_margin = Cm(2.0)
     s.top_margin = s.bottom_margin = Cm(2.0)
 estilos = [st.name for st in doc.styles]
-for nombre in ("Normal", "Body Text", "First Paragraph", "Compact"):
-    if nombre in estilos:
-        doc.styles[nombre].font.name = "Calibri"
-        doc.styles[nombre].font.size = Pt(10.5)
+for nombre in ("Normal", "Body Text", "First Paragraph", "Compact", "Title", "Heading 1", "Heading 2", "Heading 3",
+               "Heading 4", "Table Caption", "Image Caption", "TOC Heading", "Hyperlink"):
+    if nombre in estilos:  # regla del equipo: Arial y texto negro
+        f = doc.styles[nombre].font
+        f.name = "Arial"
+        f.color.rgb = RGBColor(0, 0, 0)
+        if nombre in ("Normal", "Body Text", "First Paragraph", "Compact"):
+            f.size = Pt(11)
 for t in doc.tables:
     if "Table Grid" in estilos:
         t.style = doc.styles["Table Grid"]
@@ -132,6 +187,21 @@ for t in doc.tables:
         for celda in fila.cells:
             for p in celda.paragraphs:
                 for r in p.runs:
-                    r.font.size = Pt(8.5)
+                    r.font.size = Pt(9)
+                    r.font.name = "Arial"
+    for celda in t.rows[0].cells:  # encabezado gris E6E6E6
+        sombra = OxmlElement("w:shd")
+        sombra.set(qn("w:val"), "clear")
+        sombra.set(qn("w:fill"), "E6E6E6")
+        celda._tc.get_or_add_tcPr().append(sombra)
+# Portada: centrada y en negrilla, como en el PDF; salto de página antes del Abstract
+for p in doc.paragraphs:
+    if p.text.startswith("1. Abstract"):
+        p.paragraph_format.page_break_before = True
+        break
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    for r in p.runs:
+        r.font.bold = "github" not in r.text
+        r.font.size = Pt(10)
 doc.save(DOCX)
 print("DOCX listo")

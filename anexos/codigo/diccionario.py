@@ -46,7 +46,8 @@ V = [  # variable, archivos, origen, tipo, descripción, uso o decisión
     ("tiene_valor", OLP, O, "0/1", "La anotación trae valor", "Constante en el piloto"),
     ("tipo_predio_zona", OLP, O, "texto", "Zona URBANO / RURAL / SIN INFORMACION", "Segmentación urbano-rural (R2); zona vacía recuperada de otra venta del folio (52)"),
     ("valor", TODOS, O, "numérico (COP)", "Valor declarado en la escritura", "Variable que se mide: no se imputa; salen los valores de COP 1 M o menos"),
-    ("numero_catastral, numero_catastral_antiguo", "extracción de 26 columnas (Guía 4, Parte I)", O, "texto", "Número predial catastral, vacío en el 100% de los registros", "No permite unir el avalúo de cada predio; el rezago se mide contra el reajuste por decreto"),
+    ("numero_catastral", "extracción de 26 columnas (Guía 4, Parte I)", O, "texto", "Número predial catastral, vacío en el 100% de los registros", "No permite unir el avalúo de cada predio; el rezago se mide contra el reajuste por decreto"),
+    ("numero_catastral_antiguo", "extracción de 26 columnas (Guía 4, Parte I)", O, "texto", "Número predial catastral anterior, vacío en el 100% de los registros", "Igual que numero_catastral; no se descarga"),
     ("fecha", "limpias, pares", L, "fecha", "Fecha de radicación unificada", "Serie de tiempo; días entre ventas"),
     ("extremo_alto", "limpias, pares", L, "booleano", "Valor sobre el percentil 99,5 (COP 1.050 M)", "Se marca, no se borra; candidato para OA6"),
     ("cola_baja_1_10M", "limpias, pares", L, "booleano", "Valor entre COP 1 M y 10 M (cuotas, derechos parciales o errores)", "Se marca, no se borra"),
@@ -73,7 +74,9 @@ rows = []
 for var, arch, orig, tipo, desc, uso in V:
     nul = [f"{k}: {d[var].isna().mean() * 100:.2f}%".replace(".", ",") for k, d in dfs.items() if var in d.columns]
     rows.append(dict(variable=var, archivos=arch, origen=orig, tipo=tipo, descripcion=desc,
-                     uso_o_decision=uso, pct_vacios="; ".join(nul) or "100% (no viene en esta descarga)"))
+                     uso_o_decision=uso, pct_vacios="; ".join(nul) or (
+                         "No aplica (se calcula en el notebook)" if arch == "derivada en el notebook"
+                         else "100% (no viene en esta descarga)")))
 
 documentadas = {r["variable"] for r in rows}
 for k, d in dfs.items():
