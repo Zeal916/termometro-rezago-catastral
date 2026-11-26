@@ -247,7 +247,7 @@ Table: Tabla 11. Cronograma del Capstone por fase.
 
 #### 5.2.4 Datos: fuentes, calidad, limpieza y entendimiento (Guías 2 y 4)
 
-**Fuentes y transformaciones.** Casi todo existe y es público; se generan dos insumos (Tabla 12). No se requiere encuesta para el modelo; el cuestionario Kano es solo para validar requerimientos. El avalúo de cada predio no se puede unir con las ventas (los catastros abiertos no traen matrícula), por lo que el índice se compara con el reajuste por decreto.
+**Fuentes y transformaciones.** Casi todo existe y es público; se genera un insumo derivado, la etiqueta de tipo de escritura (Tabla 12). No se requiere encuesta para el modelo; el cuestionario Kano es solo para validar requerimientos. El avalúo de cada predio no se puede unir con las ventas (los catastros abiertos no traen matrícula), por lo que el índice se compara con el reajuste por decreto.
 
 Table: Tabla 12. Fuentes, tipo de dato, estado y uso (Guías 1 y 2).
 
@@ -343,7 +343,7 @@ Table: Tabla 17. Selección de técnicas de entendimiento de los datos (Guía 4)
 
 ![Figura 5. Aumento de la Resolución 2057 por zona en Santander (izquierda) e índice rural 2023 frente al aumento mediano en los 15 municipios con índice propio; la línea punteada es el reajuste por decreto (derecha).](img/res2057_santander.png){width=95%}
 
-**Coherencia con el problema.** Los datos sirven para medir el rezago con dos condiciones: separar antes las escrituras declaradas por el avalúo y tratar 2019 como un quiebre. Son las dos decisiones que llevan a la elección de enfoques de la sección 5.3. El diccionario de variables (45 variables, con origen, tipo, vacíos y uso) y los scripts que reproducen todas las cifras están en el repositorio.
+**Coherencia con el problema.** Los datos sirven para medir el rezago con dos condiciones: separar antes las escrituras declaradas por el avalúo y tratar 2019 como un quiebre. Son las dos decisiones que llevan a la elección de enfoques de la sección 5.3. El diccionario de variables (46 variables, con origen, tipo, vacíos y uso) y los scripts que reproducen todas las cifras están en el repositorio.
 
 ### 5.3 Fase de configuración y construcción: ejecución (Guía 5)
 
@@ -494,6 +494,8 @@ Zilli, C. A., Bastos, L. C. y da Silva, L. R. (2024). Machine learning models in
 
 <p style="text-align: left">Los soportes completos están en el repositorio público del proyecto (<a href="https://github.com/Zeal916/termometro-rezago-catastral">github.com/Zeal916/termometro-rezago-catastral</a>), en las rutas que indica la tabla; las fuentes editables y el procedimiento para reconstruir el proyecto están en <code>recuperacion/</code>. A continuación se incluyen tres anexos: la carta del proyecto ajustada (Anexo A), los soportes técnicos de la limpieza y el entendimiento (Anexo B) y el diccionario de variables (Anexo C).</p>
 
+Table: Tabla 22. Material del proyecto en el repositorio y su ruta.
+
 | Material | Contenido | Ruta |
 |------------|----------------------------------------------------------|------------------------------|
 | Guía 1 | Carta del proyecto ajustada (Anexo A) y versiones de entrega; anexo de la carta (ideación, filtro, 5W, accesibilidad, limitantes, beneficios, criterios de éxito, cronograma) | `anexos/guia_1/` |
@@ -502,7 +504,7 @@ Zilli, C. A., Bastos, L. C. y da Silva, L. R. (2024). Machine learning models in
 | Guía 4 | Informe de calidad, limpieza y entendimiento; notebooks y scripts (resumen en el Anexo B) | `anexos/guia_4/`, `anexos/codigo/guia_4/` |
 | Guía 5 | Partes I y II en su versión de entrega | `anexos/guia_5/` |
 | Datos y código | Análisis nacional (línea base), piloto del AMB, ampliación a Santander, variables de OA2, índices oficiales y perfil de la Res. 2057 | `anexos/codigo/`, `anexos/datos/` |
-| Diccionario | 45 variables con origen, tipo, vacíos y uso (Anexo C) | `anexos/diccionario_variables.md` |
+| Diccionario | 46 variables con origen, tipo, vacíos y uso (Anexo C) | `anexos/diccionario_variables.md` |
 | Cifras | Cada cifra de este documento con el archivo y la línea de resultados que la respalda | `anexos/CIFRAS.md` |
 
 ### Anexo A. Carta del proyecto ajustada {#anexo-a .anexo}
@@ -515,25 +517,25 @@ Zilli, C. A., Bastos, L. C. y da Silva, L. R. (2024). Machine learning models in
 
 ### Anexo B. Soportes técnicos de la limpieza y el entendimiento {#anexo-b .anexo}
 
-Este anexo reúne lo necesario para verificar la limpieza y el entendimiento de los datos sin abrir el repositorio: qué archivo produce cada resultado (Tabla 22), la salida del script de limpieza del AMB (Tabla 23) y la evaluación de las variables del folio para el clasificador de escrituras (Tablas 24 y 25). Todo se reproduce desde los datos abiertos (datos.gov.co, 7y2j-43cv) con los scripts del repositorio, y la trazabilidad de cada cifra está en `anexos/CIFRAS.md`.
+Este anexo reúne lo necesario para verificar la limpieza y el entendimiento de los datos sin abrir el repositorio: qué archivo produce cada resultado (Tabla 23), la salida del script de limpieza del AMB (Tabla 24) y la evaluación de las variables del folio para el clasificador de escrituras (Tablas 25 y 26). Todo se reproduce desde los datos abiertos (datos.gov.co, 7y2j-43cv) con los scripts del repositorio, y la trazabilidad de cada cifra está en `anexos/CIFRAS.md`.
 
-Table: Tabla 22. Scripts y notebooks que soportan la limpieza y el entendimiento (rutas desde anexos/codigo/).
+Table: Tabla 23. Scripts y notebooks que soportan la limpieza y el entendimiento (rutas desde anexos/codigo/).
 
 | Archivo | Qué hace | Resultado en este documento |
 |-----------------------|------------------------------------------------|------------------------------|
 | `guia_1/analisis_guia1.py` | Descarga los agregados nacionales del registro, forma los pares de ventas repetidas, calcula los índices por municipio y la línea base, y extrae la Res. 2057 por zona | Tabla 7; 256.973 pares; banda de 153 a 250; umbral de 211 |
-| `guia_4/limpieza_amb.py` | Aplica las reglas de limpieza (puntos a-d), marca los extremos y forma los pares del AMB | Tablas 15, 16 y 23 |
+| `guia_4/limpieza_amb.py` | Aplica las reglas de limpieza (puntos a-d), marca los extremos y forma los pares del AMB | Tablas 15, 16 y 24 |
 | `guia_4/descarga_actos.py` | Descarga de la API todos los actos de los 13.129 folios con pares | 76.065 actos; cambios físicos |
 | `guia_4/02_entendimiento_calidad_compraventas.ipynb` | Evalúa la calidad de la base original: totalidad, consistencia, granularidad y formato | Tabla 14 |
 | `guia_4/03_entendimiento.ipynb` | Aplica las técnicas de entendimiento: segmentación, mezcla gaussiana, índice exploratorio e importancia de variables | Tabla 17; hallazgos 1 a 4 |
 | `diccionario.py` | Genera el diccionario de variables a partir de los CSV | Anexo C |
 | `guia_5/descarga_santander.py`, `guia_5/entendimiento_santander.py` | Descargan las compraventas y los actos de Santander y les aplican las mismas reglas de limpieza y técnicas del AMB | 301.356 compraventas; 5.016 pares; 41,3% en patrón de avalúo |
-| `guia_5/variables_oa2_amb.py` | Agrega al clasificador las variables del folio y mide su efecto | Tablas 24 y 25 |
+| `guia_5/variables_oa2_amb.py` | Agrega al clasificador las variables del folio y mide su efecto | Tablas 25 y 26 |
 | `guia_5/indices_oficiales_bucaramanga.py` | Compara el índice urbano de Bucaramanga y del AMB con el IVP y el IPVN | Diferencia de menos de 3,5 puntos |
 | `guia_5/perfil_res2057_santander.py` | Perfila la Res. 2057 en Santander y la cruza con el índice rural | 1.058 zonas; 215 zonas sobre 3 veces la mediana; Spearman de -0,19 |
 | `guia_5/vigencias_santander.py` | Busca en las 68 memorias técnicas el año de la última actualización y calcula la relación implícita | 0 de 68 memorias con el año; mediana de 9,9% |
 
-Table: Tabla 23. Salida del script de limpieza del AMB: embudo de compraventas y formación de pares, 2015-2023.
+Table: Tabla 24. Salida del script de limpieza del AMB: embudo de compraventas y formación de pares, 2015-2023.
 
 | Paso, en el orden del script | Quedan | Salen |
 |------------------------------------------------------------|----------|----------|
@@ -551,7 +553,7 @@ Table: Tabla 23. Salida del script de limpieza del AMB: embudo de compraventas y
 
 Además, el script recupera la zona de 52 de las 1.855 compraventas sin zona con otra venta del mismo folio; marca sin borrar 663 valores sobre el percentil 99,5 (COP 1.050 M) y 5.806 entre COP 1 M y 10 M; y deja para el índice 12.399 pares urbanos, 1.398 rurales y 181 sin zona. La mediana de la razón de precios es 3,22 en los pares con cambio físico y 1,10 en el resto. Los 15 códigos de acto tratados como cambio físico están al final del Anexo C.
 
-Table: Tabla 24. Clasificador de escrituras en el AMB: AUC en prueba sin y con las variables del folio.
+Table: Tabla 25. Clasificador de escrituras en el AMB: AUC en prueba sin y con las variables del folio.
 
 | Partición de prueba | Variables del registro | Más las 4 del folio | Diferencia (IC 95%) |
 |------------------------------------------|-------------|-------------|----------------------|
@@ -560,7 +562,7 @@ Table: Tabla 24. Clasificador de escrituras en el AMB: AUC en prueba sin y con l
 
 Bosque aleatorio de 400 árboles, hoja mínima de 20 y semilla 0, sobre 12.467 pares; el IC 95% es un *bootstrap* pareado de 1.000 réplicas que remuestrea folios. Las variables del folio son la hipoteca en la primera venta y en la segunda, la propiedad horizontal y la primera venta de un folio nuevo, presentes en 21,1%, 16,5%, 29,6% y 15,3% de los pares.
 
-Table: Tabla 25. Importancia por permutación con las variables del folio (caída del AUC, diez primeras).
+Table: Tabla 26. Importancia por permutación con las variables del folio (caída del AUC, diez primeras).
 
 | Variable | Caída del AUC | Variable | Caída del AUC |
 |----------------------|----------|----------------------|----------|
@@ -572,9 +574,9 @@ Table: Tabla 25. Importancia por permutación con las variables del folio (caíd
 
 ### Anexo C. Diccionario de variables {#anexo-c .anexo}
 
-Piloto del Área Metropolitana de Bucaramanga (AMB), 2015-2023. Generado con `anexos/codigo/diccionario.py` a partir de los CSV de `anexos/datos/`; el porcentaje de vacíos se recalcula cada vez que se regenera.
+Piloto del Área Metropolitana de Bucaramanga (AMB), 2015-2023. Generado con `anexos/codigo/diccionario.py` a partir de los CSV de `anexos/datos/`; el porcentaje de vacíos se recalcula cada vez que se regenera. Las cuatro variables del folio para OA2 se construyen en `anexos/codigo/guia_5/variables_oa2_amb.py` y se describen en el Anexo B (Tablas 25 y 26).
 
-Table: Tabla 26. Archivos de datos del piloto del AMB.
+Table: Tabla 27. Archivos de datos del piloto del AMB.
 
 | Archivo | Filas | Columnas | Contenido |
 |------------------------------|--------|--------|------------------------------------------|
@@ -583,7 +585,7 @@ Table: Tabla 26. Archivos de datos del piloto del AMB.
 | `datos/pares_amb.csv` | 14.469 | 31 | Pares de ventas consecutivas del mismo folio con al menos 365 días |
 | `datos/api/actos_folios_pares.csv` | 76.065 | 8 | Todos los actos de los 13.129 folios con pares (descarga del 8 nov 2026) |
 
-Table: Tabla 27. Diccionario de variables.
+Table: Tabla 28. Diccionario de variables.
 
 | Variable | Archivos | Origen | Tipo | Descripción | Uso o decisión | % vacíos |
 |------------|-------|---------|-----|--------------------|------------------|----------|
@@ -611,7 +613,8 @@ Table: Tabla 27. Diccionario de variables.
 | `tiene_valor` | original, limpias, pares | Registro IGAC 7y2j-43cv | 0/1 | La anotación trae valor | Constante en el piloto | 0,00% en todos los archivos |
 | `tipo_predio_zona` | original, limpias, pares | Registro IGAC 7y2j-43cv | texto | Zona URBANO / RURAL / SIN INFORMACION | Segmentación urbano-rural (R2); zona vacía recuperada de otra venta del folio (52) | 0,00% en todos los archivos |
 | `valor` | todos | Registro IGAC 7y2j-43cv | numérico (COP) | Valor declarado en la escritura | Variable que se mide: no se imputa; salen los valores de COP 1 M o menos | 0,00% en todos los archivos |
-| `numero_catastral, numero_catastral_antiguo` | extracción de 26 columnas (Guía 4, Parte I) | Registro IGAC 7y2j-43cv | texto | Número predial catastral, vacío en el 100% de los registros | No permite unir el avalúo de cada predio; el rezago se mide contra el reajuste por decreto | 100% (no viene en esta descarga) |
+| `numero_catastral` | extracción de 26 columnas (Guía 4, Parte I) | Registro IGAC 7y2j-43cv | texto | Número predial catastral, vacío en el 100% de los registros | No permite unir el avalúo de cada predio; el rezago se mide contra el reajuste por decreto | 100% (no viene en esta descarga) |
+| `numero_catastral_antiguo` | extracción de 26 columnas (Guía 4, Parte I) | Registro IGAC 7y2j-43cv | texto | Número predial catastral anterior, vacío en el 100% de los registros | Igual que numero_catastral; no se descarga | 100% (no viene en esta descarga) |
 | `fecha` | limpias, pares | limpieza_amb.py | fecha | Fecha de radicación unificada | Serie de tiempo; días entre ventas | 0,00% en todos los archivos |
 | `extremo_alto` | limpias, pares | limpieza_amb.py | booleano | Valor sobre el percentil 99,5 (COP 1.050 M) | Se marca, no se borra; candidato para OA6 | 0,00% en todos los archivos |
 | `cola_baja_1_10M` | limpias, pares | limpieza_amb.py | booleano | Valor entre COP 1 M y 10 M (cuotas, derechos parciales o errores) | Se marca, no se borra | 0,00% en todos los archivos |
@@ -621,16 +624,16 @@ Table: Tabla 27. Diccionario de variables.
 | `cambio_fisico` | pares | limpieza_amb.py | booleano | Acto de construcción, área o linderos, división, englobe, loteo o PH entre las dos ventas | Excluye del índice; se conserva marcado para OA6 | 0,00% en todos los archivos |
 | `cambio_extremo_5x` | pares | limpieza_amb.py | booleano | La razón es de 5 o más, o de 1/5 o menos | Excluye del índice; se conserva marcado para OA6 | 0,00% en todos los archivos |
 | `para_indice` | pares | limpieza_amb.py | booleano | Par apto para el índice (365 días, sin cambio físico ni cambio de 5 veces) | 13.978 pares | 0,00% en todos los archivos |
-| `log_valor` | derivada en el notebook | 03_entendimiento.ipynb | numérico | ln(valor) | Corrige la asimetría (161 a -0,7) | 100% (no viene en esta descarga) |
-| `redondo` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Valor múltiplo exacto de COP 1 M | Indicio de precio negociado | 100% (no viene en esta descarga) |
-| `fecha_escritura` | derivada en el notebook | 03_entendimiento.ipynb | fecha | Fecha leída de documento_justificativo | Fija el año del avalúo vigente al firmar | 100% (no viene en esta descarga) |
-| `dias_esc_rad` | derivada en el notebook | 03_entendimiento.ipynb | entero | Días entre escritura y radicación | Control de calidad (mediana 15, p95 77) | 100% (no viene en esta descarga) |
-| `anios` | derivada en el notebook | 03_entendimiento.ipynb | numérico | Años entre las dos radicaciones (días / 365,25) | Horizonte del par (mediana 3,2) | 100% (no viene en esta descarga) |
-| `g` | derivada en el notebook | 03_entendimiento.ipynb | numérico | Tasa anual del par: razon^(1/anios) - 1 | Segmentación, mezcla gaussiana y etiqueta débil | 100% (no viene en esta descarga) |
-| `congelado` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Mismo valor en las dos ventas | Segmento de valor congelado | 100% (no viene en esta descarga) |
-| `factor_decreto` | derivada en el notebook | 03_entendimiento.ipynb | numérico | Producto de (1 + reajuste) entre los años de las dos escrituras (3%; 4,31% en 2023) | Crecimiento de un avalúo no actualizado | 100% (no viene en esta descarga) |
-| `replica_decreto` | derivada en el notebook | 03_entendimiento.ipynb | booleano | razon a menos de 0,5% de factor_decreto | Segmento de réplica del reajuste | 100% (no viene en esta descarga) |
-| `cruza_ley1943` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Primera escritura antes de 2019 y segunda desde 2019 | Quiebre de 2019 (Ley 1943 de 2018) | 100% (no viene en esta descarga) |
-| `cruza_act_bga` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Igual que cruza_ley1943, solo en Bucaramanga | Actualización catastral de Bucaramanga (2019) | 100% (no viene en esta descarga) |
+| `log_valor` | derivada en el notebook | 03_entendimiento.ipynb | numérico | ln(valor) | Corrige la asimetría (161 a -0,7) | No aplica (se calcula en el notebook) |
+| `redondo` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Valor múltiplo exacto de COP 1 M | Indicio de precio negociado | No aplica (se calcula en el notebook) |
+| `fecha_escritura` | derivada en el notebook | 03_entendimiento.ipynb | fecha | Fecha leída de documento_justificativo | Fija el año del avalúo vigente al firmar | No aplica (se calcula en el notebook) |
+| `dias_esc_rad` | derivada en el notebook | 03_entendimiento.ipynb | entero | Días entre escritura y radicación | Control de calidad (mediana 15, p95 77) | No aplica (se calcula en el notebook) |
+| `anios` | derivada en el notebook | 03_entendimiento.ipynb | numérico | Años entre las dos radicaciones (días / 365,25) | Horizonte del par (mediana 3,2) | No aplica (se calcula en el notebook) |
+| `g` | derivada en el notebook | 03_entendimiento.ipynb | numérico | Tasa anual del par: razon^(1/anios) - 1 | Segmentación, mezcla gaussiana y etiqueta débil | No aplica (se calcula en el notebook) |
+| `congelado` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Mismo valor en las dos ventas | Segmento de valor congelado | No aplica (se calcula en el notebook) |
+| `factor_decreto` | derivada en el notebook | 03_entendimiento.ipynb | numérico | Producto de (1 + reajuste) entre los años de las dos escrituras (3%; 4,31% en 2023) | Crecimiento de un avalúo no actualizado | No aplica (se calcula en el notebook) |
+| `replica_decreto` | derivada en el notebook | 03_entendimiento.ipynb | booleano | razon a menos de 0,5% de factor_decreto | Segmento de réplica del reajuste | No aplica (se calcula en el notebook) |
+| `cruza_ley1943` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Primera escritura antes de 2019 y segunda desde 2019 | Quiebre de 2019 (Ley 1943 de 2018) | No aplica (se calcula en el notebook) |
+| `cruza_act_bga` | derivada en el notebook | 03_entendimiento.ipynb | booleano | Igual que cruza_ley1943, solo en Bucaramanga | Actualización catastral de Bucaramanga (2019) | No aplica (se calcula en el notebook) |
 
 Códigos de acto tratados como cambio físico: 317 (reglamento de PH), 902, 903, 917 y 964 (área y linderos), 909 (urbanización), 910, 911 y 912 (construcción o mejora), 913, 915 y 919 (englobe y desenglobe), 918 (división material), 920 y 924 (loteo y reloteo). La reforma (331) y la adición (347) del reglamento de PH no se tratan como cambio físico.

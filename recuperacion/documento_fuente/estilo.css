@@ -52,3 +52,4 @@ h2#anexos ~ p { text-align: justify; padding-left: 0; text-indent: 0; }
 .anexo-cont { break-before: page; font-weight: bold; font-size: 11pt; text-align: left; }
 .hueco-carta { height: 29.2cm; }
 h3#anexo-c ~ p { text-align: left; }  /* rutas largas: sin justificar para evitar espacios estirados */
+h3#anexo-c { break-before: auto; margin-top: 1.4em; }  /* sigue al Anexo B sin dejar media página en blanco */
